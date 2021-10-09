@@ -31,6 +31,9 @@ button {
     background-color: rgb(30, 144, 255);
     color: #dddddd;
 }
+.btn-primary:hover {
+    background-color: rgb(26, 112, 197);
+}
 
 nav, .tools {
     padding: 0 var(--whiteSpace);
