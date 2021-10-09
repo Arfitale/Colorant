@@ -7,10 +7,11 @@
     <title>Colorant - Simple color generator</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="./generator.css">
+    <!-- <script src="./generator.js" type="module"></script> -->
 </head>
 <body>
     <!-- NAVIGATION -->
-    <nav>
+    <nav class="nav">
         <div class="logo">
             <img src="./assets/icon/logo.svg" alt="colorant logo">
         </div>
@@ -28,16 +29,16 @@
     <!-- TOOLS -->
     <div class="tools">
         <div class="main-tools">
-            <button class="btn btn-pad btn-primary" data-btn-function="generator">Generate!</button>
+            <button class="btn btn-pad btn-primary btn-generate" data-btn-function="generator">Generate!</button>
         </div>
         <div class="other-tools">
-            <button class="btn" data-btn-function="save">
+            <button class="btn btn-save" data-btn-function="save">
                 <i class="ri-heart-line"></i>
             </button>
-            <button class="btn" data-btn-function="settings">
+            <button class="btn btn-settings" data-btn-function="settings">
                 <i class="ri-settings-line"></i>
             </button>
-            <button class="btn" data-btn-function="bookmark">
+            <button class="btn btn-bookmark" data-btn-function="bookmark">
                 <i class="ri-bookmark-line"></i>
             </button>
         </div>
