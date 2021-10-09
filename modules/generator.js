@@ -1,5 +1,6 @@
 import {hook} from "./hook.js";
 import {ntc} from "./ntc.js";
+import tinycolor from "./tinyColor.js";
 
 ntc.init()
 
@@ -10,6 +11,7 @@ export function generator() {
         let colorBg = bar.querySelector('.color-bg');
         const hexColor = `#${randomHex()}`;
         const colorName = ntc.name(hexColor)[1];
+        const isLight = tinycolor(hexColor).isLight();
 
         colorBg.style.backgroundColor = hexColor;
     });
