@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorant - Simple color generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="./generator.css">
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo">
+            <img src="./assets/icon/logo.svg" alt="colorant logo">
+        </div>
+        <ul class="nav-main">
+            <li><a href="#" class="active">Generator</a></li>
+            <li><a href="#" class="active">Explore</a></li>
+            <li class="account">
+                <div class="account-ctr">
+                    <img src="./assets/img/account.jpg" alt="">
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- TOOLS -->
+    <div class="tools">
+        <div class="main-tools">
+            <button class="btn btn-pad btn-primary" data-btn-function="generator">Generate!</button>
+        </div>
+        <div class="other-tools">
+            <button class="btn" data-btn-function="save">
+                <i class="ri-heart-line"></i>
+            </button>
+            <button class="btn" data-btn-function="settings">
+                <i class="ri-settings-line"></i>
+            </button>
+            <button class="btn" data-btn-function="bookmark">
+                <i class="ri-bookmark-line"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- GENERATOR FIELD -->
+    <div class="color-field">
+        <div class="color-bar">
+            <div class="color-bg" style="background-color: crimson;"></div>
+        </div>
+        <div class="color-bar">
+            <div class="color-bg" style="background-color: rgb(110, 15, 34);"></div>
+        </div>
+        <div class="color-bar">
+            <div class="color-bg" style="background-color: rgb(138, 32, 54);"></div>
+        </div>
+        <div class="color-bar">
+            <div class="color-bg" style="background-color: rgb(204, 70, 97);"></div>
+        </div>
+        <div class="color-bar">
+            <div class="color-bg" style="background-color: rgb(68, 9, 21);"></div>
+        </div>
+    </div>
+</body>
+</html>

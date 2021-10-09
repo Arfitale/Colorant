@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+    --whiteSpace: 2rem;
+    --btnPad: .4rem .8rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+li {list-style-type: none;}
+a {text-decoration: none;}
+button {
+    border: none;
+    cursor: pointer;
+}
+
+/* BTN */
+.btn-pad {
+    padding: var(--btnPad);
+    border-radius: 5px;
+}
+.btn-primary {
+    background-color: rgb(30, 144, 255);
+    color: #dddddd;
+}
+
+nav, .tools {
+    padding: 0 var(--whiteSpace);
+}
+
+/* NAV */
+nav {
+    position: relative;
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 30px;
+    height: 30px;
+}
+.logo img {
+    width: 100%;
+    height: 100%;
+}
+
+.nav-main {
+    display: flex;
+    align-items: center;
+    gap: var(--whiteSpace);
+}
+
+.nav-main a {
+    color:rgb(54, 54, 54);
+}
+
+.nav-main a:hover, .nav-main a:active {
+    color: #1389ff;
+}
+
+.nav-main .account-ctr {
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    background: rgb(54, 54, 54);
+    cursor: pointer;
+}
+
+.account-ctr img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+
+/* TOOLS */
+
+.tools {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3rem;
+}
+
+.main-tools .btn {
+    font-size: 1.1rem;
+}
+
+.other-tools {
+    display: flex;
+    gap: 4rem;
+}
+
+.other-tools .btn {
+    font-size: 1.5rem;
+    color:rgb(54, 54, 54);
+}
+.other-tools .btn:hover {
+    color: #1389ff;
+}
+
+
+/* GENERATOR FIELD */
+
+.color-field {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 5rem - 3rem);
+    display: flex;
+}
+
+.color-bar {
+    position: relative;
+    flex: 1;
+    height: 100%;
+}
+
+.color-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
