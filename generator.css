@@ -20,12 +20,16 @@ a {text-decoration: none;}
 button {
     border: none;
     cursor: pointer;
+    background-color: transparent;
 }
 
 /* BTN */
 .btn-pad {
     padding: var(--btnPad);
     border-radius: 5px;
+}
+.btn-md {
+    font-size: 1.5rem;
 }
 .btn-primary {
     background-color: rgb(30, 144, 255);
@@ -96,10 +100,6 @@ nav {
     height: 3rem;
 }
 
-.main-tools .btn {
-    font-size: 1.1rem;
-}
-
 .other-tools {
     display: flex;
     gap: 4rem;
@@ -135,5 +135,47 @@ nav {
     width: 100%;
     height: 100%;
     pointer-events: none;
+    z-index: 0;
 }
 
+.color-body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.color-tools {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.color-tools button {
+    opacity: .7;
+}
+.color-tools button:hover {
+    opacity: 1;
+}
+
+.color-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+}
+
+.color-info .color-code {
+    font-size: 1.5rem;
+}
+.color-info .color-name {
+    font-size: 1rem;
+}
