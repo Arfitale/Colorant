@@ -1,5 +1,5 @@
 import {hook} from "./hook.js";
-import { updateUI } from "./UI.js";
+import { ui as UI } from "./UI.js";
 
 export function generator() {
     const COLOR_BAR = hook(".color-bar", true);
@@ -7,7 +7,7 @@ export function generator() {
     COLOR_BAR.forEach(bar => {
         const hexColor = `#${randomHex()}`;
 
-        updateUI(bar, hexColor);
+        UI.updateColor(bar, hexColor);
     });
 }
 

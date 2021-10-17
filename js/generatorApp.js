@@ -28,9 +28,9 @@ document.addEventListener("DOMContentLoaded", e => {
 
 // generate button
 generateBtn.addEventListener("click", generator);
-generateBtn.addEventListener("dragstart", e => {
 
-});
+// copy btn
+
 
 window.addEventListener("keydown", e => {
     // spacebar button

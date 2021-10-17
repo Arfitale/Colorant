@@ -5,37 +5,43 @@ import {hook} from "./hook.js";
 
 ntc.init();
 
-const darkColorMode = "#101010";
-const lightColorMode = "#eeeeee";
 
+class UI {
+    constructor() {
+        this.darkColorMode = "#101010";
+        this.lightColorMode = "#eeeeee";
+    }
 
-export function updateUI(colorBar, hexColor) {
-    const isLight = tinycolor(hexColor).isLight();
-    const colorName = ntc.name(hexColor)[1];
+    updateColor(colorBar, hexColor) {
+        const isLight = tinycolor(hexColor).isLight();
+        const colorName = ntc.name(hexColor)[1];
 
-    contrastUI(colorBar, isLight)
-    updateColorBar(colorBar, hexColor, colorName);
-}
+        this.contrastUI(colorBar, isLight)
+        this.updateColorBar(colorBar, hexColor, colorName);
+    }
 
-function contrastUI(colorBar, isLight) {
-    const btn = hook(`.btn`, true, colorBar);
-    const colorName = hook(`.color-name`, false, colorBar);
-    const colorCode = hook(`.color-code`, false, colorBar);
+    updateColorBar(colorBar, hexColor, colorName) {
+        const colorBg = hook(".color-bg", false, colorBar);
+        colorBg.style.backgroundColor = hexColor;
+        hook(".color-code", false, colorBar).innerHTML = hexColor.replace("#", "");
+        hook(".color-name", false, colorBar).innerHTML = colorName;
+    }
 
-    if (isLight) {
-        btn.forEach(el => el.style.color = darkColorMode);
-        colorCode.style.color = darkColorMode;
-        colorName.style.color = darkColorMode;
-    } else {
-        btn.forEach(el => el.style.color = lightColorMode);
-        colorCode.style.color = lightColorMode;
-        colorName.style.color = lightColorMode;
+    contrastUI(colorBar, isLight) {
+        const btn = hook(`.btn`, true, colorBar);
+        const colorName = hook(`.color-name`, false, colorBar);
+        const colorCode = hook(`.color-code`, false, colorBar);
+    
+        if (isLight) {
+            btn.forEach(el => el.style.color = this.darkColorMode);
+            colorCode.style.color = this.darkColorMode;
+            colorName.style.color = this.darkColorMode;
+        } else {
+            btn.forEach(el => el.style.color = this.lightColorMode);
+            colorCode.style.color = this.lightColorMode;
+            colorName.style.color = this.lightColorMode;
+        }
     }
 }
 
-function updateColorBar(colorBar, hexColor, colorName) {
-    const colorBg = hook(".color-bg", false, colorBar);
-    colorBg.style.backgroundColor = hexColor;
-    hook(".color-code", false, colorBar).innerHTML = hexColor.replace("#", "");
-    hook(".color-name", false, colorBar).innerHTML = colorName;
-}
+export const ui = new UI();
