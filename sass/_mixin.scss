@@ -1,0 +1,12 @@
+@mixin dimension($width:auto, $height:auto) {
+    width: $width;
+    height: $height;
+}
+
+@mixin flex($direction: row, $jc:flex-start, $ai:flex-start, $gap:0) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $jc;
+    align-items: $ai;
+    gap: $gap;
+}

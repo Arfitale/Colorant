@@ -6,18 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Colorant - Simple color generator</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="./generator.css">
-    <script src="./generatorApp.js" type="module"></script>
+    <link rel="stylesheet" href="./css/default.css">
+    <link rel="stylesheet" href="./css/generator.css">
+    <!-- <script src="./generatorApp.js" type="module"></script> -->
 </head>
 <body>
     <!-- NAVIGATION -->
     <nav class="nav">
+        <button class="btn btn-md mobile-flex">
+            <i class="ri-menu-4-line"></i>
+        </button>
         <div class="logo">
-            <img src="./assets/icon/logo.svg" alt="colorant logo">
+            <img src="./assets/icon/colorant.svg" alt="colorant logo">
         </div>
         <ul class="nav-main">
-            <li><a href="#" class="active">Generator</a></li>
-            <li><a href="#" class="active">Explore</a></li>
+            <li><a href="#" class="nav-link active">Generator</a></li>
+            <li><a href="#" class="nav-link">Explore</a></li>
             <li class="account">
                 <div class="account-ctr">
                     <img src="./assets/img/account.jpg" alt="">
@@ -26,138 +30,165 @@
         </ul>
     </nav>
 
-    <!-- TOOLS -->
-    <div class="tools">
-        <div class="main-tools">
-            <button class="btn btn-pad btn-primary btn-generate" data-btn-function="generator">Generate!</button>
-        </div>
-        <div class="other-tools">
-            <button class="btn btn-save" data-btn-function="save">
-                <i class="ri-heart-line"></i>
-            </button>
-            <button class="btn btn-settings" data-btn-function="settings">
-                <i class="ri-settings-line"></i>
-            </button>
-            <button class="btn btn-bookmark" data-btn-function="bookmark">
-                <i class="ri-bookmark-line"></i>
-            </button>
-        </div>
-    </div>
 
     <!-- GENERATOR FIELD -->
     <div class="color-field">
-        <div class="color-bar">
-            <div class="color-bg"></div>
-            <div class="color-body">
-                <div class="color-tools">
-                    <button class="btn btn-md btn-remove">
-                        <i class="ri-delete-bin-7-line"></i>
-                    </button>
-                    <button class="btn btn-md btn-copy">
-                        <i class="ri-clipboard-line"></i>
-                    </button>
-                    <button class="btn btn-md btn-drag">
-                        <i class="ri-drag-move-line"></i>
-                    </button>
-                    <button class="btn btn-md btn-lock">
-                        <i class="ri-lock-unlock-line"></i>
-                    </button>
-                </div>
-                <div class="color-info">
-                    <div class="color-code"></div>
-                    <div class="color-name"></div>
-                </div>
+        <div class="tools">
+            <div class="desc">
+                <p>Press spacebar to generate color!</p>
+            </div>
+            <div class="main-tools">
+                <button class="btn btn-icon btn-generate" data-btn-function="generate">
+                    <i class="ri-apps-line"></i>
+                </button>
+                <button class="btn btn-icon btn-save" data-btn-function="save">
+                    <i class="ri-heart-line"></i>
+                </button>
+                <button class="btn btn-icon btn-bookmark" data-btn-function="bookmark">
+                    <i class="ri-bookmark-line"></i>
+                </button>
+                <button class="btn btn-icon btn-settings" data-btn-function="settings">
+                    <i class="ri-settings-line"></i>
+                </button>
             </div>
         </div>
-        <div class="color-bar">
-            <div class="color-bg"></div>
-            <div class="color-body">
-                <div class="color-tools">
-                    <button class="btn btn-md btn-remove">
-                        <i class="ri-delete-bin-7-line"></i>
-                    </button>
-                    <button class="btn btn-md btn-copy">
-                        <i class="ri-clipboard-line"></i>
-                    </button>
-                    <button class="btn btn-md btn-drag">
-                        <i class="ri-drag-move-line"></i>
-                    </button>
-                    <button class="btn btn-md btn-lock">
-                        <i class="ri-lock-unlock-line"></i>
-                    </button>
-                </div>
-                <div class="color-info">
-                    <div class="color-code"></div>
-                    <div class="color-name"></div>
-                </div>
-            </div>
-        </div>
-        <div class="color-bar">
-            <div class="color-bg"></div>
-            <div class="color-body">
-                <div class="color-tools">
-                    <button class="btn btn-md btn-remove">
-                        <i class="ri-delete-bin-7-line"></i>
-                    </button>
-                    <button class="btn btn-md btn-copy">
-                        <i class="ri-clipboard-line"></i>
-                    </button>
-                    <button class="btn btn-md btn-drag">
-                        <i class="ri-drag-move-line"></i>
-                    </button>
-                    <button class="btn btn-md btn-lock">
-                        <i class="ri-lock-unlock-line"></i>
-                    </button>
-                </div>
-                <div class="color-info">
-                    <div class="color-code"></div>
-                    <div class="color-name"></div>
+        <div class="color-scheme">
+            <div class="color-bar">
+                <div class="color-bg"  style="background-color: crimson;"></div>
+                <div class="color-body">
+                    <div class="color-tools">
+                        <button class="btn btn-md btn-color btn-remove">
+                            <i class="ri-delete-bin-7-line"></i>
+                        </button>
+                        <button class="btn btn-md btn-color btn-drag">
+                            <i class="ri-drag-move-line"></i>
+                        </button>
+                        <button class="btn btn-md btn-color btn-copy">
+                            <i class="ri-clipboard-line"></i>
+                        </button>
+                        <button class="btn btn-md btn-color btn-lock">
+                            <i class="ri-lock-unlock-line"></i>
+                        </button>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-code">31F9A1</div>
+                        <div class="color-name">Crimson</div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="color-bar">
-            <div class="color-bg"></div>
-            <div class="color-body">
-                <div class="color-tools">
-                    <button class="btn btn-md btn-remove">
-                        <i class="ri-delete-bin-7-line"></i>
-                    </button>
-                    <button class="btn btn-md btn-copy">
-                        <i class="ri-clipboard-line"></i>
-                    </button>
-                    <button class="btn btn-md btn-drag">
-                        <i class="ri-drag-move-line"></i>
-                    </button>
-                    <button class="btn btn-md btn-lock">
-                        <i class="ri-lock-unlock-line"></i>
-                    </button>
-                </div>
-                <div class="color-info">
-                    <div class="color-code"></div>
-                    <div class="color-name"></div>
+            <div class="color-bar">
+                <div class="color-bg"  style="background-color: rgb(150, 30, 54);"></div>
+                <div class="color-body">
+                    <div class="color-tools">
+                        <button class="btn btn-md btn-color btn-remove">
+                            <i class="ri-delete-bin-7-line"></i>
+                        </button>
+                        <button class="btn btn-md btn-color btn-drag">
+                            <i class="ri-drag-move-line"></i>
+                        </button>
+                        <button class="btn btn-md btn-color btn-copy">
+                            <i class="ri-clipboard-line"></i>
+                        </button>
+                        <button class="btn btn-md btn-color btn-lock">
+                            <i class="ri-lock-unlock-line"></i>
+                        </button>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-code">31F9A1</div>
+                        <div class="color-name">Crimson</div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="color-bar">
-            <div class="color-bg"></div>
-            <div class="color-body">
-                <div class="color-tools">
-                    <button class="btn btn-md btn-remove">
-                        <i class="ri-delete-bin-7-line"></i>
-                    </button>
-                    <button class="btn btn-md btn-copy">
-                        <i class="ri-clipboard-line"></i>
-                    </button>
-                    <button class="btn btn-md btn-drag">
-                        <i class="ri-drag-move-line"></i>
-                    </button>
-                    <button class="btn btn-md btn-lock">
-                        <i class="ri-lock-unlock-line"></i>
-                    </button>
+            <div class="color-bar">
+                <div class="color-bg"  style="background-color: rgb(88, 2, 20);"></div>
+                <div class="color-body">
+                    <div class="color-tools">
+                        <button class="btn btn-md btn-color btn-remove">
+                            <i class="ri-delete-bin-7-line"></i>
+                        </button>
+                        <button class="btn btn-md btn-color btn-drag">
+                            <i class="ri-drag-move-line"></i>
+                        </button>
+                        <button class="btn btn-md btn-color btn-copy">
+                            <i class="ri-clipboard-line"></i>
+                        </button>
+                        <button class="btn btn-md btn-color btn-lock">
+                            <i class="ri-lock-unlock-line"></i>
+                        </button>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-code">31F9A1</div>
+                        <div class="color-name">Crimson</div>
+                    </div>
                 </div>
-                <div class="color-info">
-                    <div class="color-code"></div>
-                    <div class="color-name"></div>
+            </div>
+            <div class="color-bar">
+                <div class="color-bg"  style="background-color: rgb(148, 10, 38);"></div>
+                <div class="color-body">
+                    <div class="color-tools">
+                        <button class="btn btn-md btn-color btn-remove">
+                            <i class="ri-delete-bin-7-line"></i>
+                        </button>
+                        <button class="btn btn-md btn-color btn-drag">
+                            <i class="ri-drag-move-line"></i>
+                        </button>
+                        <button class="btn btn-md btn-color btn-copy">
+                            <i class="ri-clipboard-line"></i>
+                        </button>
+                        <button class="btn btn-md btn-color btn-lock">
+                            <i class="ri-lock-unlock-line"></i>
+                        </button>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-code">31F9A1</div>
+                        <div class="color-name">Crimson</div>
+                    </div>
+                </div>
+            </div>
+            <div class="color-bar">
+                <div class="color-bg"  style="background-color: rgb(238, 82, 113);"></div>
+                <div class="color-body">
+                    <div class="color-tools">
+                        <button class="btn btn-md btn-color btn-remove">
+                            <i class="ri-delete-bin-7-line"></i>
+                        </button>
+                        <button class="btn btn-md btn-color btn-drag">
+                            <i class="ri-drag-move-line"></i>
+                        </button>
+                        <button class="btn btn-md btn-color btn-copy">
+                            <i class="ri-clipboard-line"></i>
+                        </button>
+                        <button class="btn btn-md btn-color btn-lock">
+                            <i class="ri-lock-unlock-line"></i>
+                        </button>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-code">31F9A1</div>
+                        <div class="color-name">Crimson</div>
+                    </div>
+                </div>
+            </div>
+            <div class="color-bar">
+                <div class="color-bg"  style="background-color: rgb(78, 21, 33);"></div>
+                <div class="color-body">
+                    <div class="color-tools">
+                        <button class="btn btn-md btn-color btn-remove">
+                            <i class="ri-delete-bin-7-line"></i>
+                        </button>
+                        <button class="btn btn-md btn-color btn-drag">
+                            <i class="ri-drag-move-line"></i>
+                        </button>
+                        <button class="btn btn-md btn-color btn-copy">
+                            <i class="ri-clipboard-line"></i>
+                        </button>
+                        <button class="btn btn-md btn-color btn-lock">
+                            <i class="ri-lock-unlock-line"></i>
+                        </button>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-code">31F9A1</div>
+                        <div class="color-name">Crimson</div>
+                    </div>
                 </div>
             </div>
         </div>

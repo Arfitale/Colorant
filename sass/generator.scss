@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import "./mixin";
+@import "./var";
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+
+
+// NAV
+.nav {
+    @include dimension(100%, auto);
+    @include flex(row, space-between, center, 2rem);
+    position: relative;
+    padding: $whiteSpaceDesktop;
+
+    .logo {
+        @include dimension(2rem, 2rem);
+        img {@include dimension(100%)};
+    }
+
+    .nav-main {
+        @include flex($gap: 2.5rem, $ai: center);
+
+        .account {
+            @include dimension(2rem, 2rem);
+
+            .account-ctr {
+                @include dimension(100%, 100%);                
+                border-radius: 50%;
+                background-color: $secondaryCol;
+                img {@include dimension(100%,100%); border-radius: 50%;}
+            }
+        }
+    }
+}
+
+// COLOR FIELD
+.color-field {
+    @include dimension(100%, $CFHeightTemp);
+    @include flex($direction: column);
+
+    .tools {
+        @include dimension(100%);
+        @include flex($jc: space-between, $ai: center);
+        padding: 1rem $whiteSpaceDesktop;
+
+        .desc {
+            p {color: $secondaryCol}
+        }
+
+        .main-tools {
+            @include flex($ai: center, $gap: $whiteSpaceDesktop);
+        }
+    }
+
+    .color-scheme {
+        @include dimension(100%, 100%);
+        @include flex($direction: row);
+        .color-bar {
+            @include dimension($height: 100%);
+            position: relative;
+            flex: 1;
+
+            
+            .color-bg {
+                position: absolute;
+                @include dimension(100%, 100%);
+                pointer-events: none;
+                z-index: 0;
+            }
+
+            .color-body {
+                @include dimension(100%, 100%);
+                @include flex(column, center, center, 3rem);
+                position: absolute;
+                &:hover .color-tools {opacity: 1;}
+
+                .color-tools {
+                    @include flex(column, center, center, 1.5rem);
+                    opacity: 0;
+                }
+
+                .color-info {
+                    @include flex(column, center, center, .5rem);
+                    .color-code {
+                        font-size: 2rem;
+                    }
+                    .color-name {font-size: 1.5rem;}
+                }
+            }
+        }
+    }
+}
+
+// RESPONSIVE ELEMENT //
+
+@media screen and (max-width: 768px) {
+    .nav {
+        padding: $whiteSpaceMobile;
+        .logo {display: none;}
+        .nav-main {
+            li:not(.account) {display: none;}
+        }
+    }
+
+    .color-field {
+        @include dimension($height: $CFHeightTempMobile);
+        flex-direction: column-reverse;
+        .tools {
+            padding: $whiteSpaceMobile;
+            justify-content: center;
+
+            .main-tools {
+                justify-content: center;
+                gap: 55%;
+            }
+
+            .desc {display: none;}
+        }
+
+        .color-scheme {
+            @include flex(column, flex-start, stretch);
+            .color-bar {
+                @include dimension(100%);
+                
+                .color-body {
+                    @include flex(row-reverse, space-between, center);
+                    padding: $whiteSpaceMobile;
+
+                    .color-tools {
+                        @include flex(row, center, center, 1.5rem);
+                        opacity: 1;
+
+                        .btn-drag {
+                            display: none;
+                        }
+                    }
+
+                    .color-info {
+                        .color-code {font-size: 1.5rem}
+                        .color-name {display: none;}
+                    }
+                }
+            }
+
+        }
+    }
+}

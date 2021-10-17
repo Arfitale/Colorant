@@ -5,8 +5,8 @@ import {hook} from "./hook.js";
 
 ntc.init();
 
-const darkColorMode = "#202020";
-const lightColorMode = "#dddddd";
+const darkColorMode = "#101010";
+const lightColorMode = "#eeeeee";
 
 
 export function updateUI(colorBar, hexColor) {

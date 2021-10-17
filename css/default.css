@@ -1,0 +1,41 @@
+li {list-style-type: none;}
+a {
+    text-decoration: none;
+    color: #202020;
+}
+
+/* BUTTON */
+button {
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    display: flex;
+}
+
+.btn-icon {
+    font-size: 1.5rem;
+    color: #5a6572;
+}
+.btn-icon:hover {color: rgb(21, 125, 230)}
+
+.btn-md {
+    font-size: 1.5rem;
+}
+
+.nav-link {color :rgb(49, 54, 59);}
+.nav-link:hover {color:#202020}
+
+.nav-link.active {
+    color:rgb(21, 125, 230);
+}
+
+
+/* REMOVE INITIAL */
+.responsive-mobile, .mobile-flex {display: none;}
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 768px) {
+    .responsive-mobile {display: block;}
+    .mobile-flex {display: flex;}
+}
