@@ -36,8 +36,15 @@ class events {
         </div>`
         COLOR_SCHEME.appendChild(bar);
         ui.updateColor(bar, hex);
+        return;
     }
-    
+
+    // copy btn
+    copyBtn_handler(bar) {
+        const code = hook(".color-code", false, bar).innerText;
+        window.navigator.clipboard.writeText(code);
+        return;
+    }
 }
 
 export const Events = new events()

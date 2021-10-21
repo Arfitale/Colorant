@@ -49,3 +49,13 @@ window.addEventListener("keydown", e => {
     // spacebar button
     if(e.code === "Space") generator();
 });
+
+// event on color bar
+COLOR_SCHEME.addEventListener("click", e => {
+    const target = e.target;
+    const bar = e.target.parentElement.parentElement.parentElement;
+    // copy button
+    if(target.classList.contains("btn-copy")) {
+        Events.copyBtn_handler(bar);
+    }
+});

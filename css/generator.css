@@ -164,6 +164,10 @@ body {
           flex: 1;
 }
 
+.color-field .color-scheme .color-bar button * {
+  pointer-events: none;
+}
+
 .color-field .color-scheme .color-bar .color-bg {
   position: absolute;
   width: 100%;

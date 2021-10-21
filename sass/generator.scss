@@ -70,6 +70,10 @@ body {
             position: relative;
             flex: 1;
 
+            button * {
+                pointer-events: none;
+            }
+
             
             .color-bg {
                 position: absolute;
