@@ -91,6 +91,7 @@ body {
 
                 .color-info {
                     @include flex(column, center, center, .5rem);
+                    text-align: center;
                     .color-code {
                         font-size: 2rem;
                     }

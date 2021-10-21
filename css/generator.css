@@ -229,6 +229,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   gap: 0.5rem;
+  text-align: center;
 }
 
 .color-field .color-scheme .color-bar .color-body .color-info .color-code {
