@@ -11,6 +11,7 @@
 
 body {
     font-family: "Roboto", sans-serif;
+    overflow: hidden;
 }
 
 
@@ -106,6 +107,46 @@ body {
     }
 }
 
+// UI
+.ui {
+    @include dimension(100%, 100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    pointer-events: none;
+
+    .messageUI {
+        @include dimension(100%, 100%);
+        @include flex(column, flex-end, center, 2rem);
+        position: absolute;
+        margin-top: auto;
+        padding: $whiteSpaceDesktop;
+
+        .message {
+            padding: $whiteSpaceMobile $whiteSpaceDesktop;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 1px 1px 3px rgba(0,0,0,.3);
+            animation: appear .5s ease-out;
+        }
+
+        .message-alert {
+            background: rgb(194, 12, 48);
+            color: $lightMode;
+        }
+
+        .message-success {
+            background: rgb(0, 145, 0);
+            color: $lightMode;
+        }
+
+        .message-disappear {
+            animation: disappear .5s ease-out;
+        }
+    }
+}
+
 // RESPONSIVE ELEMENT //
 
 @media screen and (max-width: 768px) {
@@ -158,5 +199,30 @@ body {
             }
 
         }
+    }
+}
+
+
+@keyframes appear {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes disappear {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-100%);
+        opacity: 0;
     }
 }

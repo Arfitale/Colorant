@@ -42,6 +42,25 @@ class UI {
             colorName.style.color = this.lightColorMode;
         }
     }
+
+    showMessage(text, type, time = 3000) {
+        const newMessage = document.createElement("div");
+        newMessage.className = `message message-${type}`;
+        
+        const ui = hook(".ui");
+        const messageUI = hook(".messageUI", false, ui);
+
+        newMessage.textContent = text;
+        
+        messageUI.innerHTML = "";
+        messageUI.appendChild(newMessage);
+
+        // final animation and remove this message
+        setTimeout(() => {
+            newMessage.classList.add("message-disappear");
+            newMessage.addEventListener("animationend", () => newMessage.remove());
+        }, time)
+    }
 }
 
 export const ui = new UI();

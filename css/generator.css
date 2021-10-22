@@ -8,6 +8,7 @@
 
 body {
   font-family: "Roboto", sans-serif;
+  overflow: hidden;
 }
 
 .nav {
@@ -244,6 +245,63 @@ body {
   font-size: 1.5rem;
 }
 
+.ui {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ui .messageUI {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 2rem;
+  position: absolute;
+  margin-top: auto;
+  padding: 2rem;
+}
+
+.ui .messageUI .message {
+  padding: 1rem 2rem;
+  text-align: center;
+  border-radius: 10px;
+  -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+          box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  -webkit-animation: appear .5s ease-out;
+          animation: appear .5s ease-out;
+}
+
+.ui .messageUI .message-alert {
+  background: #c20c30;
+  color: #eeeeee;
+}
+
+.ui .messageUI .message-success {
+  background: #009100;
+  color: #eeeeee;
+}
+
+.ui .messageUI .message-disappear {
+  -webkit-animation: disappear .5s ease-out;
+          animation: disappear .5s ease-out;
+}
+
 @media screen and (max-width: 768px) {
   .nav {
     padding: 1rem;
@@ -339,5 +397,57 @@ body {
   }
   .color-field .color-scheme .color-bar .color-body .color-info .color-name {
     display: none;
+  }
+}
+
+@-webkit-keyframes appear {
+  0% {
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes appear {
+  0% {
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes disappear {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes disappear {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+    opacity: 0;
   }
 }

@@ -1,6 +1,7 @@
 import {generator} from './modules/generator.js';
 import {hook} from './modules/hook.js';
 import {Events} from './modules/eventHandler.js';
+import {ui} from './modules/UI.js';
 
 const COLOR_FIELD = hook(".color-field");
 const COLOR_SCHEME = hook(".color-scheme", false, COLOR_FIELD);
@@ -52,10 +53,13 @@ window.addEventListener("keydown", e => {
 
 // event on color bar
 COLOR_SCHEME.addEventListener("click", e => {
-    const target = e.target;
-    const bar = e.target.parentElement.parentElement.parentElement;
-    // copy button
-    if(target.classList.contains("btn-copy")) {
-        Events.copyBtn_handler(bar);
+    if(e.target.classList.contains("btn")) {
+        const target = e.target;
+        const bar = e.target.parentElement.parentElement.parentElement;
+        // copy button
+        if(target.classList.contains("btn-copy")) {
+            Events.copyBtn_handler(bar);
+            ui.showMessage("copied to clipboard!", "success");
+        }
     }
 });
