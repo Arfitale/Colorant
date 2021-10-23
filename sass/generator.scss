@@ -71,7 +71,7 @@ body {
             position: relative;
             flex: 1;
 
-            button * {
+            .btn * {
                 pointer-events: none;
             }
 
@@ -90,6 +90,7 @@ body {
                 position: absolute;
 
                 .btn {
+                    outline: none;
                     opacity: 0;
                 }
                 

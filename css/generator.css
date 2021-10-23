@@ -165,7 +165,7 @@ body {
           flex: 1;
 }
 
-.color-field .color-scheme .color-bar button * {
+.color-field .color-scheme .color-bar .btn * {
   pointer-events: none;
 }
 
@@ -202,6 +202,7 @@ body {
 }
 
 .color-field .color-scheme .color-bar .color-body .btn {
+  outline: none;
   opacity: 0;
 }
 

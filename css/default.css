@@ -5,7 +5,7 @@ a {
 }
 
 /* BUTTON */
-button {
+.btn {
     border: none;
     cursor: pointer;
     background-color: transparent;

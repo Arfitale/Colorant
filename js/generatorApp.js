@@ -16,7 +16,7 @@ const addBtn = hook(".btn-add");
 
 // MODULE
 function setTooltip() {
-    tippy("button");
+    tippy(".btn");
     return;
 }
 
@@ -54,6 +54,7 @@ window.addEventListener("keydown", e => {
 // event on color bar
 COLOR_SCHEME.addEventListener("click", e => {
     if(e.target.classList.contains("btn")) {
+        e.target.blur()
         const target = e.target;
         const bar = e.target.parentElement.parentElement.parentElement;
 
@@ -65,8 +66,6 @@ COLOR_SCHEME.addEventListener("click", e => {
 
         // lock function
         if(target.classList.contains("btn-lock")) {
-            target.blur();
-            
             const isLock = bar.getAttribute("data-isLock");
             Events.lockBtn_handler(bar, isLock);
         }
