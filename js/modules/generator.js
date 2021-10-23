@@ -5,9 +5,13 @@ export function generator() {
     const COLOR_BAR = hook(".color-bar", true);
 
     COLOR_BAR.forEach(bar => {
-        const hexColor = `#${randomHex()}`;
+        let isLock = bar.getAttribute("data-isLock");
+        isLock = isLock === "true" ? true : false;
 
-        UI.updateColor(bar, hexColor);
+        if (!isLock) {
+            const hexColor = `#${randomHex()}`;
+            UI.updateColor(bar, hexColor);
+        }
     });
 }
 

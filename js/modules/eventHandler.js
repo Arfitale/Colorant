@@ -45,6 +45,23 @@ class events {
         window.navigator.clipboard.writeText(code);
         return;
     }
+
+    // lock btn
+    lockBtn_handler(bar, isLock) {
+        let icon;
+        isLock = isLock === "true" ? true : false;
+        const lockBtn = hook(".btn-lock", false, bar);
+
+        if(isLock) {
+            icon = `<i class="ri-lock-unlock-line"></i>`;
+            lockBtn.classList.remove("lock");
+        } else {
+            icon = `<i class="ri-lock-line"></i>`;
+            lockBtn.classList.add("lock");
+        }
+        bar.setAttribute("data-isLock", `${!isLock}`);
+        lockBtn.innerHTML = icon;
+    }
 }
 
 export const Events = new events()

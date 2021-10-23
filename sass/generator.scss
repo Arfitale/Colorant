@@ -81,17 +81,28 @@ body {
                 @include dimension(100%, 100%);
                 pointer-events: none;
                 z-index: 0;
+                &:hover .btn {opacity: 1;}
             }
 
             .color-body {
                 @include dimension(100%, 100%);
                 @include flex(column, center, center, 3rem);
                 position: absolute;
-                &:hover .color-tools {opacity: 1;}
+
+                .btn {
+                    opacity: 0;
+                }
+                
+                &:hover .color-tools .btn {opacity: 1;}
 
                 .color-tools {
                     @include flex(column, center, center, 1.5rem);
-                    opacity: 0;
+
+                    .btn-lock.lock {
+                        transition: .5s ease;
+                        opacity: 1;
+                        transform: scale(1.1);
+                    }
                 }
 
                 .color-info {

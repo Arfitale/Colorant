@@ -56,10 +56,19 @@ COLOR_SCHEME.addEventListener("click", e => {
     if(e.target.classList.contains("btn")) {
         const target = e.target;
         const bar = e.target.parentElement.parentElement.parentElement;
+
         // copy button
         if(target.classList.contains("btn-copy")) {
             Events.copyBtn_handler(bar);
             ui.showMessage("copied to clipboard!", "success");
+        }
+
+        // lock function
+        if(target.classList.contains("btn-lock")) {
+            target.blur();
+            
+            const isLock = bar.getAttribute("data-isLock");
+            Events.lockBtn_handler(bar, isLock);
         }
     }
 });
