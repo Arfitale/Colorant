@@ -12,15 +12,14 @@ class events {
         const hex = `#${randomHex()}`;
         
         const bar = document.createElement("div");
+        const barLen = hook(".color-bar", true, COLOR_SCHEME).length;
+
         bar.className = "color-bar";
         bar.innerHTML = `<div class="color-bg"></div>
         <div class="color-body">
             <div class="color-tools">
                 <button class="btn btn-md btn-color btn-remove" data-tippy-content="remove color">
                     <i class="ri-delete-bin-7-line"></i>
-                </button>
-                <button class="btn btn-md btn-color btn-drag" data-tippy-content="move color">
-                    <i class="ri-drag-move-line"></i>
                 </button>
                 <button class="btn btn-md btn-color btn-copy" data-tippy-content="copy color code">
                     <i class="ri-clipboard-line"></i>
@@ -34,6 +33,11 @@ class events {
                 <div class="color-name"></div>
             </div>
         </div>`
+
+        if(barLen === 2) {
+            hook(".btn-remove", true, COLOR_SCHEME).forEach(btn => btn.style.display = "block");
+        }
+
         COLOR_SCHEME.appendChild(bar);
         ui.updateColor(bar, hex);
         return;
@@ -61,6 +65,19 @@ class events {
         }
         bar.setAttribute("data-isLock", `${!isLock}`);
         lockBtn.innerHTML = icon;
+    }
+
+    // remove btn
+    removeBtn_handler(bar, len) {
+
+        if(len >= 3) {
+            bar.remove();
+        }
+        
+        if(len <= 3) {
+            hook(".btn-remove", true, COLOR_SCHEME).forEach(btn => btn.style.display = "none");
+        }
+
     }
 }
 

@@ -64,10 +64,17 @@ COLOR_SCHEME.addEventListener("click", e => {
             ui.showMessage("copied to clipboard!", "success");
         }
 
-        // lock function
+        // lock button
         if(target.classList.contains("btn-lock")) {
             const isLock = bar.getAttribute("data-isLock");
             Events.lockBtn_handler(bar, isLock);
+        }
+
+        // delete button
+
+        if(target.classList.contains("btn-remove")) {
+            const barLen = hook(".color-bar", true, COLOR_SCHEME).length;
+            Events.removeBtn_handler(bar, barLen);
         }
     }
 });
