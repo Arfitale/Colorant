@@ -41,9 +41,11 @@ generateBtn.addEventListener("click", generator);
 addBtn.addEventListener("click", e => {
     const barLen = [...hook(".color-bar", true)].length;
     if(barLen < 10) {
-        Events.addBtn_handler();
+        Events.addBtn_handler(barLen);
         _onUpdate();
-    };
+    } else {
+        ui.showMessage("color bar is fully added", "alert");
+    }
 })
 
 window.addEventListener("keydown", e => {
@@ -71,7 +73,6 @@ COLOR_SCHEME.addEventListener("click", e => {
         }
 
         // delete button
-
         if(target.classList.contains("btn-remove")) {
             const barLen = hook(".color-bar", true, COLOR_SCHEME).length;
             Events.removeBtn_handler(bar, barLen);

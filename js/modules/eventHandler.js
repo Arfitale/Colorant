@@ -8,11 +8,10 @@ const COLOR_SCHEME = hook(".color-scheme", false, COLOR_FIELD);
 class events {
     constructor() {}
 
-    addBtn_handler() {
+    addBtn_handler(len) {
         const hex = `#${randomHex()}`;
         
         const bar = document.createElement("div");
-        const barLen = hook(".color-bar", true, COLOR_SCHEME).length;
 
         bar.className = "color-bar";
         bar.innerHTML = `<div class="color-bg"></div>
@@ -34,7 +33,7 @@ class events {
             </div>
         </div>`
 
-        if(barLen === 2) {
+        if(len === 2) {
             hook(".btn-remove", true, COLOR_SCHEME).forEach(btn => btn.style.display = "block");
         }
 
