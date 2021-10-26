@@ -65,11 +65,12 @@ body {
 
     .color-scheme {
         @include dimension(100%, 100%);
-        @include flex($direction: row);
+        position: relative;
         .color-bar {
             @include dimension($height: 100%);
-            position: relative;
-            flex: 1;
+            position: absolute;
+            transition: .3s ease;
+            transform-origin: left;
 
             .btn * {
                 pointer-events: none;
@@ -178,8 +179,8 @@ body {
             justify-content: center;
 
             .main-tools {
-                justify-content: center;
-                gap: 55%;
+                @include dimension(100%);
+                justify-content: space-evenly;
             }
 
             .desc {display: none;}
@@ -188,7 +189,7 @@ body {
         .color-scheme {
             @include flex(column, flex-start, stretch);
             .color-bar {
-                @include dimension(100%);
+                @include dimension(100%, 25%);
                 
                 .color-body {
                     @include flex(row-reverse, space-between, center);
@@ -208,6 +209,11 @@ body {
                         .color-name {display: none;}
                     }
                 }
+            }
+
+            .color-bar.dragged {
+                cursor: grabbing;
+                z-index: 99;
             }
 
         }
@@ -236,5 +242,15 @@ body {
     100% {
         transform: translateY(-100%);
         opacity: 0;
+    }
+}
+
+@keyframes added {
+    0% {
+        transform: scaleX(0);
+    }
+
+    100% {
+        transform: scaleX(1);
     }
 }

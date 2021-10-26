@@ -30,6 +30,23 @@ a {
 }
 
 
+/* UI */
+.invisible {
+    opacity: 0 !important;
+}
+
+/* TRANSITION */
+.transition-none {
+    transition: none !important;
+}
+
+/* ANIMATION */
+.add-anim {
+    transform-origin: right !important;
+    animation: added .3s ease;
+}
+
+
 /* REMOVE INITIAL */
 .responsive-mobile, .mobile-flex {display: none;}
 
@@ -38,4 +55,14 @@ a {
 @media screen and (max-width: 768px) {
     .responsive-mobile {display: block;}
     .mobile-flex {display: flex;}
+}
+
+@keyframes added {
+    0% {
+        transform: scaleX(0);
+    }
+
+    100% {
+        transform: scaleX(1);
+    }
 }

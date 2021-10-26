@@ -8,6 +8,7 @@ const COLOR_SCHEME = hook(".color-scheme", false, COLOR_FIELD);
 const TOOLS = hook(".tools");
 const NAV = hook(".nav");
 const tippy = window.tippy;
+let colorBars = hook(".color-bar", true, COLOR_SCHEME);
 
 // TOOLS
 const generateBtn = hook(".btn-generate");
@@ -15,22 +16,29 @@ const addBtn = hook(".btn-add");
 
 
 // MODULE
+
 function setTooltip() {
     tippy(".btn");
     return;
 }
 
 function _init() {
+    ui.updateDimension();
     setTooltip();
     generator();
 }
 
 function _onUpdate() {
+    ui.updateDimension();
     setTooltip();
 }
 
 // EVENT
-document.addEventListener("DOMContentLoaded", e => {
+window.onresize = () => {
+    ui.updateDimension();
+}
+
+document.addEventListener("DOMContentLoaded", event => {
     _init();
 });
 
@@ -38,9 +46,9 @@ document.addEventListener("DOMContentLoaded", e => {
 generateBtn.addEventListener("click", generator);
 
 // add btn
-addBtn.addEventListener("click", e => {
+addBtn.addEventListener("click", event => {
     const barLen = [...hook(".color-bar", true)].length;
-    if(barLen < 10) {
+    if(barLen < 7) {
         Events.addBtn_handler(barLen);
         _onUpdate();
     } else {
@@ -48,17 +56,19 @@ addBtn.addEventListener("click", e => {
     }
 })
 
-window.addEventListener("keydown", e => {
+window.addEventListener("keydown", event => {
     // spacebar button
-    if(e.code === "Space") generator();
+    if(event.code === "Space") generator();
 });
 
 // event on color bar
-COLOR_SCHEME.addEventListener("click", e => {
-    if(e.target.classList.contains("btn")) {
-        e.target.blur()
-        const target = e.target;
-        const bar = e.target.parentElement.parentElement.parentElement;
+
+// click event
+COLOR_SCHEME.addEventListener("click", event => {
+    if(event.target.classList.contains("btn")) {
+        event.target.blur()
+        const target = event.target;
+        const bar = event.target.parentElement.parentElement.parentElement;
 
         // copy button
         if(target.classList.contains("btn-copy")) {
@@ -76,6 +86,33 @@ COLOR_SCHEME.addEventListener("click", e => {
         if(target.classList.contains("btn-remove")) {
             const barLen = hook(".color-bar", true, COLOR_SCHEME).length;
             Events.removeBtn_handler(bar, barLen);
+            ui.updateDimension();
         }
+
     }
+});
+
+// dragstart event
+window.addEventListener("dragstart", event => {
+    const target = event.target;
+    if(target.classList.contains("btn-drag")) {
+        const bar = target.parentElement.parentElement.parentElement;
+        Events.dragStart_handler(bar, target);
+    }
+});
+
+// dragend event
+window.addEventListener("dragend", event => {
+    const target = event.target;
+    if(target.classList.contains("btn-drag")) {
+        const bar = target.parentElement.parentElement.parentElement;
+        Events.dragEnd_handler(bar, target);
+    }
+})
+
+// dragmove event
+window.addEventListener("dragover", event => {
+    const dragBar = hook(".color-bar.dragged", false, COLOR_SCHEME);
+
+    if(dragBar) Events.dragMove_handler(event, dragBar);
 });

@@ -10,6 +10,8 @@ class UI {
     constructor() {
         this.darkColorMode = "#101010";
         this.lightColorMode = "#eeeeee";
+        this.desktopDimensionX = 1360;
+        this.mobileDimensionX = 768;
     }
 
     updateColor(colorBar, hexColor) {
@@ -60,6 +62,36 @@ class UI {
             newMessage.classList.add("message-disappear");
             newMessage.addEventListener("animationend", () => newMessage.remove());
         }, time)
+    }
+
+    updateDimension(bars = null) {
+        const colorScheme = hook(".color-scheme");
+        bars = bars || hook(".color-bar", true, colorScheme);
+
+        // get color scheme for it width
+        const colorScheme_x = colorScheme.getBoundingClientRect().width;
+        const colorScheme_y = colorScheme.getBoundingClientRect().height;
+
+        // determine bar width by dividing color scheme width with bars length
+        const init = 100 / bars.length;
+
+        // set bar width
+        bars.forEach((bar, index) => {
+            let position = init * (index);
+
+            if(window.innerWidth > this.mobileDimensionX) {
+
+                bar.style.width = `${init}%`;
+                bar.style.height = `100%`;
+                bar.style.left = `${position}%`;
+                bar.style.top = `0`;
+            } else if(window.innerWidth <= this.mobileDimensionX) {
+                bar.style.width = `100%`;
+                bar.style.height = `${init}%`;
+                bar.style.left = `0`;
+                bar.style.top = `${position}%`;
+            }
+        })
     }
 }
 
