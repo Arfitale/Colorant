@@ -1,6 +1,7 @@
 import { randomHex } from "./generator.js";
 import { ui } from "./UI.js";
 import { hook } from "./hook.js";
+// import { tooltip } from "./tooltip.js";
 
 const COLOR_FIELD = hook(".color-field");
 const COLOR_SCHEME = hook(".color-scheme", false, COLOR_FIELD);
@@ -22,7 +23,17 @@ class events {
         }
     }
 
-    addBtn_handler(len) {
+    menuBtn_handler(menuBtn) {
+        const navBar = hook(".nav-main");
+        const overlay = hook(".overlay");
+
+        navBar.classList.toggle("showNav_mobile");
+        overlay.classList.toggle("active");
+        menuBtn.classList.toggle("active");
+
+    }
+
+    addBtn_handler(len, tooltip) {
         const hex = `#${randomHex()}`;
         const bar = document.createElement("div");
 
@@ -58,7 +69,7 @@ class events {
         bar.addEventListener("animationend", event => {
             bar.classList.remove("add-anim");
         })
-        
+
     }
 
     // copy btn

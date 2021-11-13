@@ -32,14 +32,9 @@ body {
   padding: 2rem;
 }
 
-.nav .logo {
-  width: 2rem;
-  height: 2rem;
-}
-
-.nav .logo img {
-  width: 100%;
-  height: auto;
+.nav .btn-menu {
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
 }
 
 .nav .nav-main {
@@ -59,19 +54,29 @@ body {
   gap: 2.5rem;
 }
 
-.nav .nav-main .account {
+.nav .nav-main .logo {
   width: 2rem;
   height: 2rem;
 }
 
-.nav .nav-main .account .account-ctr {
+.nav .nav-main .logo img {
+  width: 100%;
+  height: auto;
+}
+
+.nav .account {
+  width: 2rem;
+  height: 2rem;
+}
+
+.nav .account .account-ctr {
   width: 100%;
   height: 100%;
   border-radius: 50%;
   background-color: #8b95a1;
 }
 
-.nav .nav-main .account .account-ctr img {
+.nav .account .account-ctr img {
   width: 100%;
   height: 100%;
   border-radius: 50%;
@@ -255,8 +260,25 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 0;
   pointer-events: none;
+}
+
+.ui .overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(46, 59, 73, 0.3);
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition: opacity .3s ease;
+  transition: opacity .3s ease;
+}
+
+.ui .overlay.active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .ui .messageUI {
@@ -310,11 +332,48 @@ body {
   .nav {
     padding: 1rem;
   }
-  .nav .logo {
-    display: none;
+  .nav .btn-menu.active {
+    z-index: 200;
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
   }
-  .nav .nav-main li:not(.account) {
-    display: none;
+  .nav .nav-main {
+    width: 40%;
+    height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    gap: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 2rem;
+    background-color: #eeeeee;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    z-index: 0;
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+    -webkit-transition: .3s ease;
+    transition: .3s ease;
+  }
+  .nav .nav-main .logo {
+    margin-bottom: 2rem;
+  }
+  .nav .nav-main.showNav_mobile {
+    z-index: 105;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
   }
   .color-field {
     width: auto;
@@ -394,6 +453,9 @@ body {
     gap: 1.5rem;
     opacity: 1;
   }
+  .color-field .color-scheme .color-bar .color-body .color-tools .btn {
+    opacity: 1;
+  }
   .color-field .color-scheme .color-bar .color-body .color-tools .btn-drag {
     display: none;
   }
@@ -404,6 +466,8 @@ body {
     display: none;
   }
   .color-field .color-scheme .color-bar.dragged {
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
     z-index: 99;
   }
 }
@@ -481,4 +545,3 @@ body {
             transform: scaleX(1);
   }
 }
-/*# sourceMappingURL=generator.css.map */

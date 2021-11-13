@@ -23,23 +23,27 @@ body {
     position: relative;
     padding: $whiteSpaceDesktop;
 
-    .logo {
-        @include dimension(2rem, 2rem);
-        img {@include dimension(100%)};
+    .btn-menu {
+        transition: .3s ease;
     }
 
     .nav-main {
         @include flex($gap: 2.5rem, $ai: center);
 
-        .account {
+        .logo {
             @include dimension(2rem, 2rem);
+            img {@include dimension(100%)};
+        }
+    }
 
-            .account-ctr {
-                @include dimension(100%, 100%);                
-                border-radius: 50%;
-                background-color: $secondaryCol;
-                img {@include dimension(100%,100%); border-radius: 50%;}
-            }
+    .account {
+        @include dimension(2rem, 2rem);
+
+        .account-ctr {
+            @include dimension(100%, 100%);                
+            border-radius: 50%;
+            background-color: $secondaryCol;
+            img {@include dimension(100%,100%); border-radius: 50%;}
         }
     }
 }
@@ -126,8 +130,23 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 0;
     pointer-events: none;
+
+    .overlay {
+        @include dimension(100%, 100%);
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(46, 59, 73, 0.3);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .3s ease;
+
+        &.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    }
 
     .messageUI {
         @include dimension(100%, 100%);
@@ -158,6 +177,7 @@ body {
             animation: disappear .5s ease-out;
         }
     }
+
 }
 
 // RESPONSIVE ELEMENT //
@@ -165,10 +185,38 @@ body {
 @media screen and (max-width: 768px) {
     .nav {
         padding: $whiteSpaceMobile;
-        .logo {display: none;}
-        .nav-main {
-            li:not(.account) {display: none;}
+
+        .btn-menu {
+            &.active {
+                z-index: 200;
+                transform: rotate(90deg);
+            }
         }
+
+        .nav-main {
+            @include dimension(40%, 100vh);
+            @include flex(column, flex-start, center, 1rem);
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: $whiteSpaceDesktop;
+            background-color: $lightMode;
+            box-shadow: 0 1px 1px rgba(0,0,0,.3);
+            z-index: 0;
+
+            transform: translateX(-100%);
+            transition: .3s ease;
+
+            .logo {
+                margin-bottom: $whiteSpaceDesktop;
+            }
+
+            &.showNav_mobile {
+                z-index: 105;
+                transform: translateX(0);
+            }
+        }
+
     }
 
     .color-field {
@@ -198,6 +246,10 @@ body {
                     .color-tools {
                         @include flex(row, center, center, 1.5rem);
                         opacity: 1;
+
+                        .btn {
+                            opacity: 1;
+                        }
 
                         .btn-drag {
                             display: none;
