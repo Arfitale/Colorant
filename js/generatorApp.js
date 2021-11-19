@@ -8,11 +8,13 @@ const COLOR_FIELD = hook(".color-field");
 const COLOR_SCHEME = hook(".color-scheme", false, COLOR_FIELD);
 const TOOLS = hook(".tools");
 const NAV = hook(".nav");
-const generateBtn = hook(".btn-generate");
-const addBtn = hook(".btn-add");
+
+const menuBtn = hook(".btn-menu", false, NAV);
+const generateBtn = hook(".btn-generate", false, COLOR_FIELD);
+const addBtn = hook(".btn-add", false , COLOR_FIELD);
+const saveBtn = hook(".btn-save", false, COLOR_FIELD);
 
 let colorBars = hook(".color-bar", true, COLOR_SCHEME);
-let menuBtn = hook(".btn-menu", false, NAV);
 let mobileDimensionX = 768;
 
 
@@ -26,6 +28,21 @@ function _init() {
 function _onUpdate() {
     ui.updateDimension();
 }
+
+function _getColors() {
+    let colorList = [];
+    let colorBars = hook(".color-bar", true, COLOR_SCHEME);
+
+    for(let x = 0; x < colorBars.length; x++) {
+        const bar = colorBars[x];
+        const colorCode = hook(".color-code", false, bar);
+
+        colorList.push(colorCode.textContent);
+    }
+
+    return colorList;
+}
+
 // EVENT
 window.onresize = () => {
     ui.updateDimension()
@@ -95,7 +112,11 @@ COLOR_SCHEME.addEventListener("click", event => {
 
 menuBtn.addEventListener("click", event => {
     Events.menuBtn_handler(event.target);
-})
+});
+
+saveBtn.addEventListener("click", event => {
+    Events.saveBtn_handler(event.target, _getColors());
+});
 
 // dragstart event
 window.addEventListener("dragstart", event => {

@@ -142,6 +142,10 @@ body {
   gap: 2rem;
 }
 
+.color-field .tools .main-tools .btn-save.saved {
+  color: #157de6;
+}
+
 .color-field .color-scheme {
   width: 100%;
   height: 100%;

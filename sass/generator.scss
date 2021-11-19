@@ -64,6 +64,12 @@ body {
 
         .main-tools {
             @include flex($ai: center, $gap: $whiteSpaceDesktop);
+
+            .btn-save {
+                &.saved {
+                    color: $primaryColor;
+                }
+            }
         }
     }
 

@@ -1,7 +1,6 @@
 import { randomHex } from "./generator.js";
 import { ui } from "./UI.js";
 import { hook } from "./hook.js";
-// import { tooltip } from "./tooltip.js";
 
 const COLOR_FIELD = hook(".color-field");
 const COLOR_SCHEME = hook(".color-scheme", false, COLOR_FIELD);
@@ -30,7 +29,16 @@ class events {
         navBar.classList.toggle("showNav_mobile");
         overlay.classList.toggle("active");
         menuBtn.classList.toggle("active");
+    }
 
+    saveBtn_handler(saveBtn, colorList) {
+        if(saveBtn.classList.contains("saved")) {
+            saveBtn.classList.remove("saved");
+            return;
+        } else {
+            saveBtn.classList.add("saved");
+            ui.showMessage(`${colorList} has been saved in the account database`, "success");
+        }
     }
 
     addBtn_handler(len, tooltip) {
