@@ -4,6 +4,12 @@ a {
     color: #202020;
 }
 
+/* TYPOGRAPHY */
+.title-md {
+    font-size: 1.3rem;
+    font-weight: normal;
+}
+
 /* BUTTON */
 .btn {
     border: none;
@@ -21,9 +27,28 @@ a {
 }
 .btn-icon:hover {color: rgb(21, 125, 230)}
 
+.btn-normal {
+    font-size: 1.5rem;
+    color: #5a6572;
+}
+.btn-normal:hover {
+    color: #202020;
+}
+
+/* btn size */
 .btn-md {
     font-size: 1.5rem;
 }
+.btn-ui {
+    font-size: 1.5rem;
+}
+.btn-lg {
+    font-size: 2rem;
+}
+.btn-mobile {
+    font-size: 2rem;
+}
+
 
 .nav-link {color :rgb(49, 54, 59);}
 .nav-link:hover {color:#202020}

@@ -15,15 +15,21 @@
 <body>
     <!-- NAVIGATION -->
     <nav class="nav">
-        <div class="btn tippy btn-md mobile-flex btn-menu" role="button" data-tippy-content="menu">
-            <i class="ri-menu-4-line"></i>
+        <div class="btn tippy btn-normal mobile-flex btn-menu btn-menu-mobile" role="button" data-tippy-content="menu">
+            <i class="ri-menu-5-line"></i>
         </div>
+
         <ul class="nav-main">
-            <li class="logo">
+            <div class="btn btn-close-nav btn-normal btn-remove-overlay" role="button" data-tippy-content="close menu">
+                <i class="ri-close-fill"></i>
+            </div>
+            <div class="logo">
                 <img src="./assets/icon/colorant.svg" alt="colorant logo">
-            </li>
-            <li><a href="#" class="nav-link active">Generator</a></li>
-            <li><a href="#" class="nav-link">Explore</a></li>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" class="nav-link active">Generator</a></li>
+                <li><a href="#" class="nav-link">Explore</a></li>
+            </ul>
         </ul>
         <div class="account">
             <div class="account-ctr">
@@ -41,12 +47,12 @@
             </div>
             <div class="main-tools">
                 <div class="btn tippy btn-icon btn-generate hint--top" role="button" data-btn-function="generate" data-tippy-content="generate color!">
-                    <i class="ri-apps-line"></i>
+                    <i class="ri-apps-2-line"></i>
                 </div>
                 <div class="btn tippy btn-icon btn-add" data-btn-function="add" role="button" data-tippy-content="add new color">
                     <i class="ri-add-circle-line"></i>
                 </div>
-                <div class="btn tippy btn-icon btn-save" data-btn-function="save" role="button" data-tippy-content="save color pallete">
+                <div class="btn tippy btn-icon btn-save" data-btn-function="save" role="button" data-tippy-content="save this pallete">
                     <i class="ri-heart-line"></i>
                 </div>
                 <div class="btn tippy btn-icon btn-bookmark" data-btn-function="bookmark" role="button" data-tippy-content="show saved palletes">
@@ -158,6 +164,77 @@
         <div class="overlay"></div>
 
         <div class="messageUI">
+        </div>
+
+        <div class="bookmark">
+            <ul class="bookmark-tool">
+                <li>
+                    <button class="btn btn-bookmark-close btn-close btn-color btn-ui btn-remove-overlay" data-tippy-content="close">
+                        <i class="ri-close-fill"></i>
+                    </button>
+                </li>
+                <li>
+                    <h2 class="title-md">Saved palletes</h2>
+                </li>
+                <li>
+                    <button class="btn btn-bookmark-filter btn-color btn-ui" data-tippy-content="filter">
+                        <i class="ri-filter-line"></i>
+                    </button>
+                </li>
+            </ul>
+
+            <div class="pallete-library">
+                <div class="pallete-item">
+                    <div class="pallete-name">Ocean</div>
+                    <div class="pallete-interface">
+                        <div class="pallete-bar">
+                            <div class="bar" style="background-color: #1266D7;"></div>
+                            <div class="bar" style="background-color: #4C85FD;"></div>
+                            <div class="bar" style="background-color: #5CA0F3;"></div>
+                            <div class="bar" style="background-color: #6EA8F0;"></div>
+                            <div class="bar" style="background-color: #65BED8;"></div>
+                        </div>
+                        <button class="btn btn-pallete-more btn-color btn-ui" data-tippy-content="pallete option">
+                            <i class="ri-more-2-fill"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="pallete-library">
+                <div class="pallete-item">
+                    <div class="pallete-name">Ocean</div>
+                    <div class="pallete-interface">
+                        <div class="pallete-bar">
+                            <div class="bar" style="background-color: #1266D7;"></div>
+                            <div class="bar" style="background-color: #4C85FD;"></div>
+                            <div class="bar" style="background-color: #5CA0F3;"></div>
+                            <div class="bar" style="background-color: #6EA8F0;"></div>
+                            <div class="bar" style="background-color: #65BED8;"></div>
+                        </div>
+                        <button class="btn btn-pallete-more btn-color btn-ui" data-tippy-content="pallete option">
+                            <i class="ri-more-2-fill"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="pallete-library">
+                <div class="pallete-item">
+                    <div class="pallete-name">Ocean</div>
+                    <div class="pallete-interface">
+                        <div class="pallete-bar">
+                            <div class="bar" style="background-color: #1266D7;"></div>
+                            <div class="bar" style="background-color: #4C85FD;"></div>
+                            <div class="bar" style="background-color: #5CA0F3;"></div>
+                            <div class="bar" style="background-color: #6EA8F0;"></div>
+                            <div class="bar" style="background-color: #65BED8;"></div>
+                        </div>
+                        <button class="btn btn-pallete-more btn-color btn-ui" data-tippy-content="pallete option">
+                            <i class="ri-more-2-fill"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </div>
 </body>

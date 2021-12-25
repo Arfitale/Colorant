@@ -30,6 +30,22 @@ body {
     .nav-main {
         @include flex($gap: 2.5rem, $ai: center);
 
+        .nav-links {
+            @include flex(row, $gap: 2rem);
+        }
+
+        .btn-close-nav {
+            position:absolute;
+            top: 3%;
+            left: 3%;
+            z-index: 200;
+            opacity: 0;
+    
+            &.active {
+                opacity: 1;
+            }
+        }
+
         .logo {
             @include dimension(2rem, 2rem);
             img {@include dimension(100%)};
@@ -143,7 +159,7 @@ body {
         position: absolute;
         top: 0;
         left: 0;
-        background-color: rgba(46, 59, 73, 0.3);
+        background-color: rgba(46, 59, 73, 0.5);
         opacity: 0;
         pointer-events: none;
         transition: opacity .3s ease;
@@ -184,6 +200,69 @@ body {
         }
     }
 
+    .bookmark {
+        @include dimension(clamp(50%, 700px, 100%), 100%);
+        @include position($top: 0, $right: 0);
+        position: fixed;
+        padding: $whiteSpaceDesktop;
+        background-color: $lightMode;
+        display: block;
+        visibility: hidden;
+        z-index: 99;
+        pointer-events: auto;
+        transition: .3s ease;
+        transform: translateX(100%);
+
+        &._inOverlay {
+            visibility: visible;
+            transform: translateX(0%);
+        }
+
+        .bookmark-tool {
+            @include flex(row, space-between, center)
+        }
+
+        .pallete-library {
+            @include dimension(100%, auto);
+            @include flex(column, $gap: $whiteSpaceUI);
+            margin-top: $whiteSpaceLarge;
+
+            .pallete-item {
+                @include dimension(100%, auto);
+                @include flex(column, $gap: .5rem);
+
+                
+                &:hover {
+                    .btn-pallete-more {
+                        opacity: 1 !important;
+                    }
+                }
+
+                .pallete-name {
+                    font-size: 1rem;
+                }
+                
+                .pallete-interface {
+                    @include dimension(100%, 100%);
+                    @include flex(row, space-between, center);
+
+                    .pallete-bar {
+                        @include dimension(auto, 100%);
+                        @include flex(row);
+
+                        .bar {
+                            @include dimension(clamp(2rem, 100px, 3rem), clamp(2rem, 100px, 3rem));
+                        }
+                    }
+
+                    .btn-pallete-more {
+                        opacity: 0;
+                    }
+                }
+            }
+        }
+    }
+
 }
 
 // RESPONSIVE ELEMENT //
@@ -192,15 +271,8 @@ body {
     .nav {
         padding: $whiteSpaceMobile;
 
-        .btn-menu {
-            &.active {
-                z-index: 200;
-                transform: rotate(90deg);
-            }
-        }
-
         .nav-main {
-            @include dimension(40%, 100vh);
+            @include dimension(clamp(80%, 100%, 100%), 100vh);
             @include flex(column, flex-start, center, 1rem);
             position: fixed;
             top: 0;
@@ -213,11 +285,15 @@ body {
             transform: translateX(-100%);
             transition: .3s ease;
 
+            .nav-links {
+                @include flex(column, $ai: center, $gap: 2rem);
+            }
+
             .logo {
                 margin-bottom: $whiteSpaceDesktop;
             }
 
-            &.showNav_mobile {
+            &._inOverlay {
                 z-index: 105;
                 transform: translateX(0);
             }

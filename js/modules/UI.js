@@ -2,8 +2,10 @@ import tinycolor from "./tinyColor.js";
 import {ntc} from "./ntc.js";
 import {hook} from "./hook.js";
 
+const userInterface = hook(".ui");
 
 ntc.init();
+
 
 
 class UI {
@@ -64,6 +66,11 @@ class UI {
         }, time)
     }
 
+    toggleOverlay() {
+        const overlay = hook(".overlay", false, userInterface);
+        overlay.classList.toggle("active");
+    }
+
     updateDimension(bars = null) {
         const colorScheme = hook(".color-scheme");
         bars = bars || hook(".color-bar", true, colorScheme);
@@ -93,6 +100,7 @@ class UI {
             }
         })
     }
+
 }
 
 export const ui = new UI();

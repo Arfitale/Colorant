@@ -9,10 +9,10 @@ const COLOR_SCHEME = hook(".color-scheme", false, COLOR_FIELD);
 const TOOLS = hook(".tools");
 const NAV = hook(".nav");
 
-const menuBtn = hook(".btn-menu", false, NAV);
 const generateBtn = hook(".btn-generate", false, COLOR_FIELD);
 const addBtn = hook(".btn-add", false , COLOR_FIELD);
 const saveBtn = hook(".btn-save", false, COLOR_FIELD);
+const bookmarkBtn = hook(".btn-bookmark", false, COLOR_FIELD);
 
 let colorBars = hook(".color-bar", true, COLOR_SCHEME);
 let mobileDimensionX = 768;
@@ -20,9 +20,9 @@ let mobileDimensionX = 768;
 
 // MODULE
 function _init() {
-    tooltip.initialize(".btn");
     _onUpdate();
     generator();
+    tooltip.initialize(".btn");
 }
 
 function _onUpdate() {
@@ -76,10 +76,25 @@ window.addEventListener("keydown", event => {
 
 // click event
 window.addEventListener("click", event => {
+    const target = event.target;
+
     // overlay
-    if(event.target.classList.contains("overlay")) {
-        Events.menuBtn_handler(menuBtn);
+    if(target.classList.contains("overlay")) {
+        Events.overlay_handler();
     }
+
+    // bookmark
+    if(target.classList.contains("btn-bookmark") || target.classList.contains("btn-bookmark-close")) {
+        Events.bookmarkBtn_handler();
+    }
+
+    // MOBILE //
+
+    // menu btn
+    if(target.classList.contains("btn-menu") || target.classList.contains("btn-close-nav")) {
+        Events.menuBtn_handler();
+    }
+
 });
 
 COLOR_SCHEME.addEventListener("click", event => {
@@ -108,10 +123,6 @@ COLOR_SCHEME.addEventListener("click", event => {
         }
 
     }
-});
-
-menuBtn.addEventListener("click", event => {
-    Events.menuBtn_handler(event.target);
 });
 
 saveBtn.addEventListener("click", event => {

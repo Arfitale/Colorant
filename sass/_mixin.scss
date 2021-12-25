@@ -10,3 +10,10 @@
     align-items: $ai;
     gap: $gap;
 }
+
+@mixin position($top: auto, $left: auto, $bottom: auto, $right: auto) {
+    top: $top;
+    left: $left;
+    bottom: $bottom;
+    right: $right;
+}

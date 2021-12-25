@@ -4,6 +4,7 @@ import { hook } from "./hook.js";
 
 const COLOR_FIELD = hook(".color-field");
 const COLOR_SCHEME = hook(".color-scheme", false, COLOR_FIELD);
+const UI = hook(".ui");
 
 class events {
     constructor() {
@@ -22,13 +23,15 @@ class events {
         }
     }
 
-    menuBtn_handler(menuBtn) {
+    menuBtn_handler() {
         const navBar = hook(".nav-main");
-        const overlay = hook(".overlay");
+        const closeBtn = hook(".btn-close-nav");
+        const menuBtn = hook(".btn-menu-mobile");
 
-        navBar.classList.toggle("showNav_mobile");
-        overlay.classList.toggle("active");
-        menuBtn.classList.toggle("active");
+        navBar.classList.toggle("_inOverlay");
+        closeBtn.classList.toggle("active");
+        menuBtn.classList.toggle("invisible");
+        ui.toggleOverlay();
     }
 
     saveBtn_handler(saveBtn, colorList) {
@@ -41,7 +44,14 @@ class events {
         }
     }
 
-    addBtn_handler(len, tooltip) {
+    bookmarkBtn_handler() {
+        const bookmarkUI = hook(".bookmark", false, UI);
+
+        bookmarkUI.classList.toggle("_inOverlay");
+        ui.toggleOverlay();
+    }
+
+    addBtn_handler(len) {
         const hex = `#${randomHex()}`;
         const bar = document.createElement("div");
 
@@ -114,6 +124,12 @@ class events {
         if(len <= 3) {
             hook(".btn-remove", true, COLOR_SCHEME).forEach(btn => btn.style.display = "none");
         }
+    }
+
+    overlay_handler() {
+        const _inOverlay = hook("._inOverlay");
+        _inOverlay.classList.remove("_inOverlay");
+        ui.toggleOverlay();
     }
 
     dragStart_handler(bar, target) {
