@@ -39,7 +39,7 @@ function _getColors() {
 
 // EVENT
 window.onresize = () => {
-    ui.updateDimension()
+    ui.updateDimension();
 }
 
 document.addEventListener("DOMContentLoaded", () => {

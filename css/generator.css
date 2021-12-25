@@ -76,11 +76,7 @@ body {
   top: 3%;
   left: 3%;
   z-index: 200;
-  opacity: 0;
-}
-
-.nav .nav-main .btn-close-nav.active {
-  opacity: 1;
+  display: none;
 }
 
 .nav .nav-main .logo {
@@ -531,6 +527,9 @@ body {
             transform: translateX(-100%);
     -webkit-transition: .3s ease;
     transition: .3s ease;
+  }
+  .nav .nav-main .btn-close-nav.active {
+    display: block;
   }
   .nav .nav-main .nav-links {
     display: -webkit-box;

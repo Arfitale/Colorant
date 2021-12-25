@@ -2,11 +2,9 @@ import tinycolor from "./tinyColor.js";
 import {ntc} from "./ntc.js";
 import {hook} from "./hook.js";
 
-const userInterface = hook(".ui");
-
 ntc.init();
 
-
+const userInterface = hook(".ui");
 
 class UI {
     constructor() {
@@ -14,6 +12,7 @@ class UI {
         this.lightColorMode = "#eeeeee";
         this.desktopDimensionX = 1360;
         this.mobileDimensionX = 768;
+        this.currentDevice = getCurrentDevice();
     }
 
     updateColor(colorBar, hexColor) {
@@ -75,10 +74,6 @@ class UI {
         const colorScheme = hook(".color-scheme");
         bars = bars || hook(".color-bar", true, colorScheme);
 
-        // get color scheme for it width
-        const colorScheme_x = colorScheme.getBoundingClientRect().width;
-        const colorScheme_y = colorScheme.getBoundingClientRect().height;
-
         // determine bar width by dividing color scheme width with bars length
         const init = 100 / bars.length;
 
@@ -101,6 +96,23 @@ class UI {
         })
     }
 
+    // resizeHandler() {
+    //     const device = getCurrentDevice();
+        
+    //     if(device != this.currentDevice) {
+    //         return;
+    //     }
+
+    //     this.device = device;
+        
+
+    // }
+
+}
+
+function getCurrentDevice() {
+    const currentWidth = window.innerWidth;
+    return currentWidth <= 768 ? "mobile" : "desktop";
 }
 
 export const ui = new UI();

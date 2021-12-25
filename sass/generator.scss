@@ -39,11 +39,7 @@ body {
             top: 3%;
             left: 3%;
             z-index: 200;
-            opacity: 0;
-    
-            &.active {
-                opacity: 1;
-            }
+            display: none;
         }
 
         .logo {
@@ -284,6 +280,12 @@ body {
 
             transform: translateX(-100%);
             transition: .3s ease;
+
+            .btn-close-nav {
+                &.active {
+                    display: block;
+                }
+            }
 
             .nav-links {
                 @include flex(column, $ai: center, $gap: 2rem);

@@ -31,7 +31,6 @@ class events {
         navBar.classList.toggle("_inOverlay");
         closeBtn.classList.toggle("active");
         menuBtn.classList.toggle("invisible");
-        ui.toggleOverlay();
     }
 
     saveBtn_handler(saveBtn, colorList) {
