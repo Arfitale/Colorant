@@ -6,16 +6,10 @@ import {tooltip} from './modules/tooltip.js';
 
 const COLOR_FIELD = hook(".color-field");
 const COLOR_SCHEME = hook(".color-scheme", false, COLOR_FIELD);
-const TOOLS = hook(".tools");
-const NAV = hook(".nav");
 
 const generateBtn = hook(".btn-generate", false, COLOR_FIELD);
 const addBtn = hook(".btn-add", false , COLOR_FIELD);
 const saveBtn = hook(".btn-save", false, COLOR_FIELD);
-const bookmarkBtn = hook(".btn-bookmark", false, COLOR_FIELD);
-
-let colorBars = hook(".color-bar", true, COLOR_SCHEME);
-let mobileDimensionX = 768;
 
 
 // MODULE
@@ -48,7 +42,7 @@ window.onresize = () => {
     ui.updateDimension()
 }
 
-document.addEventListener("DOMContentLoaded", event => {
+document.addEventListener("DOMContentLoaded", () => {
     _init();
 });
 
@@ -56,7 +50,7 @@ document.addEventListener("DOMContentLoaded", event => {
 generateBtn.addEventListener("click", generator);
 
 // add btn
-addBtn.addEventListener("click", event => {
+addBtn.addEventListener("click", () => {
     const barLen = [...hook(".color-bar", true)].length;
     if(barLen < 7) {
         Events.addBtn_handler(barLen, tooltip);
