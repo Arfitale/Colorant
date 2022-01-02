@@ -1,13 +1,17 @@
 {
     "env": {
         "browser": true,
+        "commonjs": true,
         "es2021": true
     },
     "extends": "eslint:recommended",
     "parserOptions": {
-        "ecmaVersion": 13,
-        "sourceType": "module"
+        "ecmaVersion": 2021
     },
     "rules": {
+    },
+    "globals": {
+        "__dirname": true,
+        "__filename": true
     }
 }

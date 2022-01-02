@@ -12,7 +12,7 @@ const addBtn = hook(".btn-add", false , COLOR_FIELD);
 const saveBtn = hook(".btn-save", false, COLOR_FIELD);
 
 
-// MODULE
+// MAIN FUNCTION
 function _init() {
     _onUpdate();
     generator();
@@ -61,12 +61,15 @@ addBtn.addEventListener("click", () => {
     }
 })
 
+// save btn
+saveBtn.addEventListener("click", event => {
+    Events.saveBtn_handler(event.target, _getColors());
+});
+
 window.addEventListener("keydown", event => {
     // spacebar button
     if(event.code === "Space") generator();
 });
-
-// event on color bar
 
 // click event
 window.addEventListener("click", event => {
@@ -117,10 +120,6 @@ COLOR_SCHEME.addEventListener("click", event => {
         }
 
     }
-});
-
-saveBtn.addEventListener("click", event => {
-    Events.saveBtn_handler(event.target, _getColors());
 });
 
 // dragstart event
