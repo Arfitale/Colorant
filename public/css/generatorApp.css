@@ -1,16 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-* {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: "Roboto", sans-serif;
-  overflow: hidden;
-}
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 .nav {
   width: 100%;
   height: auto;
@@ -38,6 +27,8 @@ body {
 }
 
 .nav .nav-main {
+  width: 100%;
+  height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -45,9 +36,9 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -90,7 +81,7 @@ body {
 }
 
 .nav .account {
-  width: 2rem;
+  width: 2.1rem;
   height: 2rem;
 }
 

@@ -346,4 +346,4 @@ class events {
 
 }
 
-export const Events = new events()
+export const eventHandler = new events()

@@ -1,3 +1,21 @@
+:root {
+    --primaryColor: rgb(21, 125, 230);
+    --_primaryColor: rgb(13, 93, 173);
+}
+
+* {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    overflow: hidden;
+}
+
+
 li {list-style-type: none;}
 a {
     text-decoration: none;
@@ -15,25 +33,39 @@ a {
     border: none;
     cursor: pointer;
     background-color: transparent;
-    display: flex;
 }
 .btn * {
     pointer-events: none;
 }
 
+.btn-link {
+    font-size: 1.2rem;
+    border-radius: 5px;
+    padding: .4rem .6rem;
+}
+
+.btn-primary {
+    color: #dddddd;
+    background-color: var(--primaryColor);
+}
+    .btn-primary:hover {
+        background-color: var(--_primaryColor);
+    }
+
 .btn-icon {
+    display: flex;
     font-size: 1.5rem;
     color: #5a6572;
 }
-.btn-icon:hover {color: rgb(21, 125, 230)}
+    .btn-icon:hover {color: var(--primaryColor)}
 
 .btn-normal {
     font-size: 1.5rem;
     color: #5a6572;
 }
-.btn-normal:hover {
-    color: #202020;
-}
+    .btn-normal:hover {
+        color: #202020;
+    }
 
 /* btn size */
 .btn-md {
@@ -51,10 +83,10 @@ a {
 
 
 .nav-link {color :rgb(49, 54, 59);}
-.nav-link:hover {color:#202020}
+.nav-link:hover {color: var(--_primaryColor);}
 
 .nav-link.active {
-    color:rgb(21, 125, 230);
+    color:var(--_primaryColor);
 }
 
 

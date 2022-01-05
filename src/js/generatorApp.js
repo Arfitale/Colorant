@@ -1,6 +1,6 @@
 import {generator} from './modules/generator.js';
 import {hook} from './modules/hook.js';
-import {Events} from './modules/eventHandler.js';
+import {eventHandler} from './modules/eventHandler.js';
 import {ui} from './modules/UI.js';
 import {tooltip} from './modules/tooltip.js';
 
@@ -53,7 +53,7 @@ generateBtn.addEventListener("click", generator);
 addBtn.addEventListener("click", () => {
     const barLen = [...hook(".color-bar", true)].length;
     if(barLen < 7) {
-        Events.addBtn_handler(barLen, tooltip);
+        eventHandler.addBtn_handler(barLen, tooltip);
         tooltip.refresh();
         _onUpdate();
     } else {
@@ -63,7 +63,7 @@ addBtn.addEventListener("click", () => {
 
 // save btn
 saveBtn.addEventListener("click", event => {
-    Events.saveBtn_handler(event.target, _getColors());
+    eventHandler.saveBtn_handler(event.target, _getColors());
 });
 
 window.addEventListener("keydown", event => {
@@ -77,19 +77,19 @@ window.addEventListener("click", event => {
 
     // overlay
     if(target.classList.contains("overlay")) {
-        Events.overlay_handler();
+        eventHandler.overlay_handler();
     }
 
     // bookmark
     if(target.classList.contains("btn-bookmark") || target.classList.contains("btn-bookmark-close")) {
-        Events.bookmarkBtn_handler();
+        eventHandler.bookmarkBtn_handler();
     }
 
     // MOBILE //
 
     // menu btn
     if(target.classList.contains("btn-menu") || target.classList.contains("btn-close-nav")) {
-        Events.menuBtn_handler();
+        eventHandler.menuBtn_handler();
     }
 
 });
@@ -102,20 +102,20 @@ COLOR_SCHEME.addEventListener("click", event => {
 
         // copy button
         if(target.classList.contains("btn-copy")) {
-            Events.copyBtn_handler(bar);
+            eventHandler.copyBtn_handler(bar);
             ui.showMessage("copied to clipboard!", "success");
         }
 
         // lock button
         if(target.classList.contains("btn-lock")) {
             const isLock = bar.getAttribute("data-isLock");
-            Events.lockBtn_handler(bar, isLock);
+            eventHandler.lockBtn_handler(bar, isLock);
         }
 
         // delete button
         if(target.classList.contains("btn-remove")) {
             const barLen = hook(".color-bar", true, COLOR_SCHEME).length;
-            Events.removeBtn_handler(bar, barLen);
+            eventHandler.removeBtn_handler(bar, barLen);
             ui.updateDimension();
         }
 
@@ -127,7 +127,7 @@ window.addEventListener("dragstart", event => {
     const target = event.target;
     if(target.classList.contains("btn-drag")) {
         const bar = target.parentElement.parentElement.parentElement;
-        Events.dragStart_handler(bar, target);
+        eventHandler.dragStart_handler(bar, target);
     }
 });
 
@@ -136,7 +136,7 @@ window.addEventListener("dragend", event => {
     const target = event.target;
     if(target.classList.contains("btn-drag")) {
         const bar = target.parentElement.parentElement.parentElement;
-        Events.dragEnd_handler(bar, target);
+        eventHandler.dragEnd_handler(bar, target);
     }
 })
 
@@ -144,5 +144,5 @@ window.addEventListener("dragend", event => {
 window.addEventListener("dragover", event => {
     const dragBar = hook(".color-bar.dragged", false, COLOR_SCHEME);
 
-    if(dragBar) Events.dragMove_handler(event, dragBar);
+    if(dragBar) eventHandler.dragMove_handler(event, dragBar);
 });

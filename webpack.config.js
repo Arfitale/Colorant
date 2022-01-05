@@ -3,10 +3,11 @@ const path = require("path");
 module.exports = {
     mode: "development",
     entry: {
-        server: path.resolve(__dirname, "./src/js/generatorApp.js")
+        generatorApp: path.resolve(__dirname, "./src/js/generatorApp.js"),
+        home: path.resolve(__dirname, "./src/js/home.js")
     },
     output: {
-        filename: "app.bundle.js",
+        filename: "[name].bundle.js",
         path: path.resolve(__dirname, "./public/js/"),
         clean: true
     },
