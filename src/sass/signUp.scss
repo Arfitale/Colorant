@@ -40,7 +40,7 @@ main {
 
 
             .form {
-                @include flex($direction: column, $gap: $whiteSpaceDesktop);
+                @include flex($direction: column, $gap: $whiteSpaceMobile);
                 @include dimension(100%);
                 margin-top: 5rem;
 
@@ -68,6 +68,48 @@ main {
 
                 .submit-btn {
                     @include submitBtn();
+                    margin-top: 1rem;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    main {
+        .left-side {
+            display: none;
+        }
+
+        .right-side {
+            @include dimension(100%);
+            padding: $whiteSpaceMobile;
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    main {
+        .right-side {
+    
+            .container {
+    
+                .form-title {
+                    font-size: $titleMobile;
+                }
+        
+                .form {
+        
+                    .input-group {
+            
+                        label {
+                            font-size: $formLabelMobile;
+                        }
+            
+                        input {
+                            font-size: $formInputMobile;
+                        }
+                    }
                 }
             }
         }

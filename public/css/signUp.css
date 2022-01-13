@@ -96,7 +96,7 @@ main .right-side .container .form {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  gap: 2rem;
+  gap: 1rem;
   width: 100%;
   height: auto;
   margin-top: 5rem;
@@ -157,8 +157,32 @@ main .right-side .container .form .submit-btn {
   background-color: #157de6;
   border-radius: 50px;
   color: #ffffff;
+  margin-top: 1rem;
 }
 
 main .right-side .container .form .submit-btn:hover {
   background-color: #0e69c4;
+}
+
+@media screen and (max-width: 768px) {
+  main .left-side {
+    display: none;
+  }
+  main .right-side {
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  main .right-side .container .form-title {
+    font-size: 1.5rem;
+  }
+  main .right-side .container .form .input-group label {
+    font-size: 1.3rem;
+  }
+  main .right-side .container .form .input-group input {
+    font-size: 0.8rem;
+  }
 }

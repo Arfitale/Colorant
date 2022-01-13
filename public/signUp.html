@@ -26,12 +26,16 @@
                 </header>
                 <form action="POST" class="form">
                     <div class="input-group">
+                        <label for="text">Username</label>
+                        <input type="text" placeholder="John Doe" maxlength="30" required>
+                    </div>
+                    <div class="input-group">
                         <label for="email">Email</label>
-                        <input type="email" placeholder="name@mail.com" maxlength="30">
+                        <input type="email" placeholder="name@mail.com" maxlength="30" required>
                     </div>
                     <div class="input-group">
                         <label for="password">Password</label>
-                        <input type="password" placeholder="6+ characters, 1 capital letter" maxlength="20">
+                        <input type="password" placeholder="6+ characters, 1 capital letter" maxlength="20" required>
                     </div>
                     <input type="submit" class="btn submit-btn" value="Create an account">
                 </form>
