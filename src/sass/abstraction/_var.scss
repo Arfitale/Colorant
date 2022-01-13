@@ -7,6 +7,12 @@ $secondaryCol: #8b95a1;
 $darkMode: #101010;
 $lightMode: #eeeeee;
 
+$formLabelCol: #3d3d3d;
+$formInputCol: #6b6b6b;
+
+// MODIFIER COLOR
+$primaryCol_hover: #0e69c4;
+
 // SPACE
 $whiteSpaceDesktop: 2rem;
 $whiteSpaceMobile: 1rem;
@@ -16,3 +22,7 @@ $whiteSpaceLarge: 3rem;
 // DIMENSION
 $CFHeightTemp: calc(100vh - 96px);
 $CFHeightTempMobile: calc(100vh - 64px);
+
+// FONT
+$formLabelDesktop: 1.5rem;
+$formInputDesktop: 1rem;

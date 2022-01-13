@@ -89,3 +89,15 @@
 
     }
 }
+
+@mixin submitBtn {
+    font-size: 1rem;
+    padding: .8rem 2rem;
+    background-color: $primaryColor;
+    border-radius: 50px;
+    color: #ffffff;
+
+    &:hover {
+        background-color: $primaryCol_hover;
+    }
+}
