@@ -1,0 +1,11 @@
+@mixin header() {
+    header {
+        @include dimension(100%);
+        @include flex($direction: row, $ai: center, $jc: space-between);
+        position: relative;
+
+        .form-title {
+            color: $primaryColor;
+        }
+    }
+}

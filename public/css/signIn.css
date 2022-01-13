@@ -1,0 +1,203 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+main {
+  width: 100%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 0;
+  position: relative;
+}
+
+main .right-side {
+  width: 40%;
+  height: 100%;
+  position: relative;
+}
+
+main .right-side .background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: url("../assets/img/signIn_wallpaper.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+main .left-side {
+  width: 60%;
+  height: 100%;
+  padding: 3rem 4rem;
+}
+
+main .left-side .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 1rem;
+}
+
+main .left-side .container header {
+  width: 100%;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0;
+  position: relative;
+}
+
+main .left-side .container header .form-title {
+  color: #157de6;
+}
+
+main .left-side .container .form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+  height: auto;
+  margin-top: 5rem;
+}
+
+main .left-side .container .form ::-webkit-input-placeholder {
+  color: #BCBCBC;
+}
+
+main .left-side .container .form :-ms-input-placeholder {
+  color: #BCBCBC;
+}
+
+main .left-side .container .form ::-ms-input-placeholder {
+  color: #BCBCBC;
+}
+
+main .left-side .container .form ::placeholder {
+  color: #BCBCBC;
+}
+
+main .left-side .container .form .input-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 0.5rem;
+  width: 100%;
+  height: auto;
+}
+
+main .left-side .container .form .input-group label {
+  font-size: 1.5rem;
+  color: #3d3d3d;
+}
+
+main .left-side .container .form .input-group input {
+  width: 100%;
+  height: auto;
+  font-size: 1rem;
+  border: none;
+  padding: .5rem;
+  color: #6b6b6b;
+}
+
+main .left-side .container .form .forgot_account {
+  font-size: 1rem;
+  color: #6b6b6b;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+main .left-side .container .form .forgot_account:hover {
+  color: #202020;
+}
+
+main .left-side .container .form .submit-btn {
+  font-size: 1rem;
+  padding: .8rem 2rem;
+  background-color: #157de6;
+  border-radius: 50px;
+  color: #ffffff;
+  padding: .8rem 4rem;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin-top: 1rem;
+}
+
+main .left-side .container .form .submit-btn:hover {
+  background-color: #0e69c4;
+}
+
+@media screen and (max-width: 768px) {
+  main .right-side {
+    display: none;
+  }
+  main .left-side {
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  main .left-side .container .form-title {
+    font-size: 1.5rem;
+  }
+  main .left-side .container .form .input-group label {
+    font-size: 1.3rem;
+  }
+  main .left-side .container .form .input-group input {
+    font-size: 0.8rem;
+  }
+}
