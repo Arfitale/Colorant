@@ -33,10 +33,16 @@
                 @include dimension(2rem, 2rem);
                 img {@include dimension(100%)};
             }
+
+            .btn-sign {
+                padding: .6rem 1.5rem;
+                border-radius: 50px;
+            }
         }
     
         .account {
             @include dimension(2.1rem, 2rem);
+            display: none;
     
             .account-ctr {
                 @include dimension(100%, 100%);                

@@ -1,6 +1,8 @@
 :root {
     --primaryColor: rgb(21, 125, 230);
     --_primaryColor: rgb(13, 93, 173);
+    --secondaryColor: #d8d5d5;
+    --_secondaryColor: #bbbbbb;
 }
 
 * {
@@ -50,6 +52,14 @@ a {
 }
     .btn-primary:hover {
         background-color: var(--_primaryColor);
+    }
+
+.btn-secondary {
+    color: #202020;
+    background-color: var(--secondaryColor);
+}
+    .btn-secondary:hover {
+        background-color: var(--_secondaryColor);
     }
 
 .btn-icon {

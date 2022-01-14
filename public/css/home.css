@@ -80,9 +80,15 @@
   height: auto;
 }
 
+.nav .nav-main .btn-sign {
+  padding: .6rem 1.5rem;
+  border-radius: 50px;
+}
+
 .nav .account {
   width: 2.1rem;
   height: 2rem;
+  display: none;
 }
 
 .nav .account .account-ctr {
