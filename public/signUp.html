@@ -9,6 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/default.css">
     <link rel="stylesheet" href="./css/signUp.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./js/signUp.js" defer></script>
 </head>
 <body>
     <main>
@@ -24,18 +26,30 @@
                     <h1 class="title form-title">Sign Up to Colorant</h1>
                     <span></span>
                 </header>
-                <form action="POST" class="form">
+                <form class="form" id="form">
                     <div class="input-group">
                         <label for="text">Username</label>
-                        <input type="text" placeholder="John Doe" maxlength="30" required>
+                        <input type="text" placeholder="John Doe" name="username" maxlength="30" required autocomplete="off">
+                        <div class="input-signal" data-signal="username-form-signal">
+                            <i class="ri-error-warning-line error-icon"></i>
+                            <span></span>
+                        </div>
                     </div>
                     <div class="input-group">
                         <label for="email">Email</label>
-                        <input type="email" placeholder="name@mail.com" maxlength="30" required>
+                        <input type="email" placeholder="name@mail.com" name="email" maxlength="30" required autocomplete="off">
+                        <div class="input-signal" data-signal="email-form-signal">
+                            <i class="ri-error-warning-line error-icon"></i>
+                            <span></span>
+                        </div>
                     </div>
                     <div class="input-group">
                         <label for="password">Password</label>
-                        <input type="password" placeholder="6+ characters, 1 capital letter" maxlength="20" required>
+                        <input type="password" placeholder="6+ characters, 1 capital letter" name="password" maxlength="20" required autocomplete="true">
+                        <div class="input-signal" data-signal="password-form-signal">
+                            <i class="ri-error-warning-line error-icon"></i>
+                            <span></span>
+                        </div>
                     </div>
                     <input type="submit" class="btn submit-btn" value="Create an account">
                 </form>

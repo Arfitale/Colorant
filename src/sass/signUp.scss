@@ -31,7 +31,7 @@ main {
             @include header;
             
             .form {
-                @include flex($direction: column, $gap: $whiteSpaceMobile);
+                @include flex($direction: column, $gap: 1.6rem);
                 @include dimension(100%);
                 margin-top: 5rem;
 
@@ -40,7 +40,7 @@ main {
                 }
 
                 .input-group {
-                    @include flex($direction: column, $gap: .5rem);
+                    @include flex($direction: column, $gap: .4rem);
                     @include dimension(100%);
 
                     label {
@@ -54,6 +54,24 @@ main {
                         border: none;
                         padding: .5rem;
                         color: $formInputCol;
+                    }
+
+                    .input-signal {
+                        @include flex($ai: center, $gap: .5rem);
+                        font-size: .8rem;
+
+                        
+                        &.success {
+                            color: rgb(3, 116, 3);
+                        }
+                        
+                        &.fail {
+                            color: rgb(220, 20, 60);
+                            
+                            .error-icon {display: block}
+                        }
+
+                        .error-icon {display: none}
                     }
                 }
 
