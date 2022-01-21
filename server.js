@@ -1,6 +1,6 @@
 const express = require("express");
+const fs = require("fs");
 const path = require("path");
-const userData = require(path.resolve(__dirname, "./data/user.json"));
 
 const app = express();
 const port = 3000;
@@ -31,12 +31,41 @@ app.get("/signin", (req, res) => {
 
 // POST
 app.post("/register", (req, res) => {
-    const data = req.body;
+    const formData = req.body;
 
-    if(!Object.keys(data).length) {
+    // if data is empty json
+    if(!Object.keys(formData).length) {
         return res.status(400).json({msg: "something went error, try refresh the page"});
     }
-    res.status(201).json(data);
+
+    const {username, email, password} = formData;
+    const userFile = email[0];
+
+    // GET CURRENT ACCOUNT DATABASE
+    let currentData = fs.readFileSync(path.join(__dirname, `/data/user/${userFile}.json`), "utf8");
+    if(!currentData) {
+        currentData = [];
+    } else {
+        currentData = JSON.parse(currentData);
+    }
+
+    // Merge current data with new data
+    currentData.push(formData);
+    const finalData = JSON.stringify(currentData);
+
+    // WRITE NEW ACCOUNT TO DATABASE
+    fs.writeFile(path.join(__dirname, `/data/user/${userFile.toLowerCase()}.json`), finalData, error => {
+        if(error) {
+            res.status(500).json({success: false})
+        } else {
+            const result = {
+                success: true,
+                msg: "account successful added in database",
+                formData
+            }
+            res.status(201).json(result);
+        }
+    });
 });
 
 
