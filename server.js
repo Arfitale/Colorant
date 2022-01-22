@@ -42,21 +42,46 @@ app.post("/register", (req, res) => {
     const userFile = email[0];
 
     // GET CURRENT ACCOUNT DATABASE
-    let currentData = fs.readFileSync(path.join(__dirname, `/data/user/${userFile}.json`), "utf8");
-    if(!currentData) {
-        currentData = [];
+    let userLocalData = fs.readFileSync(path.join(__dirname, `/data/user/local/${userFile}.json`), "utf8");
+    let usernameGlobalData = fs.readFileSync(path.join(__dirname, '/data/user/global/username.json'), "utf8");
+
+    // CHECK LOCAL DATA
+    if(!userLocalData) {
+        userLocalData = [];
     } else {
-        currentData = JSON.parse(currentData);
+        userLocalData = JSON.parse(userLocalData);
+    }
+
+    // CHECK USERNAME DATA
+    if(!usernameGlobalData) {
+        usernameGlobalData = [];
+    } else {
+        usernameGlobalData = JSON.parse(usernameGlobalData);
     }
 
     // Merge current data with new data
-    currentData.push(formData);
-    const finalData = JSON.stringify(currentData);
+    userLocalData.push(formData);
+    
+    // ADD USERNAME EXISTANCE TO GLOBAL DATABASE
+    usernameGlobalData.push(username);
+    // sort username data array
+    usernameGlobalData.sort((x, y) => x.localeCompare(y));
+    
+    // final output data
+    const finalUserData = JSON.stringify(userLocalData);
+    const finalUsernameGlobalData = JSON.stringify(usernameGlobalData);
+
+    // POST USERNAME DATA
+    fs.writeFile(path.join(__dirname, '/data/user/global/username.json'), finalUsernameGlobalData, error => {
+        if(error) {
+            return res.status(400).json({success: false, msg: "username has been used"})
+        }
+    })
 
     // WRITE NEW ACCOUNT TO DATABASE
-    fs.writeFile(path.join(__dirname, `/data/user/${userFile.toLowerCase()}.json`), finalData, error => {
+    fs.writeFile(path.join(__dirname, `/data/user/local/${userFile.toLowerCase()}.json`), finalUserData, error => {
         if(error) {
-            res.status(500).json({success: false})
+            return res.status(500).json({success: false})
         } else {
             const result = {
                 success: true,
