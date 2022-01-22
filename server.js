@@ -43,7 +43,7 @@ app.post("/register", (req, res) => {
 
     // GET CURRENT ACCOUNT DATABASE
     let userLocalData = fs.readFileSync(path.join(__dirname, `/data/user/local/${userFile}.json`), "utf8");
-    let usernameGlobalData = fs.readFileSync(path.join(__dirname, '/data/user/global/username.json'), "utf8");
+    let usernameGlobalData = fs.readFileSync(path.join(__dirname, '/data/user/global/username.json'), "utf8")
 
     // CHECK LOCAL DATA
     if(!userLocalData) {

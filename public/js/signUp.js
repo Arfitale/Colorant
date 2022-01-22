@@ -8,27 +8,6 @@ const passwordIn = form.elements["password"];
 const passwordSignal = form.querySelector("[data-signal='password-form-signal']");
 const submitBtn = document.querySelector(".submit-btn");
 
-// validator
-const usernameValidator = [
-    {
-        validity: /^[\w\W\d]{6,}$/,
-        error: "Username must contains 6+ characters"
-    },
-    {
-        validity: /^[\w\W\d]{6,16}$/,
-        error: "Username must be less than 16 characters"
-    },
-    {
-        validity: /^[\w\d]+$/,
-        error: "Username must not contains any symbol or special char"
-    },  
-];
-const emailValidator = [
-    {
-        validity: /^([\w\d]{3,50})@([a-z]{3,}).([a-z]{2,})$/,
-        error: "Please fill in the email field correctly"
-    },
-]
 
 // Form Events
 form.addEventListener("submit", async (event) => {
@@ -50,9 +29,7 @@ form.addEventListener("submit", async (event) => {
 
 })
 
-
 // Form validator events
-
 usernameIn.addEventListener("input", event => {
     const target = event.target;
     const val = target.value;
@@ -60,19 +37,29 @@ usernameIn.addEventListener("input", event => {
 
     if(val === "") {
         usernameSignal.classList.add("fail");
-        return validInfo.innerText = "please fill in your username";
+        return validInfo.innerText = "please fill in your password";
     } else {
-        for(let x = 0; x < usernameValidator.length; x++) {
-            const validation = usernameValidator[x];
-            if(!validation.validity.test(val)) {
-                usernameSignal.classList.add("fail");
-                return validInfo.innerText = validation.error;
-            }
+        let error = "";
+
+        // validation test
+        if(!/^[a-zA-Z]+.+$/.test(val)) {
+            error = "Username must start with letter";
+        } else if(!/^[\w\W\d]{6,}$/.test(val)) {
+            error = "Username must contains 6+ characters";
+        } else if(!/^[\w\W\d]{6,16}$/.test(val)) {
+            error = "Username must be less than 16 characters";
+        } else if(!/^[\w\d]+$/.test(val)) {
+            error = "Username must not contains any symbol or special characters";
+        }
+
+        if(error) {
+            usernameSignal.classList.add("fail");
+            return validInfo.innerText = error;
+        } else {
+            usernameSignal.classList.remove("fail");
+            return validInfo.innerText = "";
         }
     }
-    
-    usernameSignal.classList.remove("fail");
-    validInfo.innerText = "";
 });
 
 emailIn.addEventListener("input", event => {
@@ -82,19 +69,23 @@ emailIn.addEventListener("input", event => {
 
     if(val === "") {
         emailSignal.classList.add("fail");
-        return validInfo.innerText = "please fill in your email";
+        return validInfo.innerText = "please fill in your password";
     } else {
-        for(let x = 0; x < emailValidator.length; x++) {
-            const validation = emailValidator[x];
-            if(!validation.validity.test(val)) {
-                emailSignal.classList.add("fail");
-                return validInfo.innerText = validation.error;
-            }
+        let error = "";
+
+        // validation test
+        if(!/^([\w\d]{3,50})@([a-z]{3,}).([a-z]{2,})$/.test(val)) {
+            error = "Please fill in the email field correctly";
+        }
+
+        if(error) {
+            emailSignal.classList.add("fail");
+            return validInfo.innerText = error;
+        } else {
+            emailSignal.classList.remove("fail");
+            return validInfo.innerText = "";
         }
     }
-    
-    emailSignal.classList.remove("fail");
-    validInfo.innerText = "";
 });
 
 passwordIn.addEventListener("input", event => {
@@ -111,7 +102,7 @@ passwordIn.addEventListener("input", event => {
             error = "password must contains 6+ characters";
         } else if(!/^[\w\W\d]{6,16}$/.test(val)) {
             error = "Password must be less than 16 characters";
-        } else if(!val.match(/[a-z]+/) && !val.match(/[\d]+/)) {
+        } else if(!val.match(/[\w]+/) || !val.match(/[\d]+/)) {
             error = "password must contains letter and number";
         } else if(!val.match(/[A-Z]/)) {
             error = "password contain at least one capital letter";
