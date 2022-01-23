@@ -22,6 +22,15 @@ form.addEventListener("submit", async (event) => {
 
         try {
             const {data} = await axios.post("/register", postData);
+
+            if(data.success) {
+                const localStorage = window.localStorage
+                localStorage.setItem("user", JSON.stringify(data.formData));
+
+                // Change path to success state
+                window.location.href = "../"
+            }
+
         } catch (error) {
             console.log(error.response.data.msg);
         }

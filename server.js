@@ -61,10 +61,10 @@ app.post("/register", (req, res) => {
 
     // Merge current data with new data
     userLocalData.push(formData);
+    userLocalData.sort((x, y) => x.email.localeCompare(y.email));
     
     // ADD USERNAME EXISTANCE TO GLOBAL DATABASE
     usernameGlobalData.push(username);
-    // sort username data array
     usernameGlobalData.sort((x, y) => x.localeCompare(y));
     
     // final output data
@@ -100,5 +100,5 @@ app.all("*", (req, res) => {
 });
 
 app.listen(port, () => {
-    return;
-})
+    console.log(`Server is running at port ${port}`);
+});
