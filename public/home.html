@@ -9,7 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/home.css">
     <link rel="stylesheet" href="./css/default.css">
-    <script src="./js/home.bundle.js" defer></script>
+    <!-- <script src="./js/home.bundle.js" defer></script> -->
+    <script src="../src/js/home.js" type="module"></script>
 </head>
 <body>
     <nav class="nav" class="nav">
@@ -27,13 +28,16 @@
             <ul class="nav-links">
                 <li><a href="generatorApp.html" class="nav-link">Generator</a></li>
                 <li><a href="#" class="nav-link">Explore</a></li>
-                <li><a href="./signUp.html" class="nav-link sign-up">Sign up</a></li>
-                <li><a href="./signIn.html" class="btn btn-primary btn-sign sign-in">Login</a></li>
+                <ul class="sign">
+                    <li><a href="./signUp.html" class="nav-link sign-up">Sign up</a></li>
+                    <li><a href="./signIn.html" class="btn btn-primary btn-sign sign-in">Login</a></li>
+                </ul>
             </ul>
         </ul>
         <div class="account">
             <div class="account-ctr">
-                <img src="./assets/img/account.jpg" alt="">
+                <img>
+                <div class="img-default"><span></span></div>
             </div>
         </div>
     </nav>

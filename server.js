@@ -7,6 +7,7 @@ const port = 3000;
 
 // Static Assets
 app.use(express.static("./public"));
+app.use(express.static("./src"));
 
 // Express middleware
 app.use(express.urlencoded({extended: false}));

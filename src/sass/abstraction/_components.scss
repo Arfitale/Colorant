@@ -19,6 +19,10 @@
     
             .nav-links {
                 @include flex(row, $gap: 2rem);
+
+                .sign {
+                    @include flex(row, $gap: 2rem);
+                }
             }
     
             .btn-close-nav {
@@ -48,7 +52,20 @@
                 @include dimension(100%, 100%);                
                 border-radius: 50%;
                 background-color: $secondaryCol;
+                cursor: pointer;
+
                 img {@include dimension(100%,100%); border-radius: 50%;}
+                .img-default {
+                    @include dimension(100%, 100%);
+                    @include flex(column, center, center);
+                    
+                    border-radius: 50%;
+
+                    span {
+                        color: #ffffff;
+                        font-size: 1rem;
+                    }
+                }
             }
         }
     }
