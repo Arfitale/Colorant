@@ -3,6 +3,7 @@ import {hook} from './modules/hook.js';
 import {eventHandler} from './modules/eventHandler.js';
 import {ui} from './modules/UI.js';
 import {tooltip} from './modules/tooltip.js';
+import {user} from "./modules/app.js";
 
 const COLOR_FIELD = hook(".color-field");
 const COLOR_SCHEME = hook(".color-scheme", false, COLOR_FIELD);
@@ -14,6 +15,11 @@ const saveBtn = hook(".btn-save", false, COLOR_FIELD);
 
 // MAIN FUNCTION
 function _init() {
+    if(user.isLogin()) {
+        user.onLogin();
+    } else {
+        user.onLogout();
+    }
     _onUpdate();
     generator();
     tooltip.initialize(".btn");
@@ -22,6 +28,20 @@ function _init() {
 function _onUpdate() {
     ui.updateDimension();
 }
+
+function onLogin() {
+    const nav = document.querySelector(".nav");
+    const navMain = nav.querySelector(".nav-main");
+    const signLinks = navMain.querySelector(".sign");
+    const account = nav.querySelector(".account");
+    
+    // style when user already login 
+    signLinks.style.display = "none";
+    account.style.display = "block";
+
+    user.userLoginHandler();
+}
+
 
 function _getColors() {
     let colorList = [];
