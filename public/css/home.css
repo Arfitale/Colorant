@@ -105,6 +105,7 @@
 .nav .account {
   width: 2.1rem;
   height: 2rem;
+  position: relative;
   display: none;
 }
 
@@ -116,15 +117,19 @@
   cursor: pointer;
 }
 
-.nav .account .account-ctr img {
+.nav .account .account-ctr .account-img-ctr {
   width: 100%;
   height: 100%;
   border-radius: 50%;
 }
 
-.nav .account .account-ctr .img-default {
+.nav .account .account-ctr .account-img-ctr .avatar {
   width: 100%;
   height: 100%;
+  border-radius: 50%;
+}
+
+.nav .account .account-ctr .account-img-ctr .img-default {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -139,12 +144,23 @@
       -ms-flex-align: center;
           align-items: center;
   gap: 0;
-  border-radius: 50%;
+  background-color: #157de6;
 }
 
-.nav .account .account-ctr .img-default span {
+.nav .account .account-ctr .account-img-ctr .img-default span {
+  font-size: 1.1rem;
   color: #ffffff;
-  font-size: 1rem;
+}
+
+.nav .account .account-settings-ctr {
+  width: 15rem;
+  height: auto;
+  display: none;
+  position: absolute;
+  left: -125%;
+  background-color: #ffffff;
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
 }
 
 .hero {

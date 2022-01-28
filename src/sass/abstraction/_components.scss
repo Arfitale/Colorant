@@ -46,6 +46,7 @@
     
         .account {
             @include dimension(2.1rem, 2rem);
+            position: relative;
             display: none;
     
             .account-ctr {
@@ -54,18 +55,36 @@
                 background-color: $secondaryCol;
                 cursor: pointer;
 
-                img {@include dimension(100%,100%); border-radius: 50%;}
-                .img-default {
-                    @include dimension(100%, 100%);
-                    @include flex(column, center, center);
-                    
+                .account-img-ctr {
+                    @include dimension(100%, 100%);                
                     border-radius: 50%;
 
-                    span {
-                        color: #ffffff;
-                        font-size: 1rem;
+                    .avatar {
+                        @include dimension(100%, 100%);
+                        border-radius: 50%;
+                    }
+
+                    .img-default {
+                        @include flex(column, center, center);
+                        background-color: $primaryColor;
+
+                        span {
+                            font-size: 1.1rem;
+                            color: #ffffff;
+                        }
                     }
                 }
+
+            }
+
+            .account-settings-ctr {
+                @include dimension(15rem);
+                display: none;
+                position: absolute;
+                left: -125%;
+
+                background-color: #ffffff;
+                box-shadow: 0 0 3px rgba(0,0,0,.2);
             }
         }
     }

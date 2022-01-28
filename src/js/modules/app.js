@@ -36,23 +36,43 @@ class User {
         const nav = document.querySelector(".nav");
         const account = nav.querySelector(".account");
         
-        const {username, userImage} = this.getUser();
-        const accountImg = account.querySelector(".account-ctr img");
-        const accountDefaultImg = account.querySelector(".img-default");
+        const {username, avatar} = this.getUser();
+        const accountImgs = account.querySelectorAll(".account-img-ctr");
 
         // set image profile
-        if(userImage) {
-            accountImg.setAttribute("src", userImage);
-            accountImg.style.display = "block";
-            accountDefaultImg.style.display = "none";
+        if(avatar) {
+            for(let x = 0; x < accountImgs.length; x++) {
+                const accountImg = accountImgs[x];
+                const userImage = document.createElement("div");
+                const img = document.createElement("img");
+                
+                userImage.classList.add("img-user");
+                userImage.classList.add("avatar");
+                img.setAttribute("src", avatar);
+                img.style.display = "block";
+    
+                userImage.appendChild(img);
+                
+                accountImg.append(userImage);
+            }
         } else {
-            const defaultImgLetter = accountDefaultImg.querySelector("span");
-            
-            accountImg.style.display = "none";
-            accountDefaultImg.style.display = "flex";
-
-            accountDefaultImg.style.backgroundColor = "#157de6";
-            defaultImgLetter.innerText = username[0].toUpperCase();
+            for(let x = 0; x < accountImgs.length; x++) {
+                const accountImg = accountImgs[x];
+                const defaultImg = document.createElement("div");
+                const defaultLetter = document.createElement("span");
+    
+                // style default image
+                defaultImg.classList.add("img-default");
+                defaultImg.classList.add("avatar");
+                defaultImg.style.display = "flex";
+                defaultImg.style.backgroundColor = "#157de6";
+                
+                // style letter img
+                defaultLetter.innerText = username[0].toUpperCase();
+    
+                defaultImg.appendChild(defaultLetter);
+                accountImg.append(defaultImg);
+            }
         }
     }
 }
