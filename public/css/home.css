@@ -109,27 +109,19 @@
   display: none;
 }
 
-.nav .account .account-ctr {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background-color: #8b95a1;
-  cursor: pointer;
-}
-
-.nav .account .account-ctr .account-img-ctr {
-  width: 100%;
-  height: 100%;
+.nav .account .account-img-ctr {
+  width: 2.1rem;
+  height: 2rem;
   border-radius: 50%;
 }
 
-.nav .account .account-ctr .account-img-ctr .avatar {
+.nav .account .account-img-ctr .avatar {
   width: 100%;
   height: 100%;
   border-radius: 50%;
 }
 
-.nav .account .account-ctr .account-img-ctr .img-default {
+.nav .account .account-img-ctr .img-default {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -147,20 +139,120 @@
   background-color: #157de6;
 }
 
-.nav .account .account-ctr .account-img-ctr .img-default span {
+.nav .account .account-img-ctr .img-default span {
   font-size: 1.1rem;
   color: #ffffff;
 }
 
+.nav .account .account-ctr {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #8b95a1;
+  cursor: pointer;
+}
+
 .nav .account .account-settings-ctr {
-  width: 15rem;
+  width: 20rem;
   height: auto;
-  display: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 1rem;
   position: absolute;
-  left: -125%;
+  right: 125%;
+  padding: 1.5rem;
   background-color: #ffffff;
-  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.25);
+          box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.25);
+  z-index: 99;
+}
+
+.nav .account .account-settings-ctr .account-header {
+  width: 100%;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
+  position: relative;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #dadada;
+}
+
+.nav .account .account-settings-ctr .account-header .right .account-name {
+  font-weight: bold;
+}
+
+.nav .account .account-settings-ctr .account-settings {
+  width: 100%;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 0;
+}
+
+.nav .account .account-settings-ctr .account-settings .setting-item {
+  width: 100%;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
+  padding: .4rem 0;
+  cursor: pointer;
+}
+
+.nav .account .account-settings-ctr .account-settings .setting-item:hover {
+  background-color: #d9e2fa;
+}
+
+.nav .account .account-settings-ctr .account-settings .setting-item .icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1.5rem;
 }
 
 .hero {

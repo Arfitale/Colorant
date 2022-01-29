@@ -49,42 +49,82 @@
             position: relative;
             display: none;
     
+            .account-img-ctr {
+                @include dimension(2.1rem, 2rem);         
+                border-radius: 50%;
+
+                .avatar {
+                    @include dimension(100%, 100%);
+                    border-radius: 50%;
+                }
+
+                .img-default {
+                    @include flex(column, center, center);
+                    background-color: $primaryColor;
+
+                    span {
+                        font-size: 1.1rem;
+                        color: #ffffff;
+                    }
+                }
+            }
+            
             .account-ctr {
                 @include dimension(100%, 100%);                
                 border-radius: 50%;
                 background-color: $secondaryCol;
                 cursor: pointer;
 
-                .account-img-ctr {
-                    @include dimension(100%, 100%);                
-                    border-radius: 50%;
-
-                    .avatar {
-                        @include dimension(100%, 100%);
-                        border-radius: 50%;
-                    }
-
-                    .img-default {
-                        @include flex(column, center, center);
-                        background-color: $primaryColor;
-
-                        span {
-                            font-size: 1.1rem;
-                            color: #ffffff;
-                        }
-                    }
-                }
 
             }
 
             .account-settings-ctr {
-                @include dimension(15rem);
-                display: none;
+                @include dimension(20rem);
+                @include flex(column, $gap: $whiteSpaceMobile);
                 position: absolute;
-                left: -125%;
-
+                right: 125%;
+                
+                padding: 1.5rem;
                 background-color: #ffffff;
-                box-shadow: 0 0 3px rgba(0,0,0,.2);
+                box-shadow: 3px 3px 8px 0px rgba(0,0,0,.25);
+                z-index: 99;
+
+                .account-header {
+                    @include dimension(100%);
+                    @include flex($ai: center, $gap: $whiteSpaceMobile);
+
+                    position: relative;
+                    padding-bottom: 1.5rem;
+                    border-bottom: 1px solid #dadada;
+
+                    .right {
+                        .account-name {
+                            font-weight: bold;
+                        }
+                    }
+                }
+
+                .account-settings {
+                    @include dimension(100%);
+                    @include flex($direction: column);
+
+
+                    .setting-item {
+                        @include dimension(100%);
+                        @include flex($direction: row, $gap: $whiteSpaceMobile, $ai: center);
+                        padding: .4rem 0;
+                        cursor: pointer;
+
+                        &:hover {
+                            background-color: #d9e2fa;
+                        }
+
+                        .icon {
+                            display: flex;
+                            font-size: 1.5rem;
+                        }
+                    }
+                }
             }
         }
     }
