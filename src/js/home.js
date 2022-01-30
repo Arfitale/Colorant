@@ -1,20 +1,8 @@
 import {user} from "./modules/app.js";
 import {eventHandler} from "./modules/eventHandler.js";
 
-
-// EVENT
-document.addEventListener("DOMContentLoaded", () => {
-    _init();
-});
-
-window.addEventListener("click", event => {
-    const target = event.target;
-
-    // menu btn
-    if(target.classList.contains("btn-menu") || target.classList.contains("btn-close-nav")) {
-        eventHandler.menuBtn_handler();
-    }
-});
+// UI
+const overlay = document.querySelector(".overlay");
 
 function _init() {
     if(user.isLogin()) {
@@ -35,3 +23,28 @@ function setDimension() {
 
     hero.style.height = `calc(100vh - ${nav_height}px)`;
 }
+
+// EVENT
+document.addEventListener("DOMContentLoaded", () => {
+    _init();
+});
+
+window.addEventListener("click", event => {
+    const target = event.target;
+
+    // account bar
+    if(target.classList.contains("account-ctr") || target.matches(".overlay.account")) {
+        const accountSettings = target.parentElement.querySelector(".account-settings-ctr");
+
+        accountSettings.classList.toggle("show");
+        target.classList.toggle("from-overlay");
+
+        overlay.classList.toggle("active");
+        overlay.classList.toggle("account");
+    }
+
+    // menu btn
+    if(target.classList.contains("btn-menu") || target.classList.contains("btn-close-nav")) {
+        eventHandler.menuBtn_handler();
+    }
+});

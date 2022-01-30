@@ -28,7 +28,7 @@ class events {
         const closeBtn = hook(".btn-close-nav");
         const menuBtn = hook(".btn-menu-mobile");
 
-        navBar.classList.toggle("_inOverlay");
+        navBar.classList.toggle("show");
         closeBtn.classList.toggle("active");
         menuBtn.classList.toggle("invisible");
     }
@@ -45,9 +45,7 @@ class events {
 
     bookmarkBtn_handler() {
         const bookmarkUI = hook(".bookmark", false, UI);
-
-        bookmarkUI.classList.toggle("_inOverlay");
-        ui.toggleOverlay();
+        bookmarkUI.classList.toggle("show");
     }
 
     addBtn_handler(len) {
@@ -123,12 +121,6 @@ class events {
         if(len <= 3) {
             hook(".btn-remove", true, COLOR_SCHEME).forEach(btn => btn.style.display = "none");
         }
-    }
-
-    overlay_handler() {
-        const _inOverlay = hook("._inOverlay");
-        _inOverlay.classList.remove("_inOverlay");
-        ui.toggleOverlay();
     }
 
     dragStart_handler(bar, target) {

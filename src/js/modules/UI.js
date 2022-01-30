@@ -66,7 +66,7 @@ class UI {
     }
 
     toggleOverlay() {
-        const overlay = hook(".overlay", false, userInterface);
+        const overlay = hook(".overlay");
         overlay.classList.toggle("active");
     }
 

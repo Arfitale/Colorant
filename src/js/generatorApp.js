@@ -12,6 +12,9 @@ const generateBtn = hook(".btn-generate", false, COLOR_FIELD);
 const addBtn = hook(".btn-add", false , COLOR_FIELD);
 const saveBtn = hook(".btn-save", false, COLOR_FIELD);
 
+// UI
+const overlay = document.querySelector(".overlay");
+
 
 // MAIN FUNCTION
 function _init() {
@@ -95,14 +98,19 @@ window.addEventListener("keydown", event => {
 window.addEventListener("click", event => {
     const target = event.target;
 
-    // overlay
-    if(target.classList.contains("overlay")) {
-        eventHandler.overlay_handler();
+    if(target.classList.contains("account-ctr") || target.matches(".overlay.account")) {
+        const accountSettings = target.parentElement.querySelector(".account-settings-ctr");
+
+        accountSettings.classList.toggle("show");
+        overlay.classList.toggle("active");
+        overlay.classList.toggle("account");
     }
 
     // bookmark
-    if(target.classList.contains("btn-bookmark") || target.classList.contains("btn-bookmark-close")) {
+    if(target.classList.contains("btn-bookmark") || target.classList.contains("btn-bookmark-close") || target.matches(".overlay.bookmark")) {
         eventHandler.bookmarkBtn_handler();
+        overlay.classList.toggle("active");
+        overlay.classList.toggle("bookmark");
     }
 
     // MOBILE //

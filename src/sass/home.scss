@@ -3,6 +3,9 @@
 @import "./abstraction/var";
 @import "./abstraction/components";
 
+// OVERLAY
+@include overlay();
+
 // NAVBAR
 @include nav();
 
