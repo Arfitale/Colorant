@@ -6,17 +6,15 @@ const password = form.elements["password"];
 form.addEventListener("submit", async event => {
     event.preventDefault();
     try {
-        const {data} = await axios.get(`/data/user/${email.value}`);
-        if(data) {
-            const user = data.user;
-            const passDB = user.password;
+        const {data} = await axios.get(`/data/user/${email.value}&${password.value}`);
+        const user = await data.user;
+        let errorDesc = "";
 
-            if(password.value === passDB) {
-                window.localStorage.setItem("colorant_user", JSON.stringify(user));
-                window.location.href = "../";
-            } else {
-                console.log("password is incorrect");
-            }
+        if(user) {
+            window.localStorage.setItem("colorant_user", JSON.stringify(user));
+            window.location.href = "../";
+        } else {
+            errorDesc = "user doesn't exist";
         }
     } catch (error) {
         console.log(error);

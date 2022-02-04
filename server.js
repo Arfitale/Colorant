@@ -2,6 +2,9 @@ const express = require("express");
 const fs = require("fs");
 const path = require("path");
 
+// BCRYPT
+const bcrypt = require("bcrypt");
+
 const app = express();
 const port = 3000;
 
@@ -20,24 +23,32 @@ app.use(express.json());
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "./public/home.html"));
 });
+
 app.get("/color-generator", (req, res) => {
     res.sendFile(path.join(__dirname, "./public/generatorApp.html"));
 });
+
 app.get("/signup", (req, res) => {
     res.sendFile(path.join(__dirname, "./public/signUp.html"));
 });
+
 app.get("/signin", (req, res) => {
     res.sendFile(path.join(__dirname, "./public/signIn.html"));
 })
-app.get("/data/user/:email", (req, res) => {
-    const {email} = req.params;
+
+app.get("/data/user/:email&:password", (req, res) => {
+    const {email, password} = req.params;
     const userData = JSON.parse(fs.readFileSync(path.join(__dirname, `./data/user/local/${email[0]}.json`), "utf8"));
 
     // find user in database
     userData.find(user => {
         const userMail = user.email;
         if(userMail === email) {
-            res.status(200).json({user});
+            if(bcrypt.compareSync(password, user.password)) {
+                res.json({user});
+            } else {
+                res.json({err: "password is incorrect"});
+            }
         } else {
             res.status(404).json({error: "user doesn't exist"});
         }
@@ -46,14 +57,14 @@ app.get("/data/user/:email", (req, res) => {
 
 // POST
 app.post("/register", (req, res) => {
-    const formData = req.body;
+    let formData = req.body;
 
     // if data is empty json
     if(!Object.keys(formData).length) {
         return res.status(400).json({msg: "something went error, try refresh the page"});
     }
 
-    const {username, email, password} = formData;
+    let {username, email, password} = formData;
     const userFile = email[0];
 
     // GET CURRENT ACCOUNT DATABASE
@@ -81,7 +92,11 @@ app.post("/register", (req, res) => {
     // ADD USERNAME EXISTANCE TO GLOBAL DATABASE
     usernameGlobalData.push(username);
     usernameGlobalData.sort((x, y) => x.localeCompare(y));
-    
+
+    // HASH PASSWORD
+    password = bcrypt.hashSync(password, 10);
+    formData.password = password
+
     // final output data
     const finalUserData = JSON.stringify(userLocalData);
     const finalUsernameGlobalData = JSON.stringify(usernameGlobalData);
