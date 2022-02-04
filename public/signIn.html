@@ -9,6 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/default.css">
     <link rel="stylesheet" href="./css/signIn.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./js/signIn.js" defer></script>
 </head>
 <body>
     <main>
@@ -21,14 +23,14 @@
                     <h1 class="title form-title">Sign In to Colorant</h1>
                     <span></span>
                 </header>
-                <form action="GET" class="form">
+                <form class="form" id="form">
                     <div class="input-group">
                         <label for="email">Email</label>
-                        <input type="email" placeholder="name@mail.com" maxlength="30" required>
+                        <input type="email" name="email" placeholder="name@mail.com" maxlength="30" required>
                     </div>
                     <div class="input-group">
                         <label for="password">Password</label>
-                        <input type="password" placeholder="6+ characters, 1 capital letter" maxlength="20" required>
+                        <input type="password" name="password" placeholder="6+ characters, 1 capital letter" maxlength="20" autocomplete="true" required>
                     </div>
                     <a href="#" class="forgot_account">Forgot account?</a>
                     <input type="submit" class="btn submit-btn" value="Login">

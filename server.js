@@ -29,6 +29,20 @@ app.get("/signup", (req, res) => {
 app.get("/signin", (req, res) => {
     res.sendFile(path.join(__dirname, "./public/signIn.html"));
 })
+app.get("/data/user/:email", (req, res) => {
+    const {email} = req.params;
+    const userData = JSON.parse(fs.readFileSync(path.join(__dirname, `./data/user/local/${email[0]}.json`), "utf8"));
+
+    // find user in database
+    userData.find(user => {
+        const userMail = user.email;
+        if(userMail === email) {
+            res.status(200).json({user});
+        } else {
+            res.status(404).json({error: "user doesn't exist"});
+        }
+    })
+});
 
 // POST
 app.post("/register", (req, res) => {
