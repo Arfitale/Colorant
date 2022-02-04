@@ -43,6 +43,12 @@ window.addEventListener("click", event => {
         overlay.classList.toggle("account");
     }
 
+    // signout btn
+    if(target.classList.contains("signout-btn") && user.isLogin()) {
+        window.localStorage.removeItem("colorant_user");
+        window.location.reload()
+    }
+
     // menu btn
     if(target.classList.contains("btn-menu") || target.classList.contains("btn-close-nav")) {
         eventHandler.menuBtn_handler();

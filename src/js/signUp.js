@@ -25,7 +25,7 @@ form.addEventListener("submit", async (event) => {
 
             if(data.success) {
                 const localStorage = window.localStorage
-                localStorage.setItem("user", JSON.stringify(data.formData));
+                localStorage.setItem("colorant_user", JSON.stringify(data.formData));
 
                 // Change path to success state
                 window.location.href = "../"

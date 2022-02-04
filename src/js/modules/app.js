@@ -23,12 +23,12 @@ class User {
     }
 
     getUser() {
-        const user = this.localStorage.getItem("user");
+        const user = this.localStorage.getItem("colorant_user");
         return user ? JSON.parse(user) : {};
     }
 
     isLogin() {
-        const user = this.localStorage.getItem("user");
+        const user = this.localStorage.getItem("colorant_user");
         return user ? true : false;
     }
 
@@ -73,6 +73,12 @@ class User {
                 defaultImg.appendChild(defaultLetter);
                 accountImg.append(defaultImg);
             }
+        }
+
+        // set username
+        const accountNameDOM = document.querySelectorAll(".account-name");
+        for(let x = 0; x < accountNameDOM.length; x++) {
+            accountNameDOM[x].innerText = username;
         }
     }
 }
