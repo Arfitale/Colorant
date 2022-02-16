@@ -36,7 +36,14 @@ app.get("/signin", (req, res) => {
     res.sendFile(path.join(__dirname, "./public/signIn.html"));
 })
 
-app.get("/data/user/:email&:password", (req, res) => {
+app.get("/data/:email", (req, res) => {
+    const {email} = req.params;
+
+    const users = JSON.parse(fs.readFileSync(path.join(__dirname, `./data/user/local/${email[0]}.json`))) || [];
+    res.status(200).json({users});
+});
+
+app.get("/data/user/auth/:email&:password", (req, res) => {
     const {email, password} = req.params;
     const userData = JSON.parse(fs.readFileSync(path.join(__dirname, `./data/user/local/${email[0]}.json`), "utf8"));
 
@@ -45,12 +52,12 @@ app.get("/data/user/:email&:password", (req, res) => {
         const userMail = user.email;
         if(userMail === email) {
             if(bcrypt.compareSync(password, user.password)) {
-                res.json({user});
+                return res.json({user});
             } else {
-                res.json({err: "password is incorrect"});
+                return res.json({err: "password is incorrect"});
             }
         } else {
-            res.status(404).json({error: "user doesn't exist"});
+            return res.status(404).json({error: "user doesn't exist"});
         }
     })
 });

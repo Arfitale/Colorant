@@ -6,7 +6,7 @@ const password = form.elements["password"];
 form.addEventListener("submit", async event => {
     event.preventDefault();
     try {
-        const {data} = await axios.get(`/data/user/${email.value}&${password.value}`);
+        const {data} = await axios.get(`/data/user/auth/${email.value}&${password.value}`);
         const user = await data.user;
         let errorDesc = "";
 
