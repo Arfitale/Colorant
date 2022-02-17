@@ -181,3 +181,15 @@ window.addEventListener("dragover", event => {
 
     if(dragBar) eventHandler.dragMove_handler(event, dragBar);
 });
+
+// window.localStorage.setItem("colorant_user", 
+//     JSON.stringify({
+//         username: "arfitle",
+//         email: "arfitale@gmail.com",
+//         password: "12345Arfitale",
+//         colorLibrary: [
+//             {name: "Ocean", pallete: ["#1266D7", "#4C85FD", "#5CA0F3", "#6EA8F0", "#65BED8"]},
+//             {name: "Ocean-2", pallete: ["#6EA8F0", "#5CA0F3", "#4C85FD", "#1266D7", "#65BED8"]}
+//         ]
+//     })
+// )

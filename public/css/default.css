@@ -47,7 +47,7 @@ a {
 }
 
 .btn-primary {
-    color: #dddddd;
+    color: #ffffff;
     background-color: var(--primaryColor);
 }
     .btn-primary:hover {
@@ -82,6 +82,11 @@ a {
     border-radius: 50px;
 }
 
+.btn-sign {
+    padding: .6rem 1.5rem;
+    border-radius: 50px;
+}
+
 /* btn size */
 .btn-md {
     font-size: 1.5rem;
@@ -94,6 +99,11 @@ a {
 }
 .btn-mobile {
     font-size: 2rem;
+}
+
+/* OTHER BUTTON */
+div[role="button"] {
+    cursor: pointer;
 }
 
 
@@ -111,6 +121,16 @@ a {
 }
 .visible {
     opacity: 1;
+}
+
+.d-none {
+    display: none !important;
+}
+.d-block {
+    display: block !important;
+}
+.d-flex {
+    display: flex !important;
 }
 
 /* TRANSITION */
