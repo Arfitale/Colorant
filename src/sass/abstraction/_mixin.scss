@@ -17,3 +17,15 @@
     bottom: $bottom;
     right: $right;
 }
+
+@mixin advanceWidth($min, $current, $max) {
+    min-width: $min;
+    width: $current;
+    max-width: $max;
+}
+
+@mixin advanceHeight($min, $current, $max) {
+    min-height: $min;
+    height: $current;
+    max-height: $max;
+}

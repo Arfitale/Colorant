@@ -84,11 +84,6 @@ addBtn.addEventListener("click", () => {
     }
 })
 
-// save btn
-saveBtn.addEventListener("click", event => {
-    eventHandler.saveBtn_handler(event.target, _getColors());
-});
-
 window.addEventListener("keydown", event => {
     // spacebar button
     if(event.code === "Space") generator();
@@ -121,7 +116,6 @@ window.addEventListener("click", event => {
     }
 
     // MOBILE //
-
     // menu btn
     if(target.classList.contains("btn-menu") || target.classList.contains("btn-close-nav")) {
         eventHandler.menuBtn_handler();

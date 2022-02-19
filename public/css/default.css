@@ -40,6 +40,15 @@ a {
     pointer-events: none;
 }
 
+.btn-close {
+    font-size: 2rem;
+    color: #202020;
+    cursor: pointer;
+}
+    .btn-close:hover {
+        color: rgb(220, 20, 60);
+    }
+
 .btn-link {
     font-size: 1.2rem;
     border-radius: 5px;
@@ -62,12 +71,24 @@ a {
         background-color: var(--_secondaryColor);
     }
 
+.btn-white {
+    background-color: #fff;
+    color: #202020;
+}
+    .btn-white:hover {
+        color:rgb(73, 80, 87);
+    }
+
 .btn-icon {
     display: flex;
     font-size: 1.5rem;
     color: #5a6572;
 }
     .btn-icon:hover {color: var(--primaryColor)}
+
+.btn-flex {
+    display: flex;
+}
 
 .btn-normal {
     font-size: 1.5rem;
@@ -85,6 +106,17 @@ a {
 .btn-sign {
     padding: .6rem 1.5rem;
     border-radius: 50px;
+}
+
+.login-auth-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 300px;
+    height: 40px;
+    border-radius: 50px;
+    cursor: pointer;
 }
 
 /* btn size */
@@ -114,6 +146,30 @@ div[role="button"] {
     color:var(--_primaryColor);
 }
 
+
+/* TYPOGRAPY */
+
+/* type */
+.title {
+    font-size: 1.5rem;
+    font-weight: lighter;
+}
+
+/* size */
+.text-lg {
+    font-size: 2.5rem;
+}
+.text-md {
+    font-size: 1.5rem;
+}
+.text-sm {
+    font-size: 1.2rem;
+}
+
+/* thickness */
+.text-bold {
+    font-weight: bold;
+}
 
 /* UI */
 .invisible {
@@ -155,6 +211,12 @@ div[role="button"] {
 
     .tippy-box {
         display: none;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .login-auth-btn {
+        width: 250px;
     }
 }
 
