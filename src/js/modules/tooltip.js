@@ -6,7 +6,9 @@ class Tooltip {
     }
 
     initialize(elements) {
-        this.instance = this.tippy(elements); 
+        this.instance = this.tippy(elements, {
+            delay: [500, 0]
+        }); 
         this.elements = elements;
     }
 
