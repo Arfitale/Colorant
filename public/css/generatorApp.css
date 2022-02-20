@@ -674,12 +674,12 @@
   opacity: 0;
 }
 
-.ui .login-modal {
+.ui .save-pallete-modal {
   min-width: 300px;
   width: 500px;
   max-width: 100%;
   min-height: 300px;
-  height: 500px;
+  height: 450px;
   max-height: 100%;
   position: absolute;
   top: 50%;
@@ -689,8 +689,126 @@
   background-color: #fff;
   padding: 2rem;
   pointer-events: all;
-  border-radius: 20px;
-  display: none;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow: hidden;
+}
+
+.ui .save-pallete-modal .header {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0;
+}
+
+.ui .save-pallete-modal .header .btn-close {
+  margin-right: auto;
+}
+
+.ui .save-pallete-modal .header .title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.ui .save-pallete-modal #save-pallete-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 1.5rem;
+  position: relative;
+  margin-top: 2rem;
+}
+
+.ui .save-pallete-modal #save-pallete-form .current-pallete {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.ui .save-pallete-modal #save-pallete-form .current-pallete .pallete-to-saved {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 0;
+}
+
+.ui .save-pallete-modal #save-pallete-form .current-pallete .pallete-to-saved .bar {
+  width: 30px;
+  height: 30px;
+}
+
+.ui .save-pallete-modal .save-pallete-btn {
+  margin-top: auto;
+  margin-left: auto;
+}
+
+.ui .login-modal {
+  min-width: 300px;
+  width: 500px;
+  max-width: 100%;
+  min-height: 300px;
+  height: 450px;
+  max-height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 2rem;
+  pointer-events: all;
+  border-radius: 10px;
 }
 
 .ui .login-modal .header {
@@ -973,6 +1091,9 @@
 
 @media screen and (max-width: 400px) {
   .ui .login-modal {
+    padding: 1rem;
+  }
+  .ui .save-pallete-modal {
     padding: 1rem;
   }
 }

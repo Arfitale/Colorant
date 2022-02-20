@@ -200,33 +200,53 @@
         }
     }
 
-    .login-modal {
+    .save-pallete-modal {
         @include advanceWidth(300px, 500px, 100%);
-        @include advanceHeight(300px, 500px, 100%);
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: #fff;
-        padding: $whiteSpaceDesktop;
-        pointer-events: all;
-        border-radius: 20px;
-        display: none;
+        @include advanceHeight(300px, 450px, 100%);
+        @include centerObjectByTransform();
+        @include UI_modal();
+        
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
 
         .header {
+            @include UI_modal-header();
+        }
+
+        #save-pallete-form {
+            @include flex(column, $gap: $whiteSpaceUI);
             position: relative;
-            @include flex(row, flex-start, center);
+            margin-top: $whiteSpaceDesktop;
 
-            .btn-close {
-                margin-right: auto;
+            .current-pallete {
+                @include flex(column, $gap: .5rem);
+
+                .pallete-to-saved {
+                    @include flex();
+
+                    .bar {
+                        @include dimension(30px, 30px);
+                    }
+                }
             }
 
-            .title {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-            }
+        }
+
+        .save-pallete-btn {
+            margin-top: auto;
+            margin-left: auto;
+        }
+    }
+
+    .login-modal {
+        @include advanceWidth(300px, 500px, 100%);
+        @include advanceHeight(300px, 450px, 100%);
+        @include centerObjectByTransform();
+        @include UI_modal();
+
+        .header {
+            @include UI_modal-header();
         }
 
         .body {
@@ -331,6 +351,10 @@
     
     .ui {
         .login-modal {
+            padding: 1rem;
+        }
+
+        .save-pallete-modal {
             padding: 1rem;
         }
     }

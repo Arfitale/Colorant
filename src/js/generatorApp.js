@@ -25,7 +25,7 @@ function _init() {
     }
     _onUpdate();
     generator();
-    tooltip.initialize(".btn");
+    tooltip.initialize(".tippy");
 }
 
 function _onUpdate() {

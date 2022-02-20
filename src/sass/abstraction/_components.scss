@@ -212,3 +212,26 @@
         }
     }
 }
+
+@mixin UI_modal() {
+    background-color: #fff;
+    padding: $whiteSpaceDesktop;
+    pointer-events: all;
+    border-radius: 10px;
+}
+
+@mixin UI_modal-header {
+    position: relative;
+    @include flex(row, flex-start, center);
+
+    .btn-close {
+        margin-right: auto;
+    }
+
+    .title {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}

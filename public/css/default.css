@@ -23,6 +23,9 @@ a {
     text-decoration: none;
     color: #202020;
 }
+input {
+    border: none;
+}
 
 /* TYPOGRAPHY */
 .title-md {
@@ -41,7 +44,7 @@ a {
 }
 
 .btn-close {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: #202020;
     cursor: pointer;
 }
@@ -104,7 +107,7 @@ a {
 }
 
 .btn-sign {
-    padding: .6rem 1.5rem;
+    padding: .6rem 2rem;
     border-radius: 50px;
 }
 
@@ -133,6 +136,28 @@ a {
     font-size: 2rem;
 }
 
+
+/* FORM */
+.label-form {
+    font-size: .9rem;
+    font-weight: lighter;
+    color:rgb(73, 80, 87);
+}
+.input-field {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+.input-field .input-style {
+    padding: .5rem .1rem;
+    border: none;
+    font-family: sans-serif;
+    color:rgb(136, 136, 136);
+}
+.input-field .input-style::placeholder {
+    color:rgb(172, 172, 172);
+}
+
 /* OTHER BUTTON */
 div[role="button"] {
     cursor: pointer;
@@ -148,10 +173,9 @@ div[role="button"] {
 
 
 /* TYPOGRAPY */
-
 /* type */
 .title {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: lighter;
 }
 
@@ -203,8 +227,8 @@ div[role="button"] {
 /* REMOVE INITIAL */
 .responsive-mobile, .mobile-flex {display: none;}
 
-/* RESPONSIVE */
 
+/* RESPONSIVE */
 @media screen and (max-width: 768px) {
     .responsive-mobile {display: block;}
     .mobile-flex {display: flex;}
