@@ -93,6 +93,12 @@ window.addEventListener("keydown", event => {
 window.addEventListener("click", event => {
     const target = event.target;
 
+    // login modal
+    if(target.classList.contains("btn-close-login-modal")) {
+        overlay.classList.toggle("active");
+        eventHandler.showLoginModal();
+    }
+
     // account bar
     if(target.classList.contains("account-ctr") || target.matches(".overlay.account")) {
         const accountSettings = target.parentElement.querySelector(".account-settings-ctr");
@@ -108,11 +114,22 @@ window.addEventListener("click", event => {
         window.location.reload();
     }
 
-    // bookmark
+    // bookmark btn
     if(target.classList.contains("btn-bookmark") || target.classList.contains("btn-bookmark-close") || target.matches(".overlay.bookmark")) {
         eventHandler.bookmarkBtn_handler();
         overlay.classList.toggle("active");
         overlay.classList.toggle("bookmark");
+    }
+
+    // save pallete btn
+    if(target.classList.contains("btn-save-pallete") || target.classList.contains("btn-save-pallete-close")) {
+        overlay.classList.toggle("active");
+        
+        if(!user.isLogin()) {
+            eventHandler.showLoginModal();
+            return;
+        }
+        eventHandler.savePalleteBtn_handler();
     }
 
     // MOBILE //

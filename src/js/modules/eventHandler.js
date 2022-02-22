@@ -33,6 +33,12 @@ class events {
         menuBtn.classList.toggle("invisible");
     }
 
+    showLoginModal() {
+        const showLoginModal = document.querySelector(".ui .login-modal");
+
+        showLoginModal.classList.toggle("d-block");
+    }
+
     saveBtn_handler(saveBtn, colorList) {
         if(saveBtn.classList.contains("saved")) {
             saveBtn.classList.remove("saved");
@@ -46,6 +52,12 @@ class events {
     bookmarkBtn_handler() {
         const bookmarkUI = hook(".bookmark", false, UI);
         bookmarkUI.classList.toggle("show");
+    }
+
+    savePalleteBtn_handler() {
+        const savePalleteModal = document.querySelector(".ui .save-pallete-modal");
+
+        savePalleteModal.classList.toggle("d-flex");
     }
 
     addBtn_handler(len) {
