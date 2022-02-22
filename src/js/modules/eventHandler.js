@@ -23,6 +23,30 @@ class events {
         }
     }
 
+    initEvent(target) {
+        const overlay = document.querySelector(".overlay");
+
+        // account btn
+        if(target.classList.contains("account-ctr") || target.matches(".overlay.account") || target.classList.contains("btn-account-setting-close")) {
+            const accountSettings = document.querySelector(".account-settings-ctr");
+    
+            accountSettings.classList.toggle("show");
+            overlay.classList.toggle("active");
+            overlay.classList.toggle("account");
+        }
+    
+        // signout btn
+        if(target.classList.contains("signout-btn") && user.isLogin()) {
+            window.localStorage.removeItem("colorant_user");
+            window.location.reload();
+        }
+
+        // menu btn - mobile
+        if(target.classList.contains("btn-menu") || target.classList.contains("btn-close-nav")) {
+            eventHandler.menuBtn_handler();
+        }
+    }
+
     menuBtn_handler() {
         const navBar = hook(".nav-main");
         const closeBtn = hook(".btn-close-nav");

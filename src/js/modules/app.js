@@ -82,7 +82,10 @@ class User {
         for(let x = 0; x < accountNameDOM.length; x++) {
             accountNameDOM[x].innerText = username;
         }
+    }
 
+    userLoginHandler_generatorApp() {
+        this.userLoginHandler();
         // Check colorLibrary existance
         if(!colorLibrary) {
             colorLibrary = {};

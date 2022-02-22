@@ -42,7 +42,7 @@ function onLogin() {
     signLinks.style.display = "none";
     account.style.display = "block";
 
-    user.userLoginHandler();
+    user.userLoginHandler_generatorApp();
 }
 
 
