@@ -100,8 +100,8 @@ window.addEventListener("click", event => {
     }
 
     // account bar
-    if(target.classList.contains("account-ctr") || target.matches(".overlay.account")) {
-        const accountSettings = target.parentElement.querySelector(".account-settings-ctr");
+    if(target.classList.contains("account-ctr") || target.matches(".overlay.account") || target.classList.contains("btn-account-setting-close")) {
+        const accountSettings = document.querySelector(".account-settings-ctr");
 
         accountSettings.classList.toggle("show");
         overlay.classList.toggle("active");

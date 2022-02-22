@@ -199,6 +199,7 @@
   -webkit-box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.25);
           box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.25);
   z-index: 99;
+  border-radius: 10px;
 }
 
 .nav .account .account-settings-ctr.show {
@@ -217,6 +218,26 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
+  position: relative;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #b8b8b8;
+}
+
+.nav .account .account-settings-ctr .account-header .account-avatar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
@@ -224,13 +245,11 @@
       -ms-flex-align: center;
           align-items: center;
   gap: 1rem;
-  position: relative;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid #dadada;
 }
 
-.nav .account .account-settings-ctr .account-header .right .account-name {
-  font-weight: bold;
+.nav .account .account-settings-ctr .account-header .account-avatar .account-name {
+  color: #8b95a1;
+  text-transform: capitalize;
 }
 
 .nav .account .account-settings-ctr .account-settings {
@@ -282,6 +301,17 @@
   display: -ms-flexbox;
   display: flex;
   font-size: 1.5rem;
+}
+
+@media screen and (max-width: 400px) {
+  .nav .account .account-settings-ctr {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 0px;
+  }
 }
 
 .color-field {
