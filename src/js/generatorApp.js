@@ -83,15 +83,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // save pallete btn
         if(target.classList.contains("btn-save-pallete") || target.classList.contains("btn-save-pallete-close")) {
-            overlay.classList.toggle("active");
             
+            // Check if user is already login
             if(!App.isLogin()) {
                 eventHandler.showLoginModal();
                 return;
             }
-
-            const currentPallete = _getPalletes();
-            eventHandler.savePalleteBtn_handler(currentPallete);
+            
+            // Check if pallete is saved
+            if(target.classList.contains("saved")) {
+                eventHandler.unsaveBtn_handler(target);
+            } else {
+                const currentPallete = _getPalletes();
+                eventHandler.savePalleteBtn_handler(currentPallete);
+                overlay.classList.toggle("active");
+            }
         }
 
         // MOBILE //
@@ -166,9 +172,15 @@ document.addEventListener("DOMContentLoaded", () => {
             const currentAccount = JSON.parse(ls.getItem("colorant_user")) || [];
             const colorLibrary = currentAccount.colorLibrary || [];
             const newPallete = {palleteName, pallete, palleteDescription}
+            const saveBtn = document.querySelector(".btn-save-pallete");
+            const savePalleteModal = document.querySelector(".save-pallete-modal");
 
             currentAccount.colorLibrary = [...colorLibrary, newPallete];
             ls.setItem("colorant_user", JSON.stringify(currentAccount));
+
+            saveBtn.classList.add("saved");
+            savePalleteModal.classList.remove("d-flex");
+            overlay.classList.remove("active");
         }
     });
 });

@@ -1,14 +1,14 @@
-import {user} from "./modules/app.js";
+import App from "./modules/app.js";
 import {eventHandler} from "./modules/eventHandler.js";
 
 // UI
 const overlay = document.querySelector(".overlay");
 
 function _init() {
-    if(user.isLogin()) {
-        user.onLogin();
+    if(App.isLogin()) {
+        App.userLoginHandler();
     } else {
-        user.onLogout();
+        App.onLogout();
     }
 
     setDimension();
@@ -31,6 +31,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
 window.addEventListener("click", event => {
     const target = event.target;
-
     eventHandler.initEvent(target);
 });

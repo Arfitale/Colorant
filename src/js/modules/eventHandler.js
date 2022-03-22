@@ -64,14 +64,25 @@ class events {
         showLoginModal.classList.toggle("d-block");
     }
 
-    saveBtn_handler(saveBtn, colorList) {
-        if(saveBtn.classList.contains("saved")) {
-            saveBtn.classList.remove("saved");
-            return;
-        } else {
-            saveBtn.classList.add("saved");
-            ui.showMessage(`${colorList} has been saved in the account database`, "success");
+    unsaveBtn_handler(saveBtn) {
+        saveBtn.classList.remove("saved");
+    }
+
+    savePalleteBtn_handler(currentPallete) {
+        const savePalleteModal = document.querySelector(".ui .save-pallete-modal");
+        
+        // Determine pallete to save
+        const palleteToSave = savePalleteModal.querySelector(".pallete-to-saved");
+        palleteToSave.innerHTML = "";
+        for(let x = 0; x < currentPallete.length; x++) {
+            const bar = document.createElement("li");
+            bar.classList.add("bar");
+            bar.style.backgroundColor = `#${currentPallete[x]}`;
+
+            palleteToSave.appendChild(bar);
         }
+
+        savePalleteModal.classList.toggle("d-flex");
     }
 
     bookmarkBtn_handler() {
@@ -129,22 +140,6 @@ class events {
         bookmarkUI.classList.toggle("show");
     }
 
-    savePalleteBtn_handler(currentPallete) {
-        const savePalleteModal = document.querySelector(".ui .save-pallete-modal");
-        
-        // Determine pallete to save
-        const palleteToSave = savePalleteModal.querySelector(".pallete-to-saved");
-        palleteToSave.innerHTML = "";
-        for(let x = 0; x < currentPallete.length; x++) {
-            const bar = document.createElement("li");
-            bar.classList.add("bar");
-            bar.style.backgroundColor = `#${currentPallete[x]}`;
-
-            palleteToSave.appendChild(bar);
-        }
-
-        savePalleteModal.classList.toggle("d-flex");
-    }
 
     addBtn_handler(len) {
         const hex = `#${randomHex()}`;
