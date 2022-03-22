@@ -3,7 +3,7 @@ import {hook} from './modules/hook.js';
 import {eventHandler} from './modules/eventHandler.js';
 import {ui} from './modules/UI.js';
 import {tooltip} from './modules/tooltip.js';
-import {user} from "./modules/app.js";
+import App from "./modules/app.js";
 
 const COLOR_FIELD = hook(".color-field");
 const COLOR_SCHEME = hook(".color-scheme", false, COLOR_FIELD);
@@ -19,6 +19,7 @@ const overlay = document.querySelector(".overlay");
 // STORAGE
 const ls = window.localStorage;
 
+// APP
 
 // EVENT
 window.onresize = () => {
@@ -68,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // signout btn
-        if(target.classList.contains("signout-btn") && user.isLogin()) {
+        if(target.classList.contains("signout-btn") && App.isLogin()) {
             window.localStorage.removeItem("colorant_user");
             window.location.reload();
         }
@@ -84,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if(target.classList.contains("btn-save-pallete") || target.classList.contains("btn-save-pallete-close")) {
             overlay.classList.toggle("active");
             
-            if(!user.isLogin()) {
+            if(!App.isLogin()) {
                 eventHandler.showLoginModal();
                 return;
             }
@@ -175,10 +176,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // MAIN FUNCTION
 function _init() {
-    if(user.isLogin()) {
-        user.userLoginHandler_generatorApp();
+    if(App.isLogin()) {
+        App.userLoginHandler_generatorApp();
     } else {
-        user.onLogout();
+        App.onLogout();
     }
     _onUpdate();
     generator();

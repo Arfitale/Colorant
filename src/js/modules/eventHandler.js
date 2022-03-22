@@ -1,6 +1,7 @@
 import { randomHex } from "./generator.js";
 import { ui } from "./UI.js";
 import { hook } from "./hook.js";
+import App from "./app.js";
 
 const COLOR_FIELD = hook(".color-field");
 const COLOR_SCHEME = hook(".color-scheme", false, COLOR_FIELD);
@@ -75,6 +76,56 @@ class events {
 
     bookmarkBtn_handler() {
         const bookmarkUI = hook(".bookmark", false, UI);
+        const noPallete = document.querySelector(".ui .no-pallete");
+        const palleteLib = document.querySelector(".ui .pallete-library");
+        const {colorLibrary} = App.getUser();
+        
+        if(bookmarkUI.classList.contains("show")) {
+            palleteLib.innerHTML = "";
+        } else {
+            if(colorLibrary) {
+                palleteLib.classList.add("d-flex");
+                noPallete.classList.add("d-none");
+                
+                for(let x = 0; x < colorLibrary.length; x++) {
+                    const {palleteName: name, pallete: colors, palleteDescription: desc} = colorLibrary[x];
+    
+                    const newPallete = document.createElement("div");
+                    const palleteName = document.createElement("div");
+                    const palleteInterface = document.createElement("div");
+                    const palleteBar = document.createElement("div");
+    
+                    newPallete.classList.add("pallete-item");
+                    palleteInterface.classList.add("pallete-interface");
+                    palleteBar.classList.add("pallete-bar");
+                    palleteName.classList.add("pallete-name");
+    
+                    palleteName.textContent = name;
+    
+                    for(let y = 0; y < colors.length; y++) {
+                        const bar = document.createElement("div");
+    
+                        bar.classList.add("bar");
+                        bar.style.backgroundColor = `#${colors[y]}`;
+                        palleteBar.append(bar);
+                    }
+    
+                    palleteInterface.append(palleteBar);
+                    palleteInterface.innerHTML += `
+                    <button class="btn btn-pallete-more btn-color btn-ui" data-tippy-content="pallete option">
+                    <i class="ri-more-2-fill"></i>
+                    </button>`;
+                    
+                    newPallete.appendChild(palleteName);
+                    newPallete.appendChild(palleteInterface);
+                    palleteLib.appendChild(newPallete);
+                }  
+            } else {
+                palleteLib.classList.add("d-none");
+                noPallete.classList.add("d-block");
+                noPallete.innerHTML = `<div>No pallete saved</div>`;
+            }
+        }
         bookmarkUI.classList.toggle("show");
     }
 

@@ -93,4 +93,6 @@ class User {
     }
 }
 
-export const user = new User()
+export const App = new User()
+
+export default App;
