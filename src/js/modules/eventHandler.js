@@ -78,8 +78,19 @@ class events {
         bookmarkUI.classList.toggle("show");
     }
 
-    savePalleteBtn_handler() {
+    savePalleteBtn_handler(currentPallete) {
         const savePalleteModal = document.querySelector(".ui .save-pallete-modal");
+        
+        // Determine pallete to save
+        const palleteToSave = savePalleteModal.querySelector(".pallete-to-saved");
+        palleteToSave.innerHTML = "";
+        for(let x = 0; x < currentPallete.length; x++) {
+            const bar = document.createElement("li");
+            bar.classList.add("bar");
+            bar.style.backgroundColor = `#${currentPallete[x]}`;
+
+            palleteToSave.appendChild(bar);
+        }
 
         savePalleteModal.classList.toggle("d-flex");
     }
