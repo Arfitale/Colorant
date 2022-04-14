@@ -105,11 +105,13 @@ class events {
                     const palleteName = document.createElement("div");
                     const palleteInterface = document.createElement("div");
                     const palleteBar = document.createElement("div");
+                    const palleteTools = document.createElement("ul");
     
                     newPallete.classList.add("pallete-item");
                     palleteInterface.classList.add("pallete-interface");
                     palleteBar.classList.add("pallete-bar");
                     palleteName.classList.add("pallete-name");
+                    palleteTools.classList.add("pallete-tools");
     
                     palleteName.textContent = name;
     
@@ -120,13 +122,21 @@ class events {
                         bar.style.backgroundColor = `#${colors[y]}`;
                         palleteBar.append(bar);
                     }
-    
+
+                    palleteTools.innerHTML += `
+                    <li>
+                        <button class="btn btn-pallete-show btn-color btn-icon btn-ui" data-tippy-content="pallete option">
+                            <i class="ri-refresh-line"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="btn btn-pallete-delete btn-color btn-icon btn-ui" data-tippy-content="pallete option">
+                        <i class="ri-delete-bin-2-line"></i>
+                        </button>
+                    </li>`;
                     palleteInterface.append(palleteBar);
-                    palleteInterface.innerHTML += `
-                    <button class="btn btn-pallete-more btn-color btn-ui" data-tippy-content="pallete option">
-                    <i class="ri-more-2-fill"></i>
-                    </button>`;
-                    
+                    palleteInterface.append(palleteTools);
+
                     newPallete.appendChild(palleteName);
                     newPallete.appendChild(palleteInterface);
                     palleteLib.appendChild(newPallete);

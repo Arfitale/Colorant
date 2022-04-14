@@ -650,7 +650,7 @@
   gap: 0.5rem;
 }
 
-.ui .bookmark .pallete-library .pallete-item:hover .btn-pallete-more {
+.ui .bookmark .pallete-library .pallete-item:hover .pallete-tools {
   opacity: 1 !important;
 }
 
@@ -701,8 +701,12 @@
   height: clamp(2rem, 100px, 3rem);
 }
 
-.ui .bookmark .pallete-library .pallete-item .pallete-interface .btn-pallete-more {
+.ui .bookmark .pallete-library .pallete-item .pallete-interface .pallete-tools {
   opacity: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1.5rem;
 }
 
 .ui .save-pallete-modal {
