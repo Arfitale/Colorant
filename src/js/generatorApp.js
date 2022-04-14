@@ -1,3 +1,4 @@
+import Main from './modules/main.js';
 import {generator} from './modules/generator.js';
 import {hook} from './modules/hook.js';
 import {eventHandler} from './modules/eventHandler.js';
@@ -10,7 +11,6 @@ const COLOR_SCHEME = hook(".color-scheme", false, COLOR_FIELD);
 
 const generateBtn = hook(".btn-generate", false, COLOR_FIELD);
 const addBtn = hook(".btn-add", false , COLOR_FIELD);
-const saveBtn = hook(".btn-save", false, COLOR_FIELD);
 const savePalleteForm = document.querySelector("#save-pallete-form");
 
 // UI
@@ -46,7 +46,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener("keydown", event => {
         // spacebar button
-        if(event.code === "Space") generator();
+        if(event.code === "Space") {
+            generator();
+            _onUpdate();
+        };
     });
 
     // click event
@@ -166,12 +169,13 @@ document.addEventListener("DOMContentLoaded", () => {
         event.preventDefault();
         const palleteName = savePalleteForm.palleteName.value;
         const palleteDescription = savePalleteForm.palleteDescription.value;
+        const colorNames = _getPalleteColorsName();
         const pallete = _getPalletes();
 
         if(palleteName && palleteDescription) {
             const currentAccount = JSON.parse(ls.getItem("colorant_user")) || [];
             const colorLibrary = currentAccount.colorLibrary || [];
-            const newPallete = {palleteName, pallete, palleteDescription}
+            const newPallete = {palleteName, pallete, colorNames, palleteDescription}
             const saveBtn = document.querySelector(".btn-save-pallete");
             const savePalleteModal = document.querySelector(".save-pallete-modal");
 
@@ -200,6 +204,23 @@ function _init() {
 
 function _onUpdate() {
     ui.updateDimension();
+
+    // check if color pallete already saved in library
+    const currentPalleteColorName = _getPalleteColorsName();
+    const {colorLibrary} = App.getUser();
+    const saveBtn = document.querySelector(".color-field .btn-save-pallete");
+
+    for(let x = 0; x < colorLibrary.length; x++) {
+        const palleteColorName = colorLibrary[x].colorNames;
+
+        // if color pallete already saved in color library
+        if(Main.isArrayEqual(currentPalleteColorName, palleteColorName)) {
+            saveBtn.classList.add("saved");
+            return;
+        }
+        // disable onSave state when color pallete doesn't saved
+        saveBtn.classList.remove("saved");
+    }
 }
 
 function _getPalletes() {
@@ -212,4 +233,16 @@ function _getPalletes() {
     }
 
     return colorList;
+}
+
+function _getPalleteColorsName() {
+    const colorBars = document.querySelectorAll(".color-scheme .color-bar");
+    let colorNames = [];
+    
+    for(let x = 0; x < colorBars.length; x++) {
+        const colorCode = colorBars[x].querySelector(".color-name").innerText;
+        colorNames.push(colorCode);
+    }
+
+    return colorNames;
 }
