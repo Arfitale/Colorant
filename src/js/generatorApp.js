@@ -1,5 +1,5 @@
 import Main from './modules/main.js';
-import {generator} from './modules/generator.js';
+import GeneratorColor from './modules/generator.js';
 import {hook} from './modules/hook.js';
 import {eventHandler} from './modules/eventHandler.js';
 import {ui} from './modules/UI.js';
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     _init();
 
     // generate button
-    generateBtn.addEventListener("click", generator);
+    generateBtn.addEventListener("click", GeneratorColor.defaultGenerate);
 
     // add btn
     addBtn.addEventListener("click", () => {
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("keydown", event => {
         // spacebar button
         if(event.code === "Space") {
-            generator();
+            GeneratorColor.defaultGenerate();
             _onUpdate();
         };
     });
@@ -198,7 +198,7 @@ function _init() {
         App.onLogout();
     }
     _onUpdate();
-    generator();
+    GeneratorColor.defaultGenerate();
     tooltip.initialize(".tippy");
 }
 

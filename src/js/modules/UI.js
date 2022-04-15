@@ -15,18 +15,18 @@ class UI {
         this.currentDevice = getCurrentDevice();
     }
 
-    updateColor(colorBar, hexColor) {
-        const isLight = tinycolor(hexColor).isLight();
-        const colorName = ntc.name(hexColor)[1];
+    updateColor(colorBar, colorCode) {
+        const isLight = tinycolor(colorCode).isLight();
+        const colorName = ntc.name(colorCode)[1];
 
         this.contrastUI(colorBar, isLight)
-        this.updateColorBar(colorBar, hexColor, colorName);
+        this.updateColorBar(colorBar, colorCode, colorName);
     }
 
-    updateColorBar(colorBar, hexColor, colorName) {
+    updateColorBar(colorBar, colorCode, colorName) {
         const colorBg = hook(".color-bg", false, colorBar);
-        colorBg.style.backgroundColor = hexColor;
-        hook(".color-code", false, colorBar).innerHTML = hexColor.replace("#", "");
+        colorBg.style.backgroundColor = colorCode;
+        hook(".color-code", false, colorBar).innerHTML = colorCode.replace("#", "");
         hook(".color-name", false, colorBar).innerHTML = colorName;
     }
 
