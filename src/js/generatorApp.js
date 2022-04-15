@@ -103,6 +103,12 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
+        // Bookmark - Showbtn
+        if(target.classList.contains("btn-pallete-show")) {
+            // colorname
+            // colorcode
+        }
+
         // MOBILE //
         // menu btn
         if(target.classList.contains("btn-menu") || target.classList.contains("btn-close-nav")) {

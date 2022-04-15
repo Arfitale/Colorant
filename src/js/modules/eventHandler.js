@@ -1,4 +1,4 @@
-import { randomHex } from "./generator.js";
+import GeneratorColor from "./generator.js";
 import { ui } from "./UI.js";
 import { hook } from "./hook.js";
 import App from "./app.js";
@@ -152,7 +152,7 @@ class events {
 
 
     addBtn_handler(len) {
-        const hex = `#${randomHex()}`;
+        const [colorName, colorCode] = GeneratorColor.getRandomColor();
         const bar = document.createElement("div");
 
         bar.className = "color-bar add-anim";
@@ -173,8 +173,8 @@ class events {
                 </div>
             </div>
             <div class="color-info">
-                <div class="color-code">31F9A1</div>
-                <div class="color-name">Crimson</div>
+                <div class="color-code"></div>
+                <div class="color-name"></div>
             </div>`
 
         if(len === 2) {
@@ -182,7 +182,7 @@ class events {
         }
 
         COLOR_SCHEME.appendChild(bar);
-        ui.updateColor(bar, hex);
+        ui.updateColor(bar, `#${colorCode}`, colorName);
 
         bar.addEventListener("animationend", event => {
             bar.classList.remove("add-anim");

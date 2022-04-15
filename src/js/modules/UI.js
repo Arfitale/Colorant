@@ -15,9 +15,9 @@ class UI {
         this.currentDevice = getCurrentDevice();
     }
 
-    updateColor(colorBar, colorCode) {
+    updateColor(colorBar, colorCode, colorName = "") {
         const isLight = tinycolor(colorCode).isLight();
-        const colorName = ntc.name(colorCode)[1];
+        colorName ? colorName : ntc.name(colorCode)[1];
 
         this.contrastUI(colorBar, isLight)
         this.updateColorBar(colorBar, colorCode, colorName);
