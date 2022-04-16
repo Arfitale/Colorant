@@ -95,19 +95,6 @@ class UI {
             }
         })
     }
-
-    // resizeHandler() {
-    //     const device = getCurrentDevice();
-        
-    //     if(device != this.currentDevice) {
-    //         return;
-    //     }
-
-    //     this.device = device;
-        
-
-    // }
-
 }
 
 function getCurrentDevice() {

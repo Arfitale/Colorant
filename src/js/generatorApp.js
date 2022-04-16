@@ -209,9 +209,14 @@ function _init() {
 }
 
 function _onUpdate() {
-    ui.updateDimension();
+    if(App.isLogin()) {
+        syncToColorLibrary();
+    }
 
-    // check if color pallete already saved in library
+    ui.updateDimension();
+}
+
+function syncToColorLibrary() {
     const currentPalleteColorName = _getPalleteColorsName();
     const {colorLibrary} = App.getUser();
     const saveBtn = document.querySelector(".color-field .btn-save-pallete");
@@ -251,4 +256,8 @@ function _getPalleteColorsName() {
     }
 
     return colorNames;
+}
+
+function _getFullColorPallete() {
+
 }
