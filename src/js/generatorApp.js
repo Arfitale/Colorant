@@ -30,7 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
     _init();
 
     // generate button
-    generateBtn.addEventListener("click", GeneratorColor.defaultGenerate);
+    generateBtn.addEventListener("click", e => {
+        GeneratorColor.defaultGenerate();
+        _onUpdate();
+    });
 
     // add btn
     addBtn.addEventListener("click", () => {
