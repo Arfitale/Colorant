@@ -208,6 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if(target.classList.contains("btn-drag")) {
             const bar = target.parentElement.parentElement.parentElement;
             eventHandler.dragEnd_handler(bar, target);
+            _onUpdate();
         }
     })
 
