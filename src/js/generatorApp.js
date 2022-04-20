@@ -194,6 +194,10 @@ document.addEventListener("DOMContentLoaded", () => {
             saveBtn.classList.add("saved");
             savePalleteModal.classList.remove("d-flex");
             overlay.classList.remove("active");
+
+            // clear form
+            savePalleteForm.palleteName.value = "";
+            savePalleteForm.palleteDescription.value = "";
         }
     });
 });
