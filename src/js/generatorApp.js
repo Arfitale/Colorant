@@ -108,8 +108,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Bookmark - Showbtn
         if(target.classList.contains("btn-pallete-show")) {
-            // colorname
-            // colorcode
+            const bars = target.parentElement.parentElement.previousElementSibling.querySelectorAll(".bar");
+            const pallete = [];
+
+            for(let x = 0; x < bars.length; x++) {
+                const colorData = {colorCode: bars[x].getAttribute("color-code"), colorName: bars[x].getAttribute("color-name")};
+                pallete.push(colorData);
+            }
+            
+            // set color scheme to this pallete
+            COLOR_SCHEME.innerHTML = "";
+
+            for(let x = 0; x < pallete.length; x++) {
+                const bar = document.createElement("div");
+                const colorCode = pallete[x].colorCode;
+                const colorName = pallete[x].colorName;
+
+                bar.className = "color-bar";
+                bar.innerHTML = `<div class="color-bg"></div>
+                <div class="color-body">
+                    <div class="color-tools">
+                        <div class="btn btn-md btn-color btn-remove" role="button" data-tippy-content="remove color">
+                            <i class="ri-delete-bin-7-line"></i>
+                        </div>
+                        <div class="btn btn-md btn-color btn-drag" role="button" data-tippy-content="move color" draggable="true">
+                            <i class="ri-drag-move-line"></i>
+                        </div>
+                        <div class="btn btn-md btn-color btn-copy" role="button" data-tippy-content="copy color code">
+                            <i class="ri-clipboard-line"></i>
+                        </div>
+                        <div class="btn btn-md btn-color btn-lock" role="button" data-tippy-content="lock color">
+                            <i class="ri-lock-unlock-line"></i>
+                        </div>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-code"></div>
+                        <div class="color-name"></div>
+                    </div>`
+
+                    COLOR_SCHEME.appendChild(bar);
+                    ui.updateColor(bar, colorCode, colorName);
+            }
+            _onUpdate();
+
+            // remove overlay and bookmark state
+            eventHandler.bookmarkBtn_handler();
+            overlay.classList.toggle("active");
+            overlay.classList.toggle("bookmark");
         }
 
         // MOBILE //
@@ -142,7 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if(target.classList.contains("btn-remove")) {
                 const barLen = hook(".color-bar", true, COLOR_SCHEME).length;
                 eventHandler.removeBtn_handler(bar, barLen);
-                ui.updateDimension();
+                _onUpdate();
             }
 
         }

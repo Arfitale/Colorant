@@ -99,7 +99,7 @@ class events {
                 noPallete.classList.add("d-none");
                 
                 for(let x = 0; x < colorLibrary.length; x++) {
-                    const {palleteName: name, pallete: colors, palleteDescription: desc} = colorLibrary[x];
+                    const {palleteName: name, pallete: colors, palleteDescription: desc, colorNames} = colorLibrary[x];
     
                     const newPallete = document.createElement("div");
                     const palleteName = document.createElement("div");
@@ -117,9 +117,14 @@ class events {
     
                     for(let y = 0; y < colors.length; y++) {
                         const bar = document.createElement("div");
+                        const colorCode = `#${colors[y]}`
+                        const colorName = colorNames[y];
+
+                        bar.setAttribute("color-code", colorCode);
+                        bar.setAttribute("color-name", colorName);
     
                         bar.classList.add("bar");
-                        bar.style.backgroundColor = `#${colors[y]}`;
+                        bar.style.backgroundColor = colorCode;
                         palleteBar.append(bar);
                     }
 
