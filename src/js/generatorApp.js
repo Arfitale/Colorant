@@ -106,9 +106,26 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
+        // unsave pallete btn
+        if(target.classList.contains("pallete-saved")) {
+            const currentID = COLOR_SCHEME.getAttribute("id");
+
+            if(currentID) {
+                let newColorLibrary = [];
+                let {colorLibrary} = App.getUser();
+
+                // ls
+                newColorLibrary = colorLibrary.filter(pallete => pallete.id != currentID);
+                App.updateUser("colorant_user", {...App.getUser(), colorLibrary: newColorLibrary});
+                
+                _onUpdate();
+            }
+        }
+
         // Bookmark - Showbtn
         if(target.classList.contains("btn-pallete-show")) {
             const bars = target.parentElement.parentElement.previousElementSibling.querySelectorAll(".bar");
+            const id = target.parentElement.parentElement.parentElement.parentElement.getAttribute("id");
             const pallete = [];
 
             for(let x = 0; x < bars.length; x++) {
@@ -118,6 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
             
             // set color scheme to this pallete
             COLOR_SCHEME.innerHTML = "";
+            COLOR_SCHEME.setAttribute("id", id);
 
             for(let x = 0; x < pallete.length; x++) {
                 const bar = document.createElement("div");
@@ -148,7 +166,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     COLOR_SCHEME.appendChild(bar);
                     ui.updateColor(bar, colorCode, colorName);
-            }
+                }
+
             _onUpdate();
 
             // remove overlay and bookmark state
@@ -157,11 +176,13 @@ document.addEventListener("DOMContentLoaded", () => {
             overlay.classList.toggle("bookmark");
         }
 
-        // Bookmark - RemovePalletebtn
+        // Bookmark - RemovePallete btn
         if(target.classList.contains("btn-pallete-delete")) {
             const palleteItems = document.querySelectorAll(".pallete-library .pallete-item");
             const currentPallete = target.parentElement.parentElement.parentElement.parentElement;
             const currentID = currentPallete.getAttribute("id");
+            const saveBtn = document.querySelector(".color-field .main-tools .btn-save-pallete");
+
             let newColorLibrary = [];
             let {colorLibrary} = App.getUser();
 
@@ -173,6 +194,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     palleteItems[x].remove();
                 }
             }
+
+            saveBtn.classList.remove("saved");
+            saveBtn.classList.remove("pallete-saved");
 
             // ls
             newColorLibrary = colorLibrary.filter(pallete => pallete.id != currentID);
@@ -263,12 +287,16 @@ document.addEventListener("DOMContentLoaded", () => {
             ls.setItem("colorant_user", JSON.stringify(currentAccount));
 
             saveBtn.classList.add("saved");
+            saveBtn.classList.add("pallete-saved");
             savePalleteModal.classList.remove("d-flex");
             overlay.classList.remove("active");
 
             // clear form
             savePalleteForm.palleteName.value = "";
             savePalleteForm.palleteDescription.value = "";
+
+            // set id
+            COLOR_SCHEME.setAttribute("id", id);
         }
     });
 });
@@ -305,10 +333,13 @@ function syncToColorLibrary() {
         // if color pallete already saved in color library
         if(Main.isArrayEqual(currentPalleteColorName, palleteColorName)) {
             saveBtn.classList.add("saved");
+            saveBtn.classList.add("pallete-saved");
             return;
         }
         // disable onSave state when color pallete doesn't saved
         saveBtn.classList.remove("saved");
+        saveBtn.classList.remove("pallete-saved");
+
     }
 }
 

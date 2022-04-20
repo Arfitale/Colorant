@@ -5,6 +5,7 @@ export default class GeneratorColor {
 
     static defaultGenerate() {
         const COLOR_BAR = document.querySelectorAll(".color-field .color-bar");
+        const COLOR_SCHEME = document.querySelector(".color-scheme");
     
         COLOR_BAR.forEach(bar => {
             let isLock = bar.getAttribute("data-isLock");
@@ -17,6 +18,8 @@ export default class GeneratorColor {
                 ui.updateColor(bar, `#${colorCode}`, colorName);
             }
         });
+
+        COLOR_SCHEME.setAttribute("id", "");
     }
 
     // get random color
