@@ -19,7 +19,7 @@ class User {
     }
 
     updateUser(target, newData) {
-        window.localStorage.setItem(target, newData);
+        window.localStorage.setItem(target, JSON.stringify(newData));
     }
 
     isLogin() {

@@ -159,9 +159,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Bookmark - RemovePalletebtn
         if(target.classList.contains("btn-pallete-delete")) {
-            const currentPallete = target.parentElement.parentElement.parentElement;
+            const palleteItems = document.querySelectorAll(".pallete-library .pallete-item");
+            const currentPallete = target.parentElement.parentElement.parentElement.parentElement;
+            const currentID = currentPallete.getAttribute("id");
+            let newColorLibrary = [];
+            let {colorLibrary} = App.getUser();
 
-            console.log(_getRandomID(10));
+            // DOM
+            for(let x = 0; x < palleteItems.length; x++) {
+                const id = palleteItems[x].getAttribute("id");
+
+                if(id === currentID) {
+                    palleteItems[x].remove();
+                }
+            }
+
+            // ls
+            newColorLibrary = colorLibrary.filter(pallete => pallete.id != currentID);
+            App.updateUser("colorant_user", {...App.getUser(), colorLibrary: newColorLibrary});
+            
+            _onUpdate();
         }
 
         // MOBILE //
@@ -233,7 +250,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const palleteDescription = savePalleteForm.palleteDescription.value;
         const colorNames = _getPalleteColorsName();
         const pallete = _getPalletes();
-        const id = _getRandomID(Math.round(Math.random * 20));
+        const id = _getRandomID(Math.round(Math.random() * 15));
 
         if(palleteName && palleteDescription) {
             const currentAccount = JSON.parse(ls.getItem("colorant_user")) || [];
