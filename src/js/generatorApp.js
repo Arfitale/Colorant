@@ -157,6 +157,13 @@ document.addEventListener("DOMContentLoaded", () => {
             overlay.classList.toggle("bookmark");
         }
 
+        // Bookmark - RemovePalletebtn
+        if(target.classList.contains("btn-pallete-delete")) {
+            const currentPallete = target.parentElement.parentElement.parentElement;
+
+            console.log(_getRandomID(10));
+        }
+
         // MOBILE //
         // menu btn
         if(target.classList.contains("btn-menu") || target.classList.contains("btn-close-nav")) {
@@ -226,11 +233,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const palleteDescription = savePalleteForm.palleteDescription.value;
         const colorNames = _getPalleteColorsName();
         const pallete = _getPalletes();
+        const id = _getRandomID(Math.round(Math.random * 20));
 
         if(palleteName && palleteDescription) {
             const currentAccount = JSON.parse(ls.getItem("colorant_user")) || [];
             const colorLibrary = currentAccount.colorLibrary || [];
-            const newPallete = {palleteName, pallete, colorNames, palleteDescription}
+            const newPallete = {id, palleteName, pallete, colorNames, palleteDescription}
             const saveBtn = document.querySelector(".btn-save-pallete");
             const savePalleteModal = document.querySelector(".save-pallete-modal");
 
@@ -311,6 +319,13 @@ function _getPalleteColorsName() {
     return colorNames;
 }
 
-function _getFullColorPallete() {
+function _getRandomID(length = 5) {
+    let id = "";
+    const key = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 
+    for(let x = 0; x < length; x++) {
+        id = id.concat(key[Math.round(Math.random() * (key.length - 1))]);
+    }
+
+    return id;
 }
