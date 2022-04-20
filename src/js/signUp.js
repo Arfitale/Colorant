@@ -8,6 +8,8 @@ const passwordIn = form.elements["password"];
 const passwordSignal = form.querySelector("[data-signal='password-form-signal']");
 const submitBtn = document.querySelector(".submit-btn");
 
+const ls = window.localStorage;
+
 
 // ACCOUNT CHECKER
 async function isAccountAlreadyExist(email) {
@@ -23,44 +25,6 @@ async function isAccountAlreadyExist(email) {
     return false;
 }
 
-// Form Events
-form.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    const validationError = form.querySelectorAll(".fail");
-
-    if(validationError.length === 0) {
-        const username = usernameIn.value;
-        const email = emailIn.value;
-        const password = passwordIn.value;
-        const postData = {username, email, password};
-
-        // CHECK IF ACCOUNT IS ALREADY REGISTERED
-        if(await isAccountAlreadyExist(email)) {
-            emailSignal.classList.add("fail");
-            emailSignal.querySelector("span").textContent = "email is already registered";
-            return;
-        }else {
-            try {
-                const {data} = await axios.post("/register", postData);
-    
-                if(data.success) {
-                    const localStorage = window.localStorage
-                    localStorage.setItem("colorant_user", JSON.stringify(data.formData));
-    
-                    // Redirect to homepage with login state
-                    window.location.href = "../"
-                }
-    
-            } catch (error) {
-                console.log(error);
-            }
-        }
-        
-
-    }
-})
-
-// Form validator events
 usernameIn.addEventListener("input", event => {
     const target = event.target;
     const val = target.value;
@@ -151,3 +115,60 @@ passwordIn.addEventListener("input", event => {
     }
 
 });
+
+// Form events (USING browser)
+form.addEventListener("submit", event => {
+    event.preventDefault();
+    const validationError = form.querySelectorAll(".fail");
+
+    if(validationError.length === 0) {
+        const username = usernameIn.value;
+        const email = emailIn.value;
+        const password = passwordIn.value;
+        const postData = {username, email, password, colorLibrary: []};
+
+        ls.setItem("colorant_user", JSON.stringify(postData));
+        window.location.href = "./home.html";
+    }
+});
+
+// Form Events (USING NODEJS)
+// form.addEventListener("submit", async (event) => {
+//     event.preventDefault();
+//     const validationError = form.querySelectorAll(".fail");
+
+//     if(validationError.length === 0) {
+//         const username = usernameIn.value;
+//         const email = emailIn.value;
+//         const password = passwordIn.value;
+//         const postData = {username, email, password};
+
+//         // CHECK IF ACCOUNT IS ALREADY REGISTERED
+//         if(await isAccountAlreadyExist(email)) {
+//             emailSignal.classList.add("fail");
+//             emailSignal.querySelector("span").textContent = "email is already registered";
+//             return;
+//         } else {
+//             try {
+//                 const {data} = await axios.post("/register", postData);
+    
+//                 if(data.success) {
+//                     const localStorage = window.localStorage
+//                     localStorage.setItem("colorant_user", JSON.stringify(data.formData));
+    
+//                     // Redirect to homepage with login state
+//                     window.location.href = "../"
+//                 }
+    
+//             } catch (error) {
+//                 console.log(error);
+//             }
+//         }
+        
+
+//     }
+// })
+
+// Form validator events
+
+// 

@@ -37,7 +37,7 @@ class events {
         }
     
         // signout btn
-        if(target.classList.contains("signout-btn") && user.isLogin()) {
+        if(target.classList.contains("signout-btn") && App.isLogin()) {
             window.localStorage.removeItem("colorant_user");
             window.location.reload();
         }
