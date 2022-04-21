@@ -67,11 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // account bar
         if(target.classList.contains("account-ctr") || target.matches(".overlay.account") || target.classList.contains("btn-account-setting-close")) {
-            const accountSettings = document.querySelector(".account-settings-ctr");
-
-            accountSettings.classList.toggle("show");
-            overlay.classList.toggle("active");
-            overlay.classList.toggle("account");
+            eventHandler.accountShow_handler();
         }
 
         // signout btn
@@ -83,8 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
         // bookmark btn
         if(target.classList.contains("btn-bookmark") || target.classList.contains("btn-bookmark-close") || target.matches(".overlay.bookmark")) {
             eventHandler.bookmarkBtn_handler();
-            overlay.classList.toggle("active");
-            overlay.classList.toggle("bookmark");
         }
 
         // save pallete btn
@@ -102,106 +96,24 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 const currentPallete = _getPalletes();
                 eventHandler.savePalleteBtn_handler(currentPallete);
-                overlay.classList.toggle("active");
             }
         }
 
         // unsave pallete btn
         if(target.classList.contains("pallete-saved")) {
-            const currentID = COLOR_SCHEME.getAttribute("id");
-
-            if(currentID) {
-                let newColorLibrary = [];
-                let {colorLibrary} = App.getUser();
-
-                // ls
-                newColorLibrary = colorLibrary.filter(pallete => pallete.id != currentID);
-                App.updateUser("colorant_user", {...App.getUser(), colorLibrary: newColorLibrary});
-                
-                _onUpdate();
-            }
+            eventHandler.removeSavedPallete();
+            _onUpdate();
         }
 
         // Bookmark - Showbtn
         if(target.classList.contains("btn-pallete-show")) {
-            const bars = target.parentElement.parentElement.previousElementSibling.querySelectorAll(".bar");
-            const id = target.parentElement.parentElement.parentElement.parentElement.getAttribute("id");
-            const pallete = [];
-
-            for(let x = 0; x < bars.length; x++) {
-                const colorData = {colorCode: bars[x].getAttribute("color-code"), colorName: bars[x].getAttribute("color-name")};
-                pallete.push(colorData);
-            }
-            
-            // set color scheme to this pallete
-            COLOR_SCHEME.innerHTML = "";
-            COLOR_SCHEME.setAttribute("id", id);
-
-            for(let x = 0; x < pallete.length; x++) {
-                const bar = document.createElement("div");
-                const colorCode = pallete[x].colorCode;
-                const colorName = pallete[x].colorName;
-
-                bar.className = "color-bar";
-                bar.innerHTML = `<div class="color-bg"></div>
-                <div class="color-body">
-                    <div class="color-tools">
-                        <div class="btn btn-md btn-color btn-remove" role="button" data-tippy-content="remove color">
-                            <i class="ri-delete-bin-7-line"></i>
-                        </div>
-                        <div class="btn btn-md btn-color btn-drag" role="button" data-tippy-content="move color" draggable="true">
-                            <i class="ri-drag-move-line"></i>
-                        </div>
-                        <div class="btn btn-md btn-color btn-copy" role="button" data-tippy-content="copy color code">
-                            <i class="ri-clipboard-line"></i>
-                        </div>
-                        <div class="btn btn-md btn-color btn-lock" role="button" data-tippy-content="lock color">
-                            <i class="ri-lock-unlock-line"></i>
-                        </div>
-                    </div>
-                    <div class="color-info">
-                        <div class="color-code"></div>
-                        <div class="color-name"></div>
-                    </div>`
-
-                    COLOR_SCHEME.appendChild(bar);
-                    ui.updateColor(bar, colorCode, colorName);
-                }
-
+            eventHandler.showPallete(target);
             _onUpdate();
-
-            // remove overlay and bookmark state
-            eventHandler.bookmarkBtn_handler();
-            overlay.classList.toggle("active");
-            overlay.classList.toggle("bookmark");
         }
 
         // Bookmark - RemovePallete btn
         if(target.classList.contains("btn-pallete-delete")) {
-            const palleteItems = document.querySelectorAll(".pallete-library .pallete-item");
-            const currentPallete = target.parentElement.parentElement.parentElement.parentElement;
-            const currentID = currentPallete.getAttribute("id");
-            const saveBtn = document.querySelector(".color-field .main-tools .btn-save-pallete");
-
-            let newColorLibrary = [];
-            let {colorLibrary} = App.getUser();
-
-            // DOM
-            for(let x = 0; x < palleteItems.length; x++) {
-                const id = palleteItems[x].getAttribute("id");
-
-                if(id === currentID) {
-                    palleteItems[x].remove();
-                }
-            }
-
-            saveBtn.classList.remove("saved");
-            saveBtn.classList.remove("pallete-saved");
-
-            // ls
-            newColorLibrary = colorLibrary.filter(pallete => pallete.id != currentID);
-            App.updateUser("colorant_user", {...App.getUser(), colorLibrary: newColorLibrary});
-            
+            eventHandler.deletePalleteFromLibrary(target);
             _onUpdate();
         }
 
