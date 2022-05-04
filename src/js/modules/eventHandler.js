@@ -1,11 +1,10 @@
 import GeneratorColor from './generator.js';
 import { ui } from './UI.js';
-import { hook } from './hook.js';
 import App from './app.js';
 
-const COLOR_FIELD = hook('.color-field');
-const COLOR_SCHEME = hook('.color-scheme', false, COLOR_FIELD);
-const UI = hook('.ui');
+const COLOR_FIELD = document.querySelector('.color-field');
+const COLOR_SCHEME = COLOR_FIELD.querySelector('.color-scheme');
+const UI = document.querySelector('.ui');
 const overlay = document.querySelector('.overlay');
 
 class events {
@@ -35,9 +34,9 @@ class events {
 	}
 
 	menuBtn_handler() {
-		const navBar = hook('.nav-main');
-		const closeBtn = hook('.btn-close-nav');
-		const menuBtn = hook('.btn-menu-mobile');
+		const navBar = document.querySelector('.nav-main');
+		const closeBtn = document.querySelector('.btn-close-nav');
+		const menuBtn = document.querySelector('.btn-menu-mobile');
 
 		navBar.classList.toggle('show');
 		closeBtn.classList.toggle('active');
@@ -73,7 +72,7 @@ class events {
 	}
 
 	bookmarkBtn_handler() {
-		const bookmarkUI = hook('.bookmark', false, UI);
+		const bookmarkUI = document.querySelector('.ui .bookmark');
 		const noPallete = document.querySelector('.ui .no-pallete');
 		const palleteLib = document.querySelector('.ui .pallete-library');
 		const { colorLibrary } = App.getUser();
@@ -179,7 +178,7 @@ class events {
             </div>`;
 
 		if (len === 2) {
-			hook('.btn-remove', true, COLOR_SCHEME).forEach(
+			COLOR_SCHEME.querySelectorAll('.btn-remove').forEach(
 				(btn) => (btn.style.display = 'block')
 			);
 		}
@@ -194,7 +193,7 @@ class events {
 
 	// copy btn
 	copyBtn_handler(bar) {
-		const code = hook('.color-code', false, bar).innerText;
+		const code = bar.querySelector('.color-code').innerText;
 		return window.navigator.clipboard.writeText(code);
 	}
 
@@ -202,7 +201,7 @@ class events {
 	lockBtn_handler(bar, isLock) {
 		let icon;
 		isLock = isLock === 'true' ? true : false;
-		const lockBtn = hook('.btn-lock', false, bar);
+		const lockBtn = bar.querySelector('.btn-lock');
 
 		if (isLock) {
 			icon = `<i class="ri-lock-unlock-line"></i>`;
@@ -223,7 +222,7 @@ class events {
 			bar.remove();
 		}
 		if (len <= 3) {
-			hook('.btn-remove', true, COLOR_SCHEME).forEach(
+			COLOR_SCHEME.querySelectorAll('.btn-remove').forEach(
 				(btn) => (btn.style.display = 'none')
 			);
 		}
@@ -342,8 +341,8 @@ class events {
 	}
 
 	dragStart_handler(bar, target) {
-		const tools = hook('.color-tools', false, bar);
-		const btns = hook('.btn:not(.btn-drag)', true, tools);
+		const tools = bar.querySelector('.color-tools');
+		const btns = tools.querySelectorAll('.btn:not(.btn-drag)');
 
 		// style bar
 		bar.style.zIndex = '99';
@@ -354,7 +353,7 @@ class events {
 		btns.forEach((btn) => btn.classList.add('invisible'));
 
 		// set collision pos
-		hook('.color-bar', true, COLOR_SCHEME).forEach((bar, index) => {
+		COLOR_SCHEME.querySelectorAll('.color-bar').forEach((bar, index) => {
 			let collisionPos = Math.round(
 				bar.getBoundingClientRect().width * (index + 1)
 			);
@@ -363,8 +362,8 @@ class events {
 	}
 
 	dragEnd_handler(bar, target) {
-		const tools = hook('.color-tools', false, bar);
-		const btns = hook('.btn:not(.btn-drag)', true, tools);
+		const tools = bar.querySelector('.color-tools');
+		const btns = tools.querySelectorAll('.btn:not(.btn-drag)');
 		let {
 			posInit,
 			currentMousePos,
@@ -498,11 +497,11 @@ class events {
 			elements,
 		} = this.dragEvent;
 		posInit = posInit || posX;
-		elements = [...hook('.color-bar', true, COLOR_SCHEME)];
+		elements = [...COLOR_SCHEME.querySelectorAll('.color-bar')];
 		collider = collider || elements.indexOf(dragBar);
 
 		let moveX = posInit === posX ? 1 : posX - posInit;
-		let bars = [...hook('.color-bar', true, COLOR_SCHEME)];
+		let bars = [...COLOR_SCHEME.querySelectorAll('.color-bar')];
 		currentMousePos = event.clientX;
 
 		// DETERMINE MOUSE DIRECTION

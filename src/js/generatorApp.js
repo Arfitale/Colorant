@@ -1,16 +1,15 @@
 import Main from './modules/main.js';
 import GeneratorColor from './modules/generator.js';
-import { hook } from './modules/hook.js';
 import { eventHandler } from './modules/eventHandler.js';
 import { ui } from './modules/UI.js';
 import { tooltip } from './modules/tooltip.js';
 import App from './modules/app.js';
 
-const COLOR_FIELD = hook('.color-field');
-const COLOR_SCHEME = hook('.color-scheme', false, COLOR_FIELD);
+const COLOR_FIELD = document.querySelector('.color-field');
+const COLOR_SCHEME = document.querySelector('.color-field .color-scheme');
 
-const generateBtn = hook('.btn-generate', false, COLOR_FIELD);
-const addBtn = hook('.btn-add', false, COLOR_FIELD);
+const generateBtn = COLOR_FIELD.querySelector('.btn-generate');
+const addBtn = COLOR_FIELD.querySelector('.btn-add');
 const savePalleteForm = document.querySelector('#save-pallete-form');
 
 // UI
@@ -37,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	// add btn
 	addBtn.addEventListener('click', () => {
-		const barLen = [...hook('.color-bar', true)].length;
+		const barLen = [...document.querySelectorAll('.color-bar')].length;
 		if (barLen < 7) {
 			eventHandler.addBtn_handler(barLen, tooltip);
 			tooltip.refresh();
@@ -157,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			// delete button
 			if (target.classList.contains('btn-remove')) {
-				const barLen = hook('.color-bar', true, COLOR_SCHEME).length;
+				const barLen = COLOR_SCHEME.querySelectorAll('.color-bar').length;
 				eventHandler.removeBtn_handler(bar, barLen);
 				_onUpdate();
 			}
@@ -185,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	// dragmove event
 	window.addEventListener('dragover', (event) => {
-		const dragBar = hook('.color-bar.dragged', false, COLOR_SCHEME);
+		const dragBar = COLOR_SCHEME.querySelector('.color-bar.dragged');
 
 		if (dragBar) eventHandler.dragMove_handler(event, dragBar);
 	});
