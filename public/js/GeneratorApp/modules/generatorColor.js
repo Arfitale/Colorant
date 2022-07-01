@@ -1,8 +1,8 @@
-import { ui } from './UI.js';
-import { colors, colorName } from '../color.js';
+import { colors, colorName } from '../../../../data/color/colors.js';
+import { updateColor } from './ui.js';
 
-export default class GeneratorColor {
-	static defaultGenerate() {
+class GeneratorColor {
+	defaultGenerate() {
 		const COLOR_BAR = document.querySelectorAll('.color-field .color-bar');
 		const COLOR_SCHEME = document.querySelector('.color-scheme');
 
@@ -14,7 +14,7 @@ export default class GeneratorColor {
 				const [colorName, colorCode] = this.getRandomColor();
 
 				// Set every color bars
-				ui.updateColor(bar, `#${colorCode}`, colorName);
+				updateColor(bar, `#${colorCode}`, colorName);
 			}
 		});
 
@@ -22,7 +22,7 @@ export default class GeneratorColor {
 	}
 
 	// get random color
-	static getRandomColor() {
+	getRandomColor() {
 		const randomColorName =
 			colorName[Math.round(Math.random() * colorName.length)];
 		const colorCode = colors[randomColorName];
@@ -30,3 +30,5 @@ export default class GeneratorColor {
 		return [randomColorName, colorCode];
 	}
 }
+
+export default new GeneratorColor();

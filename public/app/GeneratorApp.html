@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="Simple color scheme generator" />
+		<title>Colorant - Simple color generator</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="../style/default.css" />
+		<link rel="stylesheet" href="../style/generatorApp.css" />
+		<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+		<script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+		<script src="../js/GeneratorApp/GeneratorApp.js" type="module"></script>
+	</head>
+	<body>
+		<!-- OVERLAY -->
+		<div class="overlay"></div>
+
+		<!-- NAVIGATION -->
+		<nav class="nav" class="nav">
+			<div
+				class="btn btn-normal mobile-flex btn-menu btn-menu-mobile"
+				role="button"
+			>
+				<i class="ri-menu-5-line"></i>
+			</div>
+
+			<ul class="nav-main">
+				<div
+					class="btn btn-close-nav btn-normal btn-remove-overlay"
+					role="button"
+				>
+					<i class="ri-close-fill"></i>
+				</div>
+				<a href="home.html" class="logo">
+					<img src="../../assets/icon/colorant.svg" alt="colorant logo" />
+				</a>
+				<ul class="nav-links">
+					<li><a href="generatorApp.html" class="nav-link">Generator</a></li>
+					<li><a href="#" class="nav-link">Explore</a></li>
+					<ul class="sign">
+						<li>
+							<a href="./signUp.html" class="nav-link sign-up">Sign up</a>
+						</li>
+						<li>
+							<a href="./signIn.html" class="btn-primary btn-sign sign-in"
+								>Login</a
+							>
+						</li>
+					</ul>
+				</ul>
+			</ul>
+			<div class="account">
+				<div class="account-ctr">
+					<div class="account-img-ctr"></div>
+				</div>
+				<div class="account-settings-ctr">
+					<div class="account-header">
+						<div
+							role="button"
+							class="btn btn-flex btn-close btn-account-setting-close"
+						>
+							<i class="ri-close-line"></i>
+						</div>
+						<div class="account-avatar">
+							<div class="account-img-ctr"></div>
+							<div class="account-name"></div>
+						</div>
+					</div>
+					<ul class="account-settings">
+						<li class="setting-item">
+							<div class="icon"><i class="ri-account-circle-line"></i></div>
+							<div class="icon-desc">Account</div>
+						</li>
+						<li class="setting-item">
+							<div class="icon"><i class="ri-logout-box-r-line"></i></div>
+							<div class="icon-desc signout-btn" role="button">Sign out</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<!-- GENERATOR FIELD -->
+		<div class="color-field">
+			<div class="tools">
+				<div class="desc">
+					<p>Press spacebar to generate color!</p>
+				</div>
+				<div class="main-tools">
+					<div
+						class="btn btn-icon btn-generate"
+						role="button"
+						data-btn-function="generate"
+					>
+						<i class="ri-apps-2-line"></i>
+					</div>
+					<div
+						class="btn btn-icon btn-add"
+						data-btn-function="add"
+						role="button"
+					>
+						<i class="ri-add-circle-line"></i>
+					</div>
+					<div
+						class="btn btn-icon btn-save-pallete"
+						data-btn-function="save"
+						role="button"
+					>
+						<i class="ri-heart-line"></i>
+					</div>
+					<div
+						class="btn btn-icon btn-bookmark"
+						data-btn-function="bookmark"
+						role="button"
+					>
+						<i class="ri-bookmark-line"></i>
+					</div>
+				</div>
+			</div>
+			<div class="color-scheme"></div>
+		</div>
+	</body>
+</html>
