@@ -1,11 +1,17 @@
 import GeneratorColor from './modules/generatorColor.js';
+import Events from './modules/generatorEvents.js';
 import { updateDimension } from './modules/ui.js';
+import { Bar } from './components/components.js';
 
-// DEFAULT SETTINGS
+// DEFAULT STATE
 let barCount = 5;
+
+// DEFAULT SETTING
+const barMax = 8;
 
 // DOM
 const generateBtn = document.querySelector('.btn-generate');
+const addBtn = document.querySelector('.btn-add');
 const colorScheme = document.querySelector('.color-scheme');
 
 // INITIALIZATION
@@ -18,30 +24,7 @@ function _init() {
 
 function setBar() {
 	for (let x = 0; x < barCount; x++) {
-		const barHTML = `<div class="color-bar" data-isLock="false" draggable="true">
-        <div class="color-bg"></div>
-        <div class="color-body">
-            <div class="color-tools">
-                <div class="btn tippy tippy btn-md btn-color btn-remove" role="button">
-                    <i class="ri-delete-bin-7-line"></i>
-                </div>
-                <div class="btn tippy tippy btn-md btn-color btn-drag" role="button">
-                    <i class="ri-drag-move-line"></i>
-                </div>
-                <div class="btn tippy tippy btn-md btn-color btn-copy" role="button">
-                    <i class="ri-clipboard-line"></i>
-                </div>
-                <div class="btn tippy tippy btn-md btn-color btn-lock" role="button">
-                    <i class="ri-lock-unlock-line"></i>
-                </div>
-            </div>
-            <div class="color-info">
-                <div class="color-code"></div>
-                <div class="color-name"></div>
-            </div>
-        </div>
-    </div>`;
-		colorScheme.innerHTML += barHTML;
+		colorScheme.appendChild(Bar());
 	}
 }
 
@@ -54,3 +37,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
 generateBtn.addEventListener('click', (event) => {
 	GeneratorColor.defaultGenerate();
 });
+
+// ADD BTN
+addBtn.addEventListener('click', (event) => {
+	if (barCount < barMax) {
+		Events.addBtnHandler(barCount);
+		barCount++;
+	}
+});
+
+document.addEventListener('click', (event) => {});
