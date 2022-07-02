@@ -36,6 +36,10 @@ class GeneratorEvents {
 		lockIcon.innerHTML = '';
 		lockIcon.appendChild(newIcon);
 	}
+	copyBtnhandler(bar) {
+		const code = bar.querySelector('.color-code').innerText;
+		window.navigator.clipboard.writeText(code);
+	}
 }
 
 export default new GeneratorEvents();

@@ -33,6 +33,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
 	_init();
 });
 
+window.addEventListener('keydown', (event) => {
+	// spacebar button
+	if (event.code === 'Space') {
+		GeneratorColor.defaultGenerate();
+	}
+});
+
 // BTN GENERATOR
 generateBtn.addEventListener('click', (event) => {
 	GeneratorColor.defaultGenerate();
@@ -52,5 +59,9 @@ colorScheme.addEventListener('click', (event) => {
 
 	if (target.getAttribute('data-btn-function') === 'lockColor') {
 		Events.lockColorHandler(bar, target);
+	}
+
+	if (target.getAttribute('data-btn-function') === 'copyColor') {
+		Events.copyBtnhandler(bar);
 	}
 });

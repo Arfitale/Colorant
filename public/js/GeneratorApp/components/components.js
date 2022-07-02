@@ -10,10 +10,10 @@ export const Bar = () => {
             <div class="btn tippy tippy btn-md btn-color btn-remove" role="button" data-btn-function='deleteColor'>
                 <i class="ri-delete-bin-7-line"></i>
             </div>
-            <div class="btn tippy tippy btn-md btn-color btn-drag" role="button">
+            <div class="btn tippy tippy btn-md btn-color btn-drag" role="button" data-btn-function='dragColor'>
                 <i class="ri-drag-move-line"></i>
             </div>
-            <div class="btn tippy tippy btn-md btn-color btn-copy" role="button">
+            <div class="btn tippy tippy btn-md btn-color btn-copy" role="button" data-btn-function='copyColor'>
                 <i class="ri-clipboard-line"></i>
             </div>
             <div class="btn tippy tippy btn-md btn-color btn-lock" role="button" data-btn-function='lockColor'>
