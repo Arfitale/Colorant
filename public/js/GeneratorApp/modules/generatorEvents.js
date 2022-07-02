@@ -24,6 +24,18 @@ class GeneratorEvents {
 		});
 		updateDimension();
 	}
+
+	lockColorHandler(bar, lockIcon) {
+		const isLock = bar.getAttribute('data-isLock') === 'true' ? true : false;
+		let newIcon = document.createElement('i');
+
+		newIcon.className = isLock ? 'ri-lock-unlock-line' : 'ri-lock-line';
+		lockIcon.classList.toggle('lock');
+
+		bar.setAttribute('data-isLock', `${!isLock}`);
+		lockIcon.innerHTML = '';
+		lockIcon.appendChild(newIcon);
+	}
 }
 
 export default new GeneratorEvents();

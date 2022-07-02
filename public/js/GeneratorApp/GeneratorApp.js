@@ -46,4 +46,11 @@ addBtn.addEventListener('click', (event) => {
 	}
 });
 
-document.addEventListener('click', (event) => {});
+colorScheme.addEventListener('click', (event) => {
+	const target = event.target;
+	const bar = event.target.parentElement.parentElement.parentElement;
+
+	if (target.getAttribute('data-btn-function') === 'lockColor') {
+		Events.lockColorHandler(bar, target);
+	}
+});
