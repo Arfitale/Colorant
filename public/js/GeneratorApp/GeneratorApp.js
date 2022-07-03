@@ -2,6 +2,7 @@ import GeneratorColor from './modules/generatorColor.js';
 import Events from './modules/generatorEvents.js';
 import { updateDimension } from './modules/ui.js';
 import { Bar } from './components/components.js';
+import Dragdrop from './modules/dragdrop.js';
 
 // DEFAULT STATE
 let barCount = 5;
@@ -34,6 +35,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 	_init();
 });
 
+// KEY EVENT
 window.addEventListener('keydown', (event) => {
 	// spacebar button
 	if (event.code === 'Space') {
@@ -61,6 +63,7 @@ addBtn.addEventListener('click', (event) => {
 	}
 });
 
+// COLOR BAR EVENT
 colorScheme.addEventListener('click', (event) => {
 	const target = event.target;
 	const bar = event.target.parentElement.parentElement.parentElement;
@@ -88,5 +91,25 @@ colorScheme.addEventListener('click', (event) => {
 				.querySelectorAll('.btn-remove')
 				.forEach((btn) => (btn.style.display = 'none'));
 		}
+	}
+});
+
+// DRAGDROP COLOR BAR
+window.addEventListener('dragstart', (event) => {
+	const target = event.target;
+	if (target.classList.contains('btn-drag')) {
+		Dragdrop.dragStartHandler(target);
+	}
+});
+window.addEventListener('dragover', (event) => {
+	const dragBar = colorScheme.querySelector('.color-bar.dragged');
+	if (dragBar) Dragdrop.dragMoveHandler(event, dragBar);
+});
+
+window.addEventListener('dragend', (event) => {
+	const target = event.target;
+	if (target.classList.contains('btn-drag')) {
+		const bar = target.parentElement.parentElement.parentElement;
+		Dragdrop.dragEndHandler(target);
 	}
 });
