@@ -8,6 +8,7 @@ let barCount = 5;
 
 // DEFAULT SETTING
 const barMax = 8;
+const barMin = 2;
 
 // DOM
 const generateBtn = document.querySelector('.btn-generate');
@@ -49,7 +50,14 @@ generateBtn.addEventListener('click', (event) => {
 addBtn.addEventListener('click', (event) => {
 	if (barCount < barMax) {
 		Events.addBtnHandler(barCount);
-		barCount++;
+		barCount += 1;
+	}
+
+	// check if barCount is higher than barMin
+	if (barCount > barMin) {
+		colorScheme
+			.querySelectorAll('.btn-remove')
+			.forEach((btn) => (btn.style.display = 'flex'));
 	}
 });
 
@@ -57,11 +65,28 @@ colorScheme.addEventListener('click', (event) => {
 	const target = event.target;
 	const bar = event.target.parentElement.parentElement.parentElement;
 
+	// LOCK BTN
 	if (target.getAttribute('data-btn-function') === 'lockColor') {
 		Events.lockColorHandler(bar, target);
 	}
 
+	// COPY BTN
 	if (target.getAttribute('data-btn-function') === 'copyColor') {
-		Events.copyBtnhandler(bar);
+		Events.copyBtnHandler(bar);
+	}
+
+	// REMOVE BTN
+	if (target.getAttribute('data-btn-function') === 'removeColor') {
+		if (barCount > barMin) {
+			Events.removeBtnHandler(bar);
+			barCount -= 1;
+		}
+
+		// check if barCount is less or equal barMin
+		if (barCount === barMin) {
+			colorScheme
+				.querySelectorAll('.btn-remove')
+				.forEach((btn) => (btn.style.display = 'none'));
+		}
 	}
 });

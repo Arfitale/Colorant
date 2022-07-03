@@ -7,7 +7,7 @@ export const Bar = () => {
     <div class="color-bg"></div>
     <div class="color-body">
         <div class="color-tools">
-            <div class="btn tippy tippy btn-md btn-color btn-remove" role="button" data-btn-function='deleteColor'>
+            <div class="btn tippy tippy btn-md btn-color btn-remove" role="button" data-btn-function='removeColor'>
                 <i class="ri-delete-bin-7-line"></i>
             </div>
             <div class="btn tippy tippy btn-md btn-color btn-drag" role="button" data-btn-function='dragColor'>
